@@ -39,7 +39,7 @@ body.dark-mode .comparison-table tr:nth-child(even){background:rgba(255,255,255,
 
 /* ========== RESET & BASE ========== */
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topbar-h)+20px);}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topbar-h) + 20px);}
 body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.7;font-size:16px;}
 sub{font-size:.75em;vertical-align:sub;}
 sup{font-size:.75em;vertical-align:super;}
@@ -48,10 +48,10 @@ img{max-width:100%;border-radius:var(--radius-sm);}
 
 /* ========== TOPBAR ========== */
 #topbar{
-  position:fixed;top:0;left:0;right:0;height:var(--topbar-h);
+  position:fixed;top:0;left:var(--sidebar-w);right:0;height:var(--topbar-h);
   background:var(--card);border-bottom:1px solid var(--border);
   display:flex;align-items:center;gap:12px;
-  padding:0 20px 0 calc(var(--sidebar-w)+20px);z-index:100;box-shadow:var(--shadow);
+  padding:0 20px;z-index:100;box-shadow:var(--shadow);
 }
 .menu-toggle{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--text);padding:4px 8px;}
 .search-box{flex:1;max-width:420px;position:relative;}
@@ -63,7 +63,7 @@ img{max-width:100%;border-radius:var(--radius-sm);}
 .search-box input:focus{border-color:var(--primary);background:var(--card);}
 .search-box .si{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:14px;pointer-events:none;}
 .search-results{
-  position:absolute;top:calc(100%+4px);left:0;right:0;background:var(--card);
+  position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--card);
   border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);max-height:300px;
   overflow-y:auto;display:none;z-index:101;border:1px solid var(--border);
 }
@@ -290,7 +290,7 @@ body.dark-mode .rv-overall{background:rgba(13,148,136,.08);}
   .sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:199;}
   .sb-overlay.active{display:block;}
   #main-content{margin-left:0;padding:20px 16px 40px;}
-  #topbar{padding-left:12px;}
+  #topbar{left:0;padding-left:12px;}
   .menu-toggle{display:block;}
   .ch-grid{grid-template-columns:1fr;}
   #catalog .hero{padding:28px 20px;}
