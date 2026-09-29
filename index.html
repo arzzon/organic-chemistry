@@ -1,0 +1,3264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Chemistry — CBSE XII | Board & NEET Prep</title>
+<meta name="description" content="Interactive guide to Organic Chemistry for CBSE Class XII Board and NEET preparation">
+<style>
+/* ========== ROOT VARIABLES ========== */
+:root{
+  --primary:#1a73e8;--primary-dark:#1557b0;--primary-light:#e8f0fe;
+  --accent:#0d9488;--accent-light:#ccfbf1;--accent-dark:#0f766e;
+  --purple:#7c3aed;--purple-light:#ede9fe;
+  --orange:#ea580c;--orange-light:#fff7ed;
+  --yellow:#d97706;--yellow-light:#fffbeb;
+  --bg:#f0f4f8;--card:#ffffff;--text:#1e293b;--text-muted:#64748b;--border:#e2e8f0;
+  --sidebar-bg:#1e293b;--sidebar-text:#cbd5e1;
+  --radius:12px;--radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
+  --transition:all .3s ease;
+  --sidebar-w:280px;--topbar-h:56px;
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --font-serif:Georgia,'Times New Roman',serif;
+}
+/* Dark mode */
+body.dark-mode{
+  --bg:#0f172a;--card:#1e293b;--text:#e2e8f0;--text-muted:#94a3b8;--border:#334155;
+  --primary-light:rgba(26,115,232,.15);--accent-light:rgba(13,148,136,.15);
+  --purple-light:rgba(124,58,237,.15);--orange-light:rgba(234,88,12,.15);
+  --yellow-light:rgba(217,119,6,.12);--shadow:0 1px 3px rgba(0,0,0,.3);
+}
+body.dark-mode #topbar{background:var(--card);border-color:var(--border);}
+body.dark-mode .topic-header:hover{background:rgba(26,115,232,.1);}
+body.dark-mode .equation-box{background:linear-gradient(135deg,#1e293b,#334155);}
+body.dark-mode .rv-step-visual{background:linear-gradient(135deg,#1e293b,#1a2e3b);border-color:var(--border);}
+body.dark-mode .comparison-table th{background:var(--primary-dark);}
+body.dark-mode .comparison-table tr:nth-child(even){background:rgba(255,255,255,.03);}
+
+/* ========== RESET & BASE ========== */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topbar-h)+20px);}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.7;font-size:16px;}
+sub{font-size:.75em;vertical-align:sub;}
+sup{font-size:.75em;vertical-align:super;}
+a{color:var(--primary);text-decoration:none;}
+img{max-width:100%;border-radius:var(--radius-sm);}
+
+/* ========== TOPBAR ========== */
+#topbar{
+  position:fixed;top:0;left:0;right:0;height:var(--topbar-h);
+  background:var(--card);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;
+  padding:0 20px 0 calc(var(--sidebar-w)+20px);z-index:100;box-shadow:var(--shadow);
+}
+.menu-toggle{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--text);padding:4px 8px;}
+.search-box{flex:1;max-width:420px;position:relative;}
+.search-box input{
+  width:100%;padding:8px 14px 8px 38px;border:2px solid var(--border);border-radius:24px;
+  font-size:14px;background:var(--bg);transition:var(--transition);outline:none;color:var(--text);
+  font-family:var(--font-sans);
+}
+.search-box input:focus{border-color:var(--primary);background:var(--card);}
+.search-box .si{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:14px;pointer-events:none;}
+.search-results{
+  position:absolute;top:calc(100%+4px);left:0;right:0;background:var(--card);
+  border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);max-height:300px;
+  overflow-y:auto;display:none;z-index:101;border:1px solid var(--border);
+}
+.search-results.active{display:block;}
+.sr-item{padding:10px 14px;cursor:pointer;transition:var(--transition);border-bottom:1px solid var(--border);font-size:14px;}
+.sr-item:hover{background:var(--primary-light);}
+.sr-item .sr-ch{font-size:11px;color:var(--text-muted);margin-top:2px;}
+.dm-toggle{
+  background:none;border:2px solid var(--border);border-radius:20px;padding:6px 12px;
+  cursor:pointer;font-size:14px;transition:var(--transition);color:var(--text);white-space:nowrap;
+}
+.dm-toggle:hover{border-color:var(--primary);background:var(--primary-light);}
+
+/* ========== SIDEBAR ========== */
+#sidebar{
+  position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;
+  background:var(--sidebar-bg);color:var(--sidebar-text);overflow-y:auto;z-index:200;
+  transition:transform .3s ease;
+}
+.sb-head{padding:18px 20px;text-align:center;border-bottom:1px solid rgba(255,255,255,.08);}
+.sb-head h1{font-size:17px;color:#fff;font-weight:700;margin-bottom:2px;}
+.sb-head p{font-size:11px;color:var(--sidebar-text);opacity:.65;}
+#sidebar nav{padding:10px 0 20px;}
+.nav-sec{padding:14px 20px 6px;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.35);font-weight:700;}
+.nav-item{
+  display:flex;align-items:center;gap:10px;padding:9px 20px;color:var(--sidebar-text);
+  text-decoration:none;font-size:14px;transition:var(--transition);cursor:pointer;
+  border-left:3px solid transparent;
+}
+.nav-item:hover{background:rgba(255,255,255,.07);color:#fff;}
+.nav-item.active{background:rgba(26,115,232,.15);color:var(--primary);border-left-color:var(--primary);font-weight:600;}
+.nav-ch{font-weight:600;color:#fff!important;}
+.nav-item .ni{width:20px;text-align:center;flex-shrink:0;font-size:15px;}
+.nav-item .arrow{margin-left:auto;font-size:10px;transition:transform .3s;color:rgba(255,255,255,.3);}
+.nav-item.expanded .arrow{transform:rotate(90deg);}
+.nav-sub{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.nav-sub.expanded{max-height:600px;}
+.nav-si{
+  display:block;padding:5px 20px 5px 52px;font-size:13px;color:var(--sidebar-text);
+  text-decoration:none;transition:var(--transition);cursor:pointer;
+}
+.nav-si:hover{color:#fff;background:rgba(255,255,255,.04);}
+.nav-si.active{color:var(--primary);}
+
+/* ========== MAIN CONTENT ========== */
+#main-content{margin-left:var(--sidebar-w);margin-top:var(--topbar-h);padding:28px 32px 60px;max-width:920px;min-height:calc(100vh - var(--topbar-h));}
+
+/* ========== CHAPTER SECTIONS ========== */
+.chapter-section{display:none;animation:fadeIn .35s ease;}
+.chapter-section.active{display:block;}
+.ch-head{margin-bottom:28px;padding-bottom:14px;border-bottom:3px solid var(--primary);}
+.ch-num{font-size:13px;color:var(--primary);text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:6px;}
+.ch-title{font-size:30px;font-weight:800;line-height:1.2;}
+.ch-sub{font-size:15px;color:var(--text-muted);margin-top:6px;}
+
+/* ========== TOPIC GROUPS (COLLAPSIBLE) ========== */
+.topic-group{background:var(--card);border-radius:var(--radius);margin-bottom:14px;box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--border);}
+.topic-header{display:flex;align-items:center;padding:14px 18px;cursor:pointer;user-select:none;transition:var(--transition);gap:10px;}
+.topic-header:hover{background:var(--primary-light);}
+.topic-header .ti{font-size:11px;transition:transform .3s;color:var(--text-muted);flex-shrink:0;}
+.topic-header.expanded .ti{transform:rotate(90deg);}
+.topic-header h3{font-size:16px;font-weight:600;flex:1;}
+.topic-content{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.topic-content.expanded{max-height:none;overflow:visible;}
+.topic-body{padding:4px 18px 20px;}
+.topic-body h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--text);}
+.topic-body p{margin-bottom:10px;font-size:15px;}
+.topic-body ul,.topic-body ol{padding-left:22px;margin-bottom:12px;}
+.topic-body li{margin-bottom:4px;font-size:15px;}
+
+/* ========== CONCEPT CROSS-REFS ========== */
+.concept-ref{
+  color:var(--primary);border-bottom:2px dotted var(--primary);cursor:pointer;
+  transition:var(--transition);font-weight:500;padding:0 2px;display:inline;
+}
+.concept-ref:hover{background:var(--primary-light);border-bottom-style:solid;}
+
+/* ========== EQUATION BOX ========== */
+.equation-box{
+  background:linear-gradient(135deg,#f8fafc,#e2e8f0);border-radius:var(--radius-sm);
+  padding:18px 20px;text-align:center;margin:14px 0;font-size:17px;font-family:var(--font-serif);
+  border:1px solid var(--border);overflow-x:auto;line-height:2;
+}
+.equation-box .arr{margin:0 10px;color:var(--accent);font-weight:700;font-size:20px;}
+.equation-box .reagent{display:block;font-size:12px;color:var(--text-muted);margin-top:2px;font-family:var(--font-sans);}
+
+/* ========== REACTION VIEWER ========== */
+.reaction-viewer{background:var(--card);border:2px solid var(--accent);border-radius:var(--radius);overflow:hidden;margin:18px 0;}
+.rv-header{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;padding:12px 18px;font-weight:600;font-size:14px;}
+.rv-overall{background:#f0fdfa;padding:10px 18px;text-align:center;font-size:15px;border-bottom:1px solid var(--border);font-family:var(--font-serif);}
+body.dark-mode .rv-overall{background:rgba(13,148,136,.08);}
+.rv-step{display:none;padding:20px 18px;min-height:160px;}
+.rv-step.active{display:block;animation:fadeIn .3s ease;}
+.rv-step-visual{
+  background:linear-gradient(135deg,#f8fafc,#f0fdfa);border-radius:var(--radius-sm);
+  padding:20px;text-align:center;font-size:19px;font-family:var(--font-serif);
+  margin-bottom:14px;border:1px dashed var(--border);min-height:60px;
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;line-height:1.8;
+}
+.rv-step-title{font-size:15px;font-weight:700;color:var(--accent);margin-bottom:6px;}
+.rv-step-explain{font-size:14px;line-height:1.7;}
+.rv-step-why{
+  background:var(--purple-light);border-left:4px solid var(--purple);
+  padding:10px 14px;margin-top:10px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:14px;
+}
+.rv-step-why strong{color:var(--purple);}
+.rv-controls{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:var(--bg);border-top:1px solid var(--border);}
+.rv-btn{
+  padding:7px 18px;border:2px solid var(--accent);background:var(--card);color:var(--accent);
+  border-radius:24px;cursor:pointer;font-size:13px;font-weight:600;transition:var(--transition);font-family:var(--font-sans);
+}
+.rv-btn:hover:not(:disabled){background:var(--accent);color:#fff;}
+.rv-btn:disabled{opacity:.35;cursor:not-allowed;}
+.rv-ind{text-align:center;}
+.rv-ind .rv-st{font-size:12px;color:var(--text-muted);font-weight:500;}
+.rv-dots{display:flex;gap:5px;margin-top:4px;justify-content:center;}
+.rv-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:var(--transition);}
+.rv-dot.active{background:var(--accent);width:22px;border-radius:4px;}
+
+/* ========== INFO BOXES ========== */
+.note-box,.tip-box,.warning-box,.neet-tip{border-radius:var(--radius-sm);padding:14px 18px;margin:14px 0;font-size:14px;line-height:1.6;}
+.note-box{background:var(--primary-light);border-left:4px solid var(--primary);}
+.tip-box{background:var(--accent-light);border-left:4px solid var(--accent);}
+.warning-box{background:var(--orange-light);border-left:4px solid var(--orange);}
+.neet-tip{background:var(--purple-light);border-left:4px solid var(--purple);}
+.ib-title{font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.note-box .ib-title{color:var(--primary);}
+.tip-box .ib-title{color:var(--accent);}
+.warning-box .ib-title{color:var(--orange);}
+.neet-tip .ib-title{color:var(--purple);}
+
+/* ========== SUMMARY BOX ========== */
+.summary-box{
+  background:linear-gradient(135deg,var(--yellow-light),#fef3c7);border:2px solid var(--yellow);
+  border-radius:var(--radius);padding:18px 22px;margin:22px 0;
+}
+.summary-box h4{font-size:15px;color:var(--yellow);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.summary-box ul{list-style:none;padding:0;}
+.summary-box li{padding:5px 0 5px 24px;position:relative;font-size:14px;}
+.summary-box li::before{content:'✓';position:absolute;left:0;color:#059669;font-weight:700;}
+
+/* ========== COMPARISON TABLE ========== */
+.comparison-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);}
+.comparison-table th{background:var(--primary);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:13px;}
+.comparison-table td{padding:9px 14px;border-bottom:1px solid var(--border);}
+.comparison-table tr:nth-child(even){background:rgba(0,0,0,.02);}
+.comparison-table tr:hover{background:var(--primary-light);}
+
+/* ========== CATALOG / HOME ========== */
+#catalog .hero{
+  background:linear-gradient(135deg,#1e293b,#334155);border-radius:var(--radius);
+  padding:44px 36px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;
+}
+#catalog .hero::after{content:'⚗️';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-size:72px;opacity:.15;}
+#catalog .hero h1{font-size:34px;font-weight:800;margin-bottom:10px;}
+#catalog .hero p{font-size:15px;color:#94a3b8;max-width:520px;line-height:1.6;}
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-bottom:28px;}
+.ch-card{
+  background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
+  cursor:pointer;transition:var(--transition);border:2px solid transparent;display:block;
+}
+.ch-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--primary);}
+.ch-card .ci{font-size:30px;margin-bottom:10px;}
+.ch-card h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.ch-card p{font-size:13px;color:var(--text-muted);line-height:1.5;}
+.ch-card .ct{display:inline-block;padding:2px 10px;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;border-radius:12px;margin-top:10px;}
+
+/* ========== MODAL ========== */
+.modal-overlay{
+  position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);
+  display:none;align-items:center;justify-content:center;z-index:1000;backdrop-filter:blur(4px);
+}
+.modal-overlay.active{display:flex;animation:fadeIn .2s ease;}
+.modal-content{
+  background:var(--card);border-radius:var(--radius);padding:28px;max-width:540px;width:92%;
+  max-height:80vh;overflow-y:auto;box-shadow:var(--shadow-lg);position:relative;
+}
+.modal-close{
+  position:absolute;top:10px;right:14px;background:none;border:none;font-size:26px;
+  cursor:pointer;color:var(--text-muted);transition:var(--transition);width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;
+}
+.modal-close:hover{background:var(--bg);color:var(--text);}
+#modal-title{font-size:20px;font-weight:700;margin-bottom:14px;padding-right:30px;}
+#modal-body{font-size:14px;line-height:1.7;}
+#modal-body .ms{margin-bottom:14px;}
+#modal-body .ms h4{font-size:12px;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-weight:700;}
+#modal-body .me{background:var(--bg);padding:8px 14px;border-radius:var(--radius-sm);font-family:var(--font-serif);}
+
+/* ========== POINT LIST ========== */
+.point-list{padding-left:0;list-style:none;counter-reset:pt;}
+.point-list li{counter-increment:pt;padding:7px 0 7px 36px;position:relative;border-bottom:1px solid var(--border);}
+.point-list li:last-child{border-bottom:none;}
+.point-list li::before{
+  content:counter(pt);position:absolute;left:0;top:7px;width:24px;height:24px;
+  background:var(--primary);color:#fff;border-radius:50%;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ========== HELPERS ========== */
+.highlight{background:#fef08a;padding:2px 6px;border-radius:3px;}
+.formula{font-family:var(--font-serif);font-style:italic;}
+.mt-sm{margin-top:8px;}.mt-md{margin-top:16px;}.mt-lg{margin-top:24px;}
+.mb-sm{margin-bottom:8px;}.mb-md{margin-bottom:16px;}.mb-lg{margin-bottom:24px;}
+.text-center{text-align:center;}
+.text-sm{font-size:13px;}.text-muted{color:var(--text-muted);}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar{width:7px;}::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px;}::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
+#sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);}
+
+/* ========== PRINT ========== */
+@media print{#sidebar,#topbar{display:none!important;}#main-content{margin:0!important;padding:16px!important;}.topic-content{max-height:none!important;overflow:visible!important;}}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:768px){
+  #sidebar{transform:translateX(-100%);}
+  #sidebar.mobile-open{transform:translateX(0);}
+  .sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:199;}
+  .sb-overlay.active{display:block;}
+  #main-content{margin-left:0;padding:20px 16px 40px;}
+  #topbar{padding-left:12px;}
+  .menu-toggle{display:block;}
+  .ch-grid{grid-template-columns:1fr;}
+  #catalog .hero{padding:28px 20px;}
+  #catalog .hero h1{font-size:26px;}
+  .ch-title{font-size:24px;}
+  .rv-step-visual{font-size:16px;padding:14px;}
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="sb-overlay" id="sb-overlay" onclick="toggleSidebar()"></div>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+  <div class="sb-head">
+    <h1>🧪 Organic Chemistry</h1>
+    <p>CBSE Class XII • Board &amp; NEET</p>
+  </div>
+  <nav>
+    <a class="nav-item active" data-section="catalog">
+      <span class="ni">📋</span> Index
+    </a>
+
+    <div class="nav-sec">Foundation (Class XI)</div>
+
+    <a class="nav-item nav-ch" data-section="ch1" data-toggle="ch1-sub">
+      <span class="ni">📐</span> Basic Principles
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch1-sub">
+      <a class="nav-si" data-topic="ch1-classification">Classification</a>
+      <a class="nav-si" data-topic="ch1-nomenclature">IUPAC Nomenclature</a>
+      <a class="nav-si" data-topic="ch1-isomerism">Isomerism</a>
+      <a class="nav-si" data-topic="ch1-effects">Electronic Effects</a>
+      <a class="nav-si" data-topic="ch1-mechanisms">Reaction Mechanisms</a>
+    </div>
+
+    <a class="nav-item nav-ch" data-section="ch2" data-toggle="ch2-sub">
+      <span class="ni">⛽</span> Hydrocarbons
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch2-sub">
+      <a class="nav-si" data-topic="ch2-alkanes">Alkanes</a>
+      <a class="nav-si" data-topic="ch2-alkenes">Alkenes</a>
+      <a class="nav-si" data-topic="ch2-alkynes">Alkynes</a>
+      <a class="nav-si" data-topic="ch2-aromatic">Aromatic Hydrocarbons</a>
+    </div>
+
+    <div class="nav-sec">Class XII Chapters</div>
+
+    <a class="nav-item nav-ch" data-section="ch3" data-toggle="ch3-sub">
+      <span class="ni">🧲</span> Haloalkanes &amp; Haloarenes
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch3-sub">
+      <a class="nav-si" data-topic="ch3-classification">Classification &amp; Nomenclature</a>
+      <a class="nav-si" data-topic="ch3-preparation">Methods of Preparation</a>
+      <a class="nav-si" data-topic="ch3-physical">Physical Properties</a>
+      <a class="nav-si" data-topic="ch3-sn">S<sub>N</sub>1 &amp; S<sub>N</sub>2 Reactions</a>
+      <a class="nav-si" data-topic="ch3-elimination">Elimination Reactions</a>
+      <a class="nav-si" data-topic="ch3-polyhalogen">Polyhalogen Compounds</a>
+    </div>
+
+    <a class="nav-item nav-ch" data-section="ch4" data-toggle="ch4-sub">
+      <span class="ni">🍷</span> Alcohols, Phenols &amp; Ethers
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch4-sub">
+      <a class="nav-si" data-topic="ch4-classification">Classification &amp; Nomenclature</a>
+      <a class="nav-si" data-topic="ch4-preparation">Preparation of Alcohols</a>
+      <a class="nav-si" data-topic="ch4-reactions">Reactions of Alcohols</a>
+      <a class="nav-si" data-topic="ch4-phenols">Phenols</a>
+      <a class="nav-si" data-topic="ch4-ethers">Ethers</a>
+    </div>
+
+    <a class="nav-item nav-ch" data-section="ch5" data-toggle="ch5-sub">
+      <span class="ni">⚗️</span> Aldehydes, Ketones &amp; Carboxylic Acids
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch5-sub">
+      <a class="nav-si" data-topic="ch5-nomenclature">Nomenclature &amp; Structure</a>
+      <a class="nav-si" data-topic="ch5-preparation">Preparation</a>
+      <a class="nav-si" data-topic="ch5-nuc-add">Nucleophilic Addition</a>
+      <a class="nav-si" data-topic="ch5-other">Other Important Reactions</a>
+      <a class="nav-si" data-topic="ch5-carboxylic">Carboxylic Acids</a>
+    </div>
+
+    <a class="nav-item nav-ch" data-section="ch6" data-toggle="ch6-sub">
+      <span class="ni">🔬</span> Amines
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch6-sub">
+      <a class="nav-si" data-topic="ch6-classification">Classification &amp; Nomenclature</a>
+      <a class="nav-si" data-topic="ch6-preparation">Preparation</a>
+      <a class="nav-si" data-topic="ch6-properties">Chemical Properties</a>
+      <a class="nav-si" data-topic="ch6-diazonium">Diazonium Salts</a>
+    </div>
+
+    <a class="nav-item nav-ch" data-section="ch7" data-toggle="ch7-sub">
+      <span class="ni">🧬</span> Biomolecules
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch7-sub">
+      <a class="nav-si" data-topic="ch7-carbohydrates">Carbohydrates</a>
+      <a class="nav-si" data-topic="ch7-proteins">Proteins</a>
+      <a class="nav-si" data-topic="ch7-nucleic">Nucleic Acids</a>
+      <a class="nav-si" data-topic="ch7-vitamins">Vitamins</a>
+    </div>
+  </nav>
+</aside>
+
+<!-- TOPBAR -->
+<header id="topbar">
+  <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+  <div class="search-box">
+    <span class="si">🔍</span>
+    <input type="text" id="search-input" placeholder="Search topics, reactions, concepts…" oninput="handleSearch(this.value)">
+    <div class="search-results" id="search-results"></div>
+  </div>
+  <button class="dm-toggle" onclick="toggleDark()" title="Toggle dark mode">🌙 Dark</button>
+</header>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
+<!-- ═══════════ CATALOG / INDEX PAGE ═══════════ -->
+<section id="catalog" class="chapter-section active">
+  <div class="hero">
+    <h1>Organic Chemistry</h1>
+    <p>Your complete, interactive guide to CBSE Class XII Organic Chemistry. Master every concept, reaction, and mechanism for Board &amp; NEET — the simple way.</p>
+  </div>
+
+  <h2 style="margin-bottom:18px;font-size:19px;">📚 Chapter Index</h2>
+
+  <div style="margin-bottom:10px;font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;">Foundation (Class XI Recap)</div>
+  <div class="ch-grid">
+    <div class="ch-card" data-section="ch1">
+      <div class="ci">📐</div>
+      <h3>Basic Principles of Organic Chemistry</h3>
+      <p>IUPAC naming, isomerism, electronic effects &amp; reaction mechanisms — the foundation you need.</p>
+      <span class="ct">Foundation</span>
+    </div>
+    <div class="ch-card" data-section="ch2">
+      <div class="ci">⛽</div>
+      <h3>Hydrocarbons</h3>
+      <p>Alkanes, alkenes, alkynes &amp; aromatic compounds — preparations, properties &amp; key reactions.</p>
+      <span class="ct">Foundation</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom:10px;margin-top:22px;font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;">Class XII Chapters</div>
+  <div class="ch-grid">
+    <div class="ch-card" data-section="ch3">
+      <div class="ci">🧲</div>
+      <h3>Haloalkanes &amp; Haloarenes</h3>
+      <p>S<sub>N</sub>1, S<sub>N</sub>2, elimination reactions, polyhalogen compounds &amp; mechanisms.</p>
+      <span class="ct">Class XII</span>
+    </div>
+    <div class="ch-card" data-section="ch4">
+      <div class="ci">🍷</div>
+      <h3>Alcohols, Phenols &amp; Ethers</h3>
+      <p>Preparation, reactions, acidity comparison &amp; important named reactions.</p>
+      <span class="ct">Class XII</span>
+    </div>
+    <div class="ch-card" data-section="ch5">
+      <div class="ci">⚗️</div>
+      <h3>Aldehydes, Ketones &amp; Carboxylic Acids</h3>
+      <p>Nucleophilic addition, aldol condensation, Cannizzaro &amp; carboxylic acid chemistry.</p>
+      <span class="ct">Class XII</span>
+    </div>
+    <div class="ch-card" data-section="ch6">
+      <div class="ci">🔬</div>
+      <h3>Amines</h3>
+      <p>Classification, basicity, Hofmann degradation, Gabriel synthesis &amp; diazonium chemistry.</p>
+      <span class="ct">Class XII</span>
+    </div>
+    <div class="ch-card" data-section="ch7">
+      <div class="ci">🧬</div>
+      <h3>Biomolecules</h3>
+      <p>Carbohydrates, proteins, nucleic acids, vitamins &amp; their biological significance.</p>
+      <span class="ct">Class XII</span>
+    </div>
+  </div>
+
+  <div class="tip-box" style="margin-top:28px;">
+    <div class="ib-title">💡 How to Use This Guide</div>
+    <ol style="padding-left:18px;margin-top:6px;font-size:14px;">
+      <li style="margin-bottom:4px;">Start with <strong>Basic Principles</strong> if you need a foundation refresh.</li>
+      <li style="margin-bottom:4px;">Click any chapter card above or use the <strong>sidebar</strong> to navigate.</li>
+      <li style="margin-bottom:4px;">Expand topics by clicking on them — study at your own pace.</li>
+      <li style="margin-bottom:4px;"><span class="concept-ref" style="cursor:default;">Blue underlined terms</span> are interactive — click for quick explanations.</li>
+      <li style="margin-bottom:4px;">Use the <strong>🔬 Interactive Reaction Viewers</strong> to understand mechanisms step-by-step.</li>
+      <li>Check the <strong>⭐ Summary</strong> at the end of each topic for quick revision.</li>
+    </ol>
+  </div>
+
+  <div class="neet-tip" style="margin-top:14px;">
+    <div class="ib-title">🎯 NEET &amp; Board Exam Strategy</div>
+    <p style="margin-top:4px;">Focus on <strong>named reactions</strong> and their <strong>mechanisms</strong>. Understanding <em>why</em> a reaction happens is more important than memorising. Look for the purple 🎯 NEET tips throughout this guide.</p>
+  </div>
+</section>
+<section id="ch1" class="chapter-section">
+  <div class="ch-head">
+    <div class="ch-num">Foundation — Chapter 1</div>
+    <h2 class="ch-title">Some Basic Principles of Organic Chemistry</h2>
+    <p class="ch-sub">Classification, nomenclature, isomerism, and basic mechanisms underlying organic reactions.</p>
+  </div>
+
+  <div class="topic-group" id="ch1-classification">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Classification of Organic Compounds</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Organic compounds are broadly classified based on their structural framework.</p>
+        
+        <h4>1. Based on Structure</h4>
+        <ul class="point-list">
+          <li><strong>Open-chain (Acyclic) or Aliphatic:</strong> Straight or branched chains of carbon atoms. E.g., Butane, Isobutane.</li>
+          <li><strong>Closed-chain (Cyclic) or Ring Compounds:</strong>
+            <ul>
+              <li><strong>Homocyclic (Carbocyclic):</strong> Ring contains only carbon atoms. E.g., Cyclohexane, Benzene (aromatic).</li>
+              <li><strong>Heterocyclic:</strong> Ring contains carbon and at least one other heteroatom (O, N, S). E.g., Pyridine, Furan.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h4>2. Functional Groups Table</h4>
+        <p>A functional group is an atom or group of atoms joined in a specific manner which determines the chemical properties of the organic compound.</p>
+        <table class="comparison-table">
+          <tr><th>Functional Group</th><th>Class of Compound</th><th>Prefix / Suffix</th></tr>
+          <tr><td>-OH</td><td>Alcohol</td><td>hydroxy- / -ol</td></tr>
+          <tr><td>-CHO</td><td>Aldehyde</td><td>formyl- / -al</td></tr>
+          <tr><td>-CO-</td><td>Ketone</td><td>oxo- / -one</td></tr>
+          <tr><td>-COOH</td><td>Carboxylic Acid</td><td>carboxy- / -oic acid</td></tr>
+          <tr><td>-NH₂</td><td>Amine</td><td>amino- / -amine</td></tr>
+          <tr><td>-NO₂</td><td>Nitro Compound</td><td>nitro- / -</td></tr>
+          <tr><td>-X (F, Cl, Br, I)</td><td>Halide</td><td>halo- / -</td></tr>
+        </table>
+
+        <h4>3. Homologous Series</h4>
+        <p>A series of organic compounds with the same functional group and similar chemical properties in which successive members differ by a <strong>-CH₂-</strong> group (14u mass).</p>
+        
+        <div class="neet-tip">
+          <div class="ib-title">🧬 NEET Tip</div>
+          Physical properties (like boiling point) generally increase with molecular mass in a homologous series due to increased van der Waals forces, but chemical properties remain very similar.
+        </div>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Organic compounds are classified into open-chain and closed-chain.</li>
+          <li>Functional groups dictate the chemical behavior of the molecule.</li>
+          <li>Homologous series differ by a CH₂ group.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch1-nomenclature">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>IUPAC Nomenclature</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>A systematic method of naming organic chemical compounds as recommended by IUPAC.</p>
+        
+        <h4>Rules for Naming:</h4>
+        <ol class="point-list">
+          <li><strong>Longest Chain Rule:</strong> Select the longest continuous carbon chain containing the principal functional group, multiple bonds, or maximum substituents.</li>
+          <li><strong>Numbering Rule:</strong> Number the chain to give the lowest possible locants to the principal functional group, then double/triple bonds, then substituents.</li>
+          <li><strong>Alphabetical Order:</strong> Prefix names of substituents are listed alphabetically.</li>
+          <li><strong>Format:</strong> Prefix(es) + Word root + Primary suffix (ane/ene/yne) + Secondary suffix (functional group).</li>
+        </ol>
+
+        <h4>Common Functional Group Suffixes Table</h4>
+        <table class="comparison-table">
+          <tr><th>Group</th><th>Secondary Suffix</th><th>Example Name</th></tr>
+          <tr><td>-OH</td><td>-ol</td><td>Ethanol</td></tr>
+          <tr><td>-CHO</td><td>-al</td><td>Ethanal</td></tr>
+          <tr><td>-CO-</td><td>-one</td><td>Propanone</td></tr>
+          <tr><td>-COOH</td><td>-oic acid</td><td>Ethanoic acid</td></tr>
+          <tr><td>-NH₂</td><td>-amine</td><td>Methanamine</td></tr>
+        </table>
+
+        <h4>Naming Examples</h4>
+        <ul class="point-list">
+          <li><strong>Alcohol:</strong> CH₃-CH(OH)-CH₃ is Propan-2-ol.</li>
+          <li><strong>Aldehyde:</strong> CH₃-CH₂-CHO is Propanal.</li>
+          <li><strong>Ketone:</strong> CH₃-CO-CH₂-CH₃ is Butan-2-one.</li>
+          <li><strong>Carboxylic Acid:</strong> CH₃-CH(CH₃)-COOH is 2-Methylpropanoic acid.</li>
+          <li><strong>Amine:</strong> CH₃-CH₂-NH₂ is Ethanamine.</li>
+          <li><strong>Halide:</strong> CH₃-CHCl-CH₃ is 2-Chloropropane.</li>
+          <li><strong>Ether:</strong> CH₃-O-CH₂-CH₃ is Methoxyethane.</li>
+        </ul>
+        
+        <div class="warning-box">
+          <div class="ib-title">⚠️ Common Mistake</div>
+          When naming compounds with both double and triple bonds, double bonds get priority in numbering if both get the same locant from either end (e.g., But-1-en-3-yne, not But-3-en-1-yne).
+        </div>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Find the longest chain containing the principal group.</li>
+          <li>Number to minimize locants.</li>
+          <li>Assemble using: prefix + root + primary suffix + secondary suffix.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch1-isomerism">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Isomerism</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Isomers are compounds with the same molecular formula but different structural formulas or spatial arrangements.</p>
+
+        <h4>1. Structural Isomerism</h4>
+        <p>Compounds with different bonding patterns.</p>
+        <ul class="point-list">
+          <li><strong>Chain:</strong> Different carbon skeleton (e.g., n-butane and isobutane).</li>
+          <li><strong>Position:</strong> Different position of functional group or multiple bond (e.g., butan-1-ol and butan-2-ol).</li>
+          <li><strong>Functional Group:</strong> Different functional groups (e.g., ethanol and dimethyl ether).</li>
+          <li><strong>Metamerism:</strong> Different alkyl chains on either side of a polyvalent functional group (e.g., diethyl ether and methyl propyl ether).</li>
+          <li><strong>Tautomerism:</strong> Dynamic equilibrium between two isomers, usually involving a proton shift (e.g., keto-enol tautomerism).</li>
+        </ul>
+
+        <h4>2. Stereoisomerism</h4>
+        <p>Compounds with same bonding but different spatial arrangement.</p>
+        
+        <h5>Geometrical Isomerism (<span class="concept-ref" data-concept="geometrical-isomerism">ref</span>)</h5>
+        <p>Arises due to restricted rotation around a double bond or in a ring.</p>
+        <ul>
+          <li><strong>Cis:</strong> Similar groups on the same side.</li>
+          <li><strong>Trans:</strong> Similar groups on opposite sides.</li>
+          <li><strong>E/Z System:</strong> Used when 3 or 4 different groups are attached. Assign priorities using CIP rules. Z = high priority groups on same side (Zusammen), E = opposite (Entgegen).</li>
+        </ul>
+
+        <h5>Optical Isomerism (<span class="concept-ref" data-concept="optical-isomerism">ref</span>)</h5>
+        <p>Compounds that rotate the plane of polarized light.</p>
+        <ul class="point-list">
+          <li><strong>Chirality (<span class="concept-ref" data-concept="chirality">ref</span>):</strong> A molecule is chiral if it is non-superimposable on its mirror image (usually has an asymmetric carbon/chiral centre).</li>
+          <li><strong>Enantiomers:</strong> Non-superimposable mirror images. Rotate light by equal amounts in opposite directions.</li>
+          <li><strong>Diastereomers:</strong> Stereoisomers that are not mirror images of each other.</li>
+          <li><strong>Meso Compounds:</strong> Have chiral centres but are optically inactive due to an internal plane of symmetry.</li>
+        </ul>
+
+        <h5>R/S Configuration (CIP Rules)</h5>
+        <ol class="point-list">
+          <li>Assign priorities to the 4 groups on the chiral centre based on atomic number.</li>
+          <li>View the molecule with the lowest priority group pointing away.</li>
+          <li>If the sequence 1 → 2 → 3 is clockwise, it is <strong>R</strong> (Rectus). If anti-clockwise, it is <strong>S</strong> (Sinister).</li>
+        </ol>
+
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Structural isomers differ in bonding (chain, position, functional, metamerism, tautomerism).</li>
+          <li>Stereoisomers differ in spatial arrangement (geometrical and optical).</li>
+          <li>Chirality implies non-superimposable mirror images; CIP rules assign E/Z and R/S.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch1-effects">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Electronic Effects</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Electronic effects permanently or temporarily alter the electron distribution in organic molecules, impacting stability and reactivity.</p>
+
+        <h4>1. Inductive Effect (<span class="concept-ref" data-concept="inductive-effect">ref</span>)</h4>
+        <p>Permanent polarization of a σ bond due to differences in electronegativity. It operates through σ bonds and decreases rapidly with distance.</p>
+        <ul>
+          <li><strong>-I Effect (Electron Withdrawing):</strong> Draws electrons away. E.g., -NO₂ > -CN > -F > -Cl > -Br > -I > -OH > -NH₂</li>
+          <li><strong>+I Effect (Electron Donating):</strong> Pushes electrons. E.g., -C(CH₃)₃ > -CH(CH₃)₂ > -CH₂CH₃ > -CH₃</li>
+        </ul>
+
+        <h4>2. Resonance / Mesomeric Effect (<span class="concept-ref" data-concept="resonance">ref</span>)</h4>
+        <p>Delocalization of π electrons or lone pairs. Permanent effect.</p>
+        <ul>
+          <li><strong>+M / +R Effect:</strong> Donates electrons to the conjugated system via lone pair or π bond. E.g., -OH, -OR, -NH₂, -Cl.</li>
+          <li><strong>-M / -R Effect:</strong> Withdraws electrons from the conjugated system. E.g., -NO₂, -CN, -CHO, -COOH.</li>
+        </ul>
+
+        <h4>3. Hyperconjugation (<span class="concept-ref" data-concept="hyperconjugation">ref</span>)</h4>
+        <p>Delocalization of σ electrons of an α-C-H bond into an adjacent empty or partially filled p-orbital or π-orbital. Also called "no-bond resonance".</p>
+        <p>More α-hydrogens = more hyperconjugative structures = greater stability.</p>
+
+        <h4>4. Electromeric Effect</h4>
+        <p>Temporary, complete transfer of π electrons to one of the bonded atoms in the presence of an attacking reagent.</p>
+        <ul>
+          <li><strong>+E:</strong> Transfer to the atom where reagent attacks.</li>
+          <li><strong>-E:</strong> Transfer away from the atom where reagent attacks.</li>
+        </ul>
+
+        <h4>Stability of Intermediates</h4>
+        <table class="comparison-table">
+          <tr><th>Intermediate</th><th>Stabilized By</th><th>Order of Stability</th></tr>
+          <tr><td><span class="concept-ref" data-concept="carbocation">Carbocation</span> (C⁺)</td><td>+I, +M, Hyperconjugation</td><td>3° > 2° > 1° > Methyl⁺</td></tr>
+          <tr><td><span class="concept-ref" data-concept="free-radical">Free Radical</span> (C•)</td><td>+I, +M, Hyperconjugation</td><td>3° > 2° > 1° > Methyl•</td></tr>
+          <tr><td><span class="concept-ref" data-concept="carbanion">Carbanion</span> (C⁻)</td><td>-I, -M</td><td>Methyl⁻ > 1° > 2° > 3°</td></tr>
+        </table>
+        
+        <div class="note-box">
+          <div class="ib-title">📝 Note</div>
+          Resonance generally dominates over hyperconjugation, which dominates over the inductive effect (R > H > I), except for halogens where -I > +M.
+        </div>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Inductive effect acts via σ bonds; depends on electronegativity.</li>
+          <li>Resonance/Mesomeric effect involves π/lone pair delocalization.</li>
+          <li>Hyperconjugation involves σ-C-H bond delocalization.</li>
+          <li>Stability orders: Carbocation (3°>2°>1°), Radical (3°>2°>1°), Carbanion (1°>2°>3°).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch1-mechanisms">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Reaction Mechanisms</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>A reaction mechanism is the step-by-step description of bond breaking and bond making in a chemical reaction.</p>
+
+        <h4>1. Bond Fission</h4>
+        <ul>
+          <li><strong>Homolysis (<span class="concept-ref" data-concept="homolysis">ref</span>):</strong> Symmetrical breaking of a covalent bond. Each atom takes one electron. Forms free radicals. Promoted by HEAT, LIGHT, or PEROXIDES.</li>
+          <li><strong>Heterolysis (<span class="concept-ref" data-concept="heterolysis">ref</span>):</strong> Unsymmetrical breaking. More electronegative atom takes both electrons. Forms carbocations and carbanions.</li>
+        </ul>
+
+        <h4>2. Types of Reagents</h4>
+        <ul>
+          <li><strong><span class="concept-ref" data-concept="nucleophile">Nucleophiles</span> (Nu⁻):</strong> "Nucleus loving". Electron-rich species that attack electron-deficient centers. E.g., OH⁻, CN⁻, NH₃, H₂O.</li>
+          <li><strong><span class="concept-ref" data-concept="electrophile">Electrophiles</span> (E⁺):</strong> "Electron loving". Electron-deficient species that attack electron-rich centers. E.g., H⁺, NO₂⁺, AlCl₃, BF₃.</li>
+        </ul>
+
+        <h4>3. Types of Organic Reactions</h4>
+        <ul class="point-list">
+          <li><strong>Substitution:</strong> Replacement of an atom/group by another. Can be Nucleophilic (<span class="concept-ref" data-concept="sn1">SN1</span>, <span class="concept-ref" data-concept="sn2">SN2</span>), Electrophilic (EAS), or Free Radical.</li>
+          <li><strong>Addition:</strong> Reagent adds to a multiple bond (no byproducts). Usually Electrophilic (alkenes/alkynes) or Nucleophilic (carbonyls).</li>
+          <li><strong>Elimination:</strong> Removal of atoms/groups to form a multiple bond (usually forms byproducts like H₂O or HX).</li>
+          <li><strong>Rearrangement:</strong> Migration of an atom/group within a molecule to form a more stable isomer (e.g., carbocation rearrangement).</li>
+        </ul>
+
+        <h4>4. Arrow Notation</h4>
+        <ul>
+          <li><strong>Curved Arrow:</strong> Shows movement of an electron pair. Starts at a lone pair or bond, ends at the atom receiving the pair.</li>
+          <li><strong>Fish-hook Arrow (Half-headed):</strong> Shows movement of a single electron (in homolysis).</li>
+        </ul>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Homolysis yields free radicals; heterolysis yields ions.</li>
+          <li>Nucleophiles are electron-rich; Electrophiles are electron-deficient.</li>
+          <li>Major reaction types: Substitution, Addition, Elimination, Rearrangement.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ch2" class="chapter-section">
+  <div class="ch-head">
+    <div class="ch-num">Foundation — Chapter 2</div>
+    <h2 class="ch-title">Hydrocarbons</h2>
+    <p class="ch-sub">Alkanes, alkenes, alkynes, and aromatic compounds: preparation, properties, and reactions.</p>
+  </div>
+
+  <div class="topic-group" id="ch2-alkanes">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Alkanes</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Alkanes are saturated open-chain hydrocarbons containing only carbon-carbon single bonds. General formula: CₙH₂ₙ₊₂.</p>
+
+        <h4>Preparation</h4>
+        <ul class="point-list">
+          <li><strong>Decarboxylation:</strong> Sodium salts of carboxylic acids heated with soda lime (NaOH + CaO) yield alkanes containing one carbon less. <br>
+            <div class="equation-box">R-COONa + NaOH <span class="arr">→</span> <span class="reagent">CaO, Δ</span> R-H + Na₂CO₃</div>
+          </li>
+          <li><strong>Hydrogenation:</strong> Addition of H₂ to alkenes/alkynes in presence of finely divided Ni, Pd, or Pt.</li>
+        </ul>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Wurtz Reaction</div>
+          <div class="rv-overall">Overall: 2 R-X + 2 Na → R-R + 2 NaX</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R-X + 2 Na (dry ether)</div>
+            <div class="rv-step-title">Step 1: Reaction of Alkyl Halide with Sodium</div>
+            <div class="rv-step-explain">Alkyl halides react with sodium metal in dry ether to form higher symmetrical alkanes.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The active metal Na donates electrons to form a radical or carbanion intermediate, coupling the alkyl groups. Best for forming symmetrical alkanes with an even number of carbon atoms.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 1</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)" disabled>Next →</button>
+          </div>
+        </div>
+
+        <h4>Chemical Reactions</h4>
+        <p>Alkanes are generally inert but undergo substitution reactions under special conditions.</p>
+        
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Free Radical Halogenation</div>
+          <div class="rv-overall">Overall: CH₄ + Cl₂ → CH₃Cl + HCl (in presence of UV light / hν)</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">Cl-Cl <span class="arr">→</span> <span class="reagent">hν</span> 2 Cl•</div>
+            <div class="rv-step-title">Step 1: Initiation</div>
+            <div class="rv-step-explain">UV light causes homolytic cleavage of the Cl-Cl bond.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The Cl-Cl bond is relatively weak and can be cleaved by photons of appropriate energy, creating highly reactive chlorine free radicals.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Cl• + CH₄ → HCl + CH₃• <br> CH₃• + Cl₂ → CH₃Cl + Cl•</div>
+            <div class="rv-step-title">Step 2: Propagation</div>
+            <div class="rv-step-explain">The chlorine radical abstracts a hydrogen from methane, creating a methyl radical. This methyl radical then attacks a Cl₂ molecule, creating the product and another Cl•.</div>
+            <div class="rv-step-why"><strong>Why?</strong> This is a chain reaction. Radicals are unstable and seek to pair their electrons. The newly formed radical perpetuates the cycle.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">Cl• + Cl• → Cl₂ <br> CH₃• + CH₃• → C₂H₆ <br> CH₃• + Cl• → CH₃Cl</div>
+            <div class="rv-step-title">Step 3: Termination</div>
+            <div class="rv-step-explain">Any two radicals combine to form a stable molecule.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The chain reaction stops when radicals consume each other, terminating the chain propagation.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 3</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="neet-tip">
+          <div class="ib-title">🧬 NEET Tip</div>
+          In halogenation, reactivity order of halogens is F₂ > Cl₂ > Br₂ > I₂. Reactivity order of hydrogens is 3° > 2° > 1°. Selectivity for bromination is much higher than for chlorination.
+        </div>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Wurtz reaction doubles the alkyl chain (best for symmetrical alkanes).</li>
+          <li>Free radical substitution (halogenation) follows initiation, propagation, termination.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch2-alkenes">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Alkenes</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Unsaturated hydrocarbons containing at least one carbon-carbon double bond. General formula: CₙH₂ₙ.</p>
+
+        <h4>Preparation</h4>
+        <ul class="point-list">
+          <li><strong>Dehydration of Alcohols:</strong> Heating alcohols with conc. H₂SO₄. Follows <span class="concept-ref" data-concept="saytzeff">Saytzeff Rule</span>: Highly substituted alkene is major product.</li>
+          <li><strong>Dehydrohalogenation of Alkyl Halides:</strong> Heating with alcoholic KOH (beta-elimination). Also follows Saytzeff rule.</li>
+        </ul>
+
+        <h4>Addition Reactions</h4>
+        
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Addition of HX (Markownikoff's Rule)</div>
+          <div class="rv-overall">Overall: Propene + HBr → 2-Bromopropane</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">CH₃-CH=CH₂ + H⁺ → CH₃-CH⁺-CH₃ (2° carbocation)</div>
+            <div class="rv-step-title">Step 1: Electrophilic Attack by H⁺</div>
+            <div class="rv-step-explain">The π electrons of the alkene attack the H⁺ from HBr. This forms a more stable secondary <span class="concept-ref" data-concept="carbocation">carbocation</span>.</div>
+            <div class="rv-step-why"><strong>Why?</strong> <span class="concept-ref" data-concept="markownikoff">Markownikoff's rule</span> states the negative part goes to the carbon with fewer hydrogens. Mechanistically, this is because the reaction proceeds via the most stable intermediate (2° carbocation is more stable than 1° due to hyperconjugation).</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">CH₃-CH⁺-CH₃ + Br⁻ → CH₃-CHBr-CH₃</div>
+            <div class="rv-step-title">Step 2: Nucleophilic Attack by Br⁻</div>
+            <div class="rv-step-explain">The bromide ion (Br⁻) attacks the positive carbon of the intermediate carbocation to form the final product.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The nucleophile completes the addition by forming a bond with the electron-deficient carbocation.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Peroxide Effect (Anti-Markownikoff)</div>
+          <div class="rv-overall">Overall: Propene + HBr (with Peroxides) → 1-Bromopropane</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R-O-O-R → 2 R-O• <br> R-O• + HBr → R-OH + Br•</div>
+            <div class="rv-step-title">Step 1: Generation of Bromine Radical</div>
+            <div class="rv-step-explain">Peroxides undergo homolytic cleavage. The resulting alkoxy radical abstracts a hydrogen from HBr, creating a bromine free radical.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Peroxides are unstable and act as radical initiators. Note: This effect is ONLY observed with HBr, not HCl or HI.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">CH₃-CH=CH₂ + Br• → CH₃-C•H-CH₂Br (2° radical)</div>
+            <div class="rv-step-title">Step 2: Addition of Br Radical</div>
+            <div class="rv-step-explain">The Br• adds to the terminal carbon to form the more stable secondary free radical.</div>
+            <div class="rv-step-why"><strong>Why?</strong> <span class="concept-ref" data-concept="anti-markownikoff">Anti-Markownikoff addition</span>. The reaction proceeds via the most stable free radical intermediate (2° radical > 1° radical).</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">CH₃-C•H-CH₂Br + HBr → CH₃-CH₂-CH₂Br + Br•</div>
+            <div class="rv-step-title">Step 3: Abstraction of Hydrogen</div>
+            <div class="rv-step-explain">The secondary radical abstracts a hydrogen atom from another HBr molecule, completing the product and regenerating a Br• to continue the chain.</div>
+            <div class="rv-step-why"><strong>Why?</strong> This completes the chain propagation cycle, yielding the 1-bromo product.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 3</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+        
+        <p><strong>Ozonolysis:</strong> Alkene + O₃ followed by Zn/H₂O cleaves the double bond to form carbonyl compounds (aldehydes/ketones).</p>
+
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Electrophilic addition of HX follows Markownikoff's rule (via carbocation).</li>
+          <li>Peroxide effect applies ONLY to HBr, resulting in anti-Markownikoff addition (via free radical).</li>
+          <li>Ozonolysis is a powerful tool to determine the position of a double bond.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch2-alkynes">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Alkynes</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Unsaturated hydrocarbons containing at least one carbon-carbon triple bond. General formula: CₙH₂ₙ₋₂.</p>
+
+        <h4>Preparation</h4>
+        <ul class="point-list">
+          <li><strong>From Calcium Carbide:</strong> CaC₂ + 2H₂O → Ca(OH)₂ + C₂H₂ (Ethyne).</li>
+          <li><strong>Dehydrohalogenation of vicinal dihalides:</strong> Requires strong bases.
+            <br>Step 1: Alc. KOH removes one HX.
+            <br>Step 2: NaNH₂ (stronger base) removes the second HX.</li>
+        </ul>
+
+        <h4>Properties & Reactions</h4>
+        <ul class="point-list">
+          <li><strong>Acidity of Terminal Alkynes:</strong> The <span class="concept-ref" data-concept="sp">sp hybridized</span> carbon has 50% s-character, making it highly electronegative. The C-H bond is polar, and the proton can be easily removed by strong bases like NaNH₂.</li>
+          <li><strong>Addition of H₂O (Hydration):</strong> Occurs in the presence of Hg²⁺/H⁺. Initially forms an enol, which undergoes tautomerization to form a more stable ketone (or acetaldehyde from ethyne).</li>
+          <li><strong>Addition of HX:</strong> Follows Markownikoff's rule. With 2 moles of HX, geminal dihalides are formed.</li>
+          <li><strong>Hydrogenation:</strong> 
+            <ul>
+              <li>Lindlar's Catalyst (Pd/CaCO₃, poisoned with quinoline) stops at <strong>cis-alkene</strong>.</li>
+              <li>Birch Reduction (Na in liquid NH₃) yields <strong>trans-alkene</strong>.</li>
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Terminal alkynes are acidic due to sp hybridization.</li>
+          <li>Hydration of alkynes yields ketones (except ethyne → acetaldehyde) via keto-enol tautomerization.</li>
+          <li>Stereoselective hydrogenation: Lindlar's gives cis, Birch gives trans.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch2-aromatic">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Aromatic Hydrocarbons</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Aromatic compounds (arenes) are highly stable cyclic compounds. Benzene (C₆H₆) is the parent compound.</p>
+
+        <h4>Aromaticity (Hückel's Rule)</h4>
+        <p>For a compound to be aromatic, it must be:</p>
+        <ol class="point-list">
+          <li>Cyclic and planar.</li>
+          <li>Completely conjugated (uninterrupted π cloud).</li>
+          <li>Contain <strong>(4n + 2) π electrons</strong>, where n = 0, 1, 2...</li>
+        </ol>
+
+        <h4>Electrophilic Aromatic Substitution (<span class="concept-ref" data-concept="eas">EAS</span>)</h4>
+        <p>Because the benzene ring is electron-rich, it undergoes substitution by electrophiles while maintaining its stable aromatic system.</p>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: EAS Halogenation (Bromination)</div>
+          <div class="rv-overall">Overall: Benzene + Br₂ (with FeBr₃) → Bromobenzene + HBr</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">Br₂ + FeBr₃ → Br⁺ + FeBr₄⁻</div>
+            <div class="rv-step-title">Step 1: Generation of Electrophile</div>
+            <div class="rv-step-explain">FeBr₃ acts as a Lewis acid and accepts a lone pair from Br₂, polarizing the bond and creating a strong bromonium ion electrophile (Br⁺).</div>
+            <div class="rv-step-why"><strong>Why?</strong> Benzene's π cloud is stable. A weak electrophile (like neutral Br₂) won't react. A Lewis acid catalyst is required to generate a strong electrophile.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">C₆H₆ + Br⁺ → C₆H₆Br⁺ (Sigma Complex / Arenium Ion)</div>
+            <div class="rv-step-title">Step 2: Electrophilic Attack</div>
+            <div class="rv-step-explain">Two π electrons from the benzene ring attack the Br⁺, forming a resonance-stabilized carbocation (sigma complex). Aromaticity is temporarily lost.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The electron-rich ring is attracted to the positive electrophile.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">C₆H₆Br⁺ + FeBr₄⁻ → C₆H₅Br + HBr + FeBr₃</div>
+            <div class="rv-step-title">Step 3: Loss of Proton (Rearomatization)</div>
+            <div class="rv-step-explain">A base (FeBr₄⁻) removes a proton from the sp³ hybridized carbon. The electrons form a new π bond, restoring aromaticity.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Regaining the massive stability of the aromatic system drives this final step. The catalyst (FeBr₃) is regenerated.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 3</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: EAS Nitration</div>
+          <div class="rv-overall">Overall: Benzene + HNO₃/H₂SO₄ → Nitrobenzene + H₂O</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">HNO₃ + H₂SO₄ ⇌ H₂NO₃⁺ + HSO₄⁻ → NO₂⁺ + H₂O + HSO₄⁻</div>
+            <div class="rv-step-title">Step 1: Generation of Nitronium Ion</div>
+            <div class="rv-step-explain">Sulfuric acid (stronger acid) protonates nitric acid, which then loses water to form the nitronium ion (NO₂⁺) electrophile.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The mixed acid generates a very strong electrophile needed to break benzene's stability.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">C₆H₆ + NO₂⁺ → C₆H₆NO₂⁺</div>
+            <div class="rv-step-title">Step 2: Formation of Sigma Complex</div>
+            <div class="rv-step-explain">The benzene ring attacks the NO₂⁺, losing aromaticity and forming the resonance-stabilized intermediate.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The electron-rich ring seeks the strong positive charge on the nitrogen.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">C₆H₆NO₂⁺ + HSO₄⁻ → C₆H₅NO₂ + H₂SO₄</div>
+            <div class="rv-step-title">Step 3: Rearomatization</div>
+            <div class="rv-step-explain">HSO₄⁻ removes the proton, restoring the aromatic ring to form nitrobenzene.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Restoring aromatic stability. H₂SO₄ acts as a catalyst and is regenerated.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 3</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Friedel-Crafts Reactions</div>
+          <div class="rv-overall">Overall: Alkylation (R-Cl) or Acylation (R-COCl) with AlCl₃</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R-Cl + AlCl₃ → R⁺ + AlCl₄⁻ (Alkylation)<br>R-COCl + AlCl₃ → R-C≡O⁺ + AlCl₄⁻ (Acylation)</div>
+            <div class="rv-step-title">Step 1: Generation of Electrophile</div>
+            <div class="rv-step-explain">The Lewis acid AlCl₃ abstracts a chloride ion to form a carbocation (alkylation) or acylium ion (acylation).</div>
+            <div class="rv-step-why"><strong>Why?</strong> To generate a strong carbon-based electrophile capable of attacking the aromatic ring. Note: In alkylation, the carbocation can undergo rearrangement to a more stable form before attacking!</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Benzene + R⁺ → Arenium Ion → Substituted Benzene + H⁺</div>
+            <div class="rv-step-title">Step 2 & 3: Attack and Rearomatization</div>
+            <div class="rv-step-explain">The aromatic ring attacks the carbocation/acylium ion, forms the sigma complex, and then loses a proton to restore aromaticity.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Standard EAS mechanism driven by the ultimate restoration of aromatic stability.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <h4>Directive Effects of Substituents</h4>
+        <table class="comparison-table">
+          <tr><th>Group Type</th><th>Effect on Ring</th><th>Directing Effect</th><th>Examples</th></tr>
+          <tr><td>Activating Groups</td><td>Increases electron density (+I, +M)</td><td>Ortho/Para directing</td><td>-OH, -NH₂, -CH₃, -OR</td></tr>
+          <tr><td>Deactivating Groups</td><td>Decreases electron density (-I, -M)</td><td>Meta directing</td><td>-NO₂, -CHO, -COOH, -CN</td></tr>
+          <tr><td>Halogens</td><td>Weakly deactivating (-I > +M)</td><td>Ortho/Para directing (due to +M)</td><td>-F, -Cl, -Br, -I</td></tr>
+        </table>
+
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Aromatic compounds must be cyclic, planar, fully conjugated, and follow Hückel's Rule (4n+2).</li>
+          <li>They primarily undergo Electrophilic Aromatic Substitution (EAS) to preserve the stable π system.</li>
+          <li>Activating groups direct ortho/para; deactivating groups direct meta (except halogens which are o/p directing but deactivating).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="ch3" class="chapter-section">
+  <div class="ch-head">
+    <div class="ch-num">Chapter 3</div>
+    <h2 class="ch-title">Haloalkanes and Haloarenes</h2>
+    <p class="ch-sub">Preparation, properties, and important nucleophilic substitution mechanisms.</p>
+  </div>
+  
+  <div class="topic-group" id="ch3-classification">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Classification & Nomenclature</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Haloalkanes and haloarenes are classified on the basis of the number of halogen atoms and the hybridization of the carbon atom to which they are bonded.</p>
+        
+        <h4>Based on Number of Halogen Atoms</h4>
+        <ul>
+          <li><strong>Monohalo:</strong> Contain one halogen atom (e.g., CH<sub>3</sub>CH<sub>2</sub>X)</li>
+          <li><strong>Dihalo:</strong> Contain two halogen atoms (e.g., CH<sub>2</sub>X<sub>2</sub>)</li>
+          <li><strong>Polyhalo:</strong> Contain multiple halogen atoms (tri, tetra, etc.)</li>
+        </ul>
+
+        <h4>Based on sp³ C-X Bond</h4>
+        <ul>
+          <li><strong>Alkyl Halides (R-X):</strong> X attached to alkyl group. Classified as 1°, 2°, or 3° based on the carbon holding the halogen.</li>
+          <li><strong>Allylic Halides:</strong> X attached to sp³ carbon adjacent to a C=C double bond.</li>
+          <li><strong>Benzylic Halides:</strong> X attached to sp³ carbon next to an aromatic ring.</li>
+        </ul>
+
+        <h4>Based on sp² C-X Bond</h4>
+        <ul>
+          <li><strong>Vinylic Halides:</strong> X attached directly to one of the carbon atoms of a C=C double bond.</li>
+          <li><strong>Aryl Halides:</strong> X attached directly to an aromatic ring.</li>
+        </ul>
+
+        <div class="note-box">
+          <div class="ib-title">📝 IUPAC Naming Rules</div>
+          <ol class="point-list">
+            <li>Select the longest carbon chain containing the halogen.</li>
+            <li>Number to give the lowest locant to the halogen.</li>
+            <li>Name halogens as substituents: fluoro, chloro, bromo, iodo.</li>
+          </ol>
+        </div>
+        
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Alkyl halides are 1°, 2°, or 3° depending on the carbon atom.</li>
+            <li>Vinylic and aryl halides involve sp² hybridized carbon holding the halogen.</li>
+            <li>Common names exist like chloroform, bromoform, etc.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch3-preparation">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Methods of Preparation</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Haloalkanes can be prepared from alcohols, hydrocarbons, and by halogen exchange.</p>
+
+        <h4>1. From Alcohols</h4>
+        <ul>
+          <li><strong>Using HX:</strong> R-OH + HX <span class="arr">→</span> R-X + H<sub>2</sub>O. Reactivity: HI > HBr > HCl. For primary/secondary, ZnCl<sub>2</sub> (Lucas reagent) is used with HCl.</li>
+          <li><strong>Using Phosphorus Halides:</strong> 3R-OH + PCl<sub>3</sub> <span class="arr">→</span> 3R-Cl + H<sub>3</sub>PO<sub>3</sub>.</li>
+          <li><strong>Darzen's Process:</strong> Using SOCl<sub>2</sub>. This is the preferred method!</li>
+        </ul>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Darzen's Process</div>
+          <div class="rv-overall">Overall: R-OH + SOCl₂ → R-Cl + SO₂↑ + HCl↑</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R-OH + SOCl₂ → R-O-SOCl + HCl</div>
+            <div class="rv-step-title">Step 1: Formation of Alkyl Chlorosulfite</div>
+            <div class="rv-step-explain">The alcohol reacts with thionyl chloride to form an alkyl chlorosulfite intermediate.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Oxygen acts as a <span class="concept-ref" data-concept="nucleophile">nucleophile</span> and attacks the electrophilic sulfur.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">R-O-SOCl → R-Cl + SO₂↑</div>
+            <div class="rv-step-title">Step 2: Decomposition</div>
+            <div class="rv-step-explain">The intermediate decomposes to give the alkyl chloride.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The formation of highly stable SO₂ gas drives the reaction forward. Since both byproducts (SO₂ and HCl) are gases, they escape, leaving pure alkyl chloride!</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <h4>2. From Hydrocarbons</h4>
+        <ul>
+          <li><strong>Free Radical Halogenation:</strong> Alkanes + X<sub>2</sub> (UV light) <span class="arr">→</span> mixture of isomeric haloalkanes.</li>
+          <li><strong>Electrophilic Substitution:</strong> Arenes + X<sub>2</sub> (Fe or FeCl<sub>3</sub>) <span class="arr">→</span> Aryl halides.</li>
+        </ul>
+
+        <h4>3. Halide Exchange</h4>
+        <ul>
+          <li><strong>Finkelstein Reaction:</strong> R-Cl/Br + NaI <span class="arr">→</span> R-I + NaCl/NaBr (in dry acetone). Precipitates NaCl/NaBr.</li>
+          <li><strong>Swarts Reaction:</strong> Synthesis of alkyl fluorides. R-Cl/Br + AgF/Hg<sub>2</sub>F<sub>2</sub>/CoF<sub>3</sub>/SbF<sub>3</sub> <span class="arr">→</span> R-F.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>SOCl<sub>2</sub> is best for alkyl chlorides because byproducts are gases.</li>
+            <li>Finkelstein is for alkyl iodides (NaI in acetone).</li>
+            <li>Swarts is for alkyl fluorides.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch3-physical">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Physical Properties</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <ul>
+          <li><strong>Boiling Points:</strong> R-I > R-Br > R-Cl > R-F. BP increases with molecular mass. For isomeric haloalkanes, BP decreases with branching (due to reduced surface area and van der Waals forces).</li>
+          <li><strong>Density:</strong> Bromo, iodo, and polychloro derivatives are heavier than water. Density increases with number of carbon atoms, halogen atoms, and atomic mass of halogen.</li>
+          <li><strong>Solubility:</strong> Insoluble in water despite being polar, because they cannot form H-bonds with water and breaking existing H-bonds requires more energy. Soluble in organic solvents.</li>
+          <li><strong>Dipole Moment:</strong> Usually CH<sub>3</sub>Cl > CH<sub>3</sub>F > CH<sub>3</sub>Br > CH<sub>3</sub>I. Fluorine is more electronegative, but Cl has a larger size, making its dipole moment slightly higher.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Branching lowers boiling point.</li>
+            <li>Insoluble in water.</li>
+            <li>CH<sub>3</sub>Cl has a higher dipole moment than CH<sub>3</sub>F.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch3-sn">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Nucleophilic Substitution Reactions (S<sub>N</sub>1 and S<sub>N</sub>2)</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>A <span class="concept-ref" data-concept="nucleophile">nucleophile</span> replaces the halogen atom. These are classified into S<sub>N</sub>1 and S<sub>N</sub>2 mechanisms.</p>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: S<sub>N</sub>2 Mechanism</div>
+          <div class="rv-overall">Overall: CH₃Br + OH⁻ → CH₃OH + Br⁻</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">HO⁻ + CH₃-Br → [HO---CH₃---Br]⁻</div>
+            <div class="rv-step-title">Step 1: Backside Attack & Transition State</div>
+            <div class="rv-step-explain">The nucleophile (OH⁻) attacks from the opposite side of the leaving group (Br).</div>
+            <div class="rv-step-why"><strong>Why?</strong> The front side is blocked by the bulky, electron-rich Br atom (<span class="concept-ref" data-concept="steric-effect">steric hindrance</span>). A transition state is formed with partial bonds.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">[HO---CH₃---Br]⁻ → HO-CH₃ + Br⁻</div>
+            <div class="rv-step-title">Step 2: Walden Inversion</div>
+            <div class="rv-step-explain">The C-Br bond breaks as the C-OH bond fully forms, inverting the configuration like an umbrella blowing inside out.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The energy drops as stable products form. This one-step concerted process results in 100% inversion of configuration.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: S<sub>N</sub>1 Mechanism</div>
+          <div class="rv-overall">Overall: (CH₃)₃C-Br + H₂O → (CH₃)₃C-OH + HBr</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">(CH₃)₃C-Br ⇌ (CH₃)₃C⁺ + Br⁻</div>
+            <div class="rv-step-title">Step 1: Ionisation (Slow, Rate Determining)</div>
+            <div class="rv-step-explain">The C-Br bond undergoes slow heterolysis to form a stable carbocation and bromide ion.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The resulting 3° <span class="concept-ref" data-concept="carbocation">carbocation</span> is stabilized by hyperconjugation and inductive effects. A polar protic solvent assists by solvating the ions.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">(CH₃)₃C⁺ + H₂O → (CH₃)₃C-OH₂⁺ → (CH₃)₃C-OH + H⁺</div>
+            <div class="rv-step-title">Step 2: Nucleophilic Attack (Fast)</div>
+            <div class="rv-step-explain">The nucleophile (H₂O) attacks the planar carbocation from either side.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The carbocation is sp² hybridized (planar), so attack from top or bottom is equally likely, leading to racemisation (if chiral).</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <h4>S<sub>N</sub>1 vs S<sub>N</sub>2 Comparison</h4>
+        <table class="comparison-table">
+          <tr><th>Feature</th><th>S<sub>N</sub>1</th><th>S<sub>N</sub>2</th></tr>
+          <tr><td>Rate Law</td><td>Unimolecular: Rate = k[R-X]</td><td>Bimolecular: Rate = k[R-X][Nu⁻]</td></tr>
+          <tr><td>Substrate Reactivity</td><td>3° > 2° > 1° > Methyl</td><td>Methyl > 1° > 2° > 3°</td></tr>
+          <tr><td>Stereochemistry</td><td>Racemisation (mostly)</td><td>Inversion (Walden Inversion)</td></tr>
+          <tr><td>Nucleophile</td><td>Weak/neutral is fine</td><td>Strong nucleophile preferred</td></tr>
+          <tr><td>Solvent</td><td>Polar protic (H₂O, alcohols)</td><td>Polar aprotic (Acetone, DMSO)</td></tr>
+          <tr><td>Rearrangements</td><td>Possible (carbocation forms)</td><td>Not possible</td></tr>
+        </table>
+
+        <h4>Reactions of Haloalkanes</h4>
+        <ul>
+          <li><strong>Aqueous KOH:</strong> Yields Alcohols (S<sub>N</sub>)</li>
+          <li><strong>Alcoholic KOH:</strong> Yields Alkenes (Elimination)</li>
+          <li><strong>Ambident Nucleophiles:</strong>
+            <ul>
+              <li>KCN (ionic) <span class="arr">→</span> Alkyl Cyanides (R-CN). C attacks.</li>
+              <li>AgCN (covalent) <span class="arr">→</span> Alkyl Isocyanides (R-NC). N attacks.</li>
+              <li>KNO<sub>2</sub> <span class="arr">→</span> Alkyl Nitrite (R-O-N=O). O attacks.</li>
+              <li>AgNO<sub>2</sub> <span class="arr">→</span> Nitroalkane (R-NO<sub>2</sub>). N attacks.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="neet-tip">
+          <div class="ib-title">🧬 NEET Tip</div>
+          <p>KCN is largely ionic and provides cyanide ions in solution. Carbon is a better nucleophile than nitrogen, so C-attack happens. AgCN is covalent, leaving only the N lone pair free, resulting in isocyanides!</p>
+        </div>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>S<sub>N</sub>2 involves backside attack, causing inversion. Favored by 1° halides.</li>
+            <li>S<sub>N</sub>1 involves carbocation formation, causing racemisation. Favored by 3° halides.</li>
+            <li>Good <span class="concept-ref" data-concept="leaving-group">leaving group</span> (like I⁻) increases the rate of both S<sub>N</sub>1 and S<sub>N</sub>2.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch3-elimination">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Elimination Reactions</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>When heated with alcoholic KOH, haloalkanes undergo β-elimination (dehydrohalogenation) to form alkenes.</p>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: E1 Mechanism</div>
+          <div class="rv-overall">Overall: (CH₃)₃C-Br + Base → CH₂=C(CH₃)₂ + HBr</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">(CH₃)₃C-Br ⇌ (CH₃)₃C⁺ + Br⁻</div>
+            <div class="rv-step-title">Step 1: Carbocation Formation</div>
+            <div class="rv-step-explain">Similar to SN1, the leaving group leaves to form a carbocation.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The tertiary carbocation is highly stable.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Base removes β-H from (CH₃)₃C⁺ → C=C</div>
+            <div class="rv-step-title">Step 2: Deprotonation</div>
+            <div class="rv-step-explain">A weak base abstracts a proton from a β-carbon, forming a double bond.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Instead of acting as a nucleophile, the base takes a proton, which is driven by heat and stability of the alkene.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: E2 Mechanism</div>
+          <div class="rv-overall">Overall: Base + R-CH₂-CH₂-Br → R-CH=CH₂ + Base-H + Br⁻</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">B:⁻ + H-C(β)-C(α)-Br → [Transition State] → C=C</div>
+            <div class="rv-step-title">Step 1: Concerted Elimination</div>
+            <div class="rv-step-explain">The base removes the β-proton as the double bond forms and the leaving group departs, all in one step.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Requires strong base. Must be anti-periplanar (H and Br on opposite sides) to minimize steric hindrance and allow orbital overlap.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 1</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <h4><span class="concept-ref" data-concept="saytzeff">Saytzeff's Rule</span></h4>
+        <p>In dehydrohalogenation reactions, the preferred product is that alkene which has the greater number of alkyl groups attached to the doubly bonded carbon atoms (more substituted alkene is more stable).</p>
+
+        <h4>Substitution vs Elimination</h4>
+        <ul>
+          <li><strong>S<sub>N</sub>1 vs E1:</strong> Heat favors E1. Both go through carbocations.</li>
+          <li><strong>S<sub>N</sub>2 vs E2:</strong> Bulky base (like t-BuO⁻) favors E2. Strong bases favor E2. 3° halides always give E2 with strong bases. Aqueous conditions favor S<sub>N</sub>2, alcoholic conditions favor E2.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Elimination requires heating and alcoholic KOH.</li>
+            <li>Saytzeff's rule: More highly substituted alkene is the major product.</li>
+            <li>E2 requires anti-periplanar geometry.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch3-polyhalogen">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Polyhalogen Compounds</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <ul>
+          <li><strong>Dichloromethane (CH<sub>2</sub>Cl<sub>2</sub>):</strong> Used as a solvent, paint remover. Harms CNS.</li>
+          <li><strong>Chloroform (CHCl<sub>3</sub>):</strong> Used as a solvent. Forms poisonous gas phosgene (COCl<sub>2</sub>) when exposed to air and light (stored in dark bottles).</li>
+          <li><strong>Carbon Tetrachloride (CCl<sub>4</sub>):</strong> Used in fire extinguishers (Pyrene). Causes ozone depletion.</li>
+          <li><strong>Iodoform (CHI<sub>3</sub>):</strong> Yellow solid, used as a mild antiseptic due to liberation of free I<sub>2</sub>.</li>
+          <li><strong>Freons (CFCs):</strong> e.g., CCl<sub>2</sub>F<sub>2</sub> (Freon-12). Used as refrigerants. Cause severe ozone depletion.</li>
+          <li><strong>DDT:</strong> p,p'-Dichlorodiphenyltrichloroethane. Powerful insecticide but banned due to non-biodegradability and biological magnification.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Chloroform is stored in dark bottles to prevent phosgene formation.</li>
+            <li>CFCs and CCl<sub>4</sub> deplete the ozone layer.</li>
+            <li>DDT is highly stable and fat-soluble, leading to accumulation in the food chain.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ch4" class="chapter-section">
+  <div class="ch-head">
+    <div class="ch-num">Chapter 4</div>
+    <h2 class="ch-title">Alcohols, Phenols and Ethers</h2>
+    <p class="ch-sub">Preparation, properties and reactions of oxygen-containing functional groups.</p>
+  </div>
+  
+  <div class="topic-group" id="ch4-classification">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Classification & Nomenclature</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>Alcohols & Phenols Classification</h4>
+        <ul>
+          <li><strong>Mono, Di, Trihydric:</strong> Contain one, two, or three -OH groups respectively.</li>
+          <li><strong>Alcohols (1°, 2°, 3°):</strong> Based on the sp³ carbon holding the -OH group.</li>
+          <li><strong>Allylic & Benzylic:</strong> -OH attached to sp³ C next to a C=C or benzene ring.</li>
+          <li><strong>Vinylic & Phenols:</strong> -OH directly on sp² C.</li>
+        </ul>
+
+        <div class="note-box">
+          <div class="ib-title">📝 Naming</div>
+          <ol class="point-list">
+            <li><strong>Alcohols:</strong> Alkane - 'e' + 'ol' = Alkanol.</li>
+            <li><strong>Phenols:</strong> Derivatives of phenol. Common names: cresol (methylphenol), catechol (1,2-benzenediol), resorcinol (1,3-benzenediol), hydroquinone (1,4-benzenediol).</li>
+            <li><strong>Ethers:</strong> Alkoxyalkanes. The smaller alkyl group gets the 'oxy'.</li>
+          </ol>
+        </div>
+        
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Alcohols are sp³ C-OH, Phenols are sp²(aromatic) C-OH.</li>
+            <li>Ethers are R-O-R'.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch4-preparation">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Preparation of Alcohols</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>1. From Alkenes</h4>
+        <ul>
+          <li><strong>Acid-Catalysed Hydration:</strong> Follows <span class="concept-ref" data-concept="markownikoff">Markownikoff's rule</span>. (H₂O/H⁺). Carbocation intermediate.</li>
+          <li><strong>Hydroboration-Oxidation:</strong> Follows anti-Markownikoff addition (B₂H₆ then H₂O₂/OH⁻). No rearrangement, pure alcohols formed.</li>
+        </ul>
+
+        <h4>2. From Carbonyl Compounds</h4>
+        <ul>
+          <li><strong>Reduction:</strong> Aldehydes <span class="arr">→</span> 1° Alcohols. Ketones <span class="arr">→</span> 2° Alcohols. Using H₂/Pd, NaBH₄, or LiAlH₄.</li>
+          <li><strong>From Carboxylic Acids/Esters:</strong> Reduced by strong LiAlH₄ to 1° alcohols.</li>
+        </ul>
+
+        <h4>3. From Grignard Reagents</h4>
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Grignard Synthesis of Alcohols</div>
+          <div class="rv-overall">Overall: R-MgX + >C=O → >C(R)-OH</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R⁻ δ- -- Mg⁺X δ+   +   C=O δ+ δ-  → R-C-O⁻MgX⁺</div>
+            <div class="rv-step-title">Step 1: Nucleophilic Addition</div>
+            <div class="rv-step-explain">The nucleophilic R group of Grignard attacks the electrophilic carbonyl carbon.</div>
+            <div class="rv-step-why"><strong>Why?</strong> <span class="concept-ref" data-concept="grignard">Grignard reagent</span> acts as a carbanion source. The carbonyl C is partially positive.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">R-C-O⁻MgX⁺ + H₂O → R-C-OH + Mg(OH)X</div>
+            <div class="rv-step-title">Step 2: Hydrolysis</div>
+            <div class="rv-step-explain">The magnesium alkoxide intermediate is hydrolyzed to form the alcohol.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The O-Mg bond is ionic and easily broken by water/acid to yield the neutral alcohol.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+        <p><strong>Yields:</strong> HCHO + RMgX <span class="arr">→</span> 1° Alcohol. RCHO + RMgX <span class="arr">→</span> 2° Alcohol. R₂CO + RMgX <span class="arr">→</span> 3° Alcohol.</p>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Hydroboration-Oxidation is ideal for anti-Markownikoff hydration.</li>
+            <li>Formaldehyde + Grignard = 1° alcohol; other aldehydes = 2°; ketones = 3°.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch4-reactions">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Reactions of Alcohols</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>1. Cleavage of O-H Bond (Acidity)</h4>
+        <ul>
+          <li><strong>Reaction with Na:</strong> 2R-OH + 2Na <span class="arr">→</span> 2R-O⁻Na⁺ + H₂↑. Shows weakly acidic nature.</li>
+          <li><strong>Acidity Order:</strong> Water > 1° > 2° > 3° Alcohols. Electron-donating alkyl groups decrease acidity.</li>
+          <li><strong>Esterification:</strong> R-OH + R'COOH ⇌ R'COOR + H₂O (Acid catalysed).</li>
+        </ul>
+
+        <h4>2. Cleavage of C-O Bond</h4>
+        <ul>
+          <li><strong><span class="concept-ref" data-concept="lucas-test">Lucas Test</span> (HCl/ZnCl₂):</strong> Distinguishes 1°, 2°, 3° alcohols.
+            <ul>
+              <li>3°: Turbidity appears immediately.</li>
+              <li>2°: Turbidity in 5 minutes.</li>
+              <li>1°: No turbidity at room temperature.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h4>3. Dehydration of Alcohols (E1 Mechanism)</h4>
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Dehydration of Alcohols</div>
+          <div class="rv-overall">Overall: R-CH₂-CH₂-OH (H⁺/Δ) → R-CH=CH₂ + H₂O</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R-OH + H⁺ ⇌ R-OH₂⁺</div>
+            <div class="rv-step-title">Step 1: Protonation</div>
+            <div class="rv-step-explain">The alcohol oxygen gets protonated by the acid.</div>
+            <div class="rv-step-why"><strong>Why?</strong> OH⁻ is a poor leaving group. Protonation converts it into H₂O, an excellent leaving group.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">R-OH₂⁺ ⇌ R⁺ + H₂O</div>
+            <div class="rv-step-title">Step 2: Carbocation Formation</div>
+            <div class="rv-step-explain">Water leaves, forming a <span class="concept-ref" data-concept="carbocation">carbocation</span>. This is the slow step.</div>
+            <div class="rv-step-why"><strong>Why?</strong> C-O bond breaks. Stability order: 3° > 2° > 1°, hence 3° alcohols dehydrate easiest.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">H-C-C⁺ → C=C + H⁺</div>
+            <div class="rv-step-title">Step 3: Deprotonation</div>
+            <div class="rv-step-explain">A proton is lost to form the alkene. Follows <span class="concept-ref" data-concept="saytzeff">Saytzeff Rule</span>.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Loss of H⁺ from adjacent carbon restores the electron pair and completes the double bond.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 3</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <h4>4. Oxidation & Dehydrogenation</h4>
+        <ul>
+          <li><strong>Oxidation:</strong>
+            <ul>
+              <li>1° Alcohol <span class="arr">→</span> Aldehyde (PCC/CrO₃) <span class="arr">→</span> Acid (KMnO₄/K₂Cr₂O₇).</li>
+              <li>2° Alcohol <span class="arr">→</span> Ketone (CrO₃).</li>
+              <li>3° Alcohol <span class="arr">→</span> No reaction (Requires severe conditions, cleaves C-C bonds).</li>
+            </ul>
+          </li>
+          <li><strong>Dehydrogenation (Cu/573K):</strong> 1° gives aldehyde, 2° gives ketone, 3° gives alkene (dehydration!).</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Alcohols are weaker acids than water.</li>
+            <li>Lucas test differentiates based on carbocation stability.</li>
+            <li>Dehydration reactivity: 3° > 2° > 1°.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch4-phenols">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Phenols</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>Preparation</h4>
+        <ul>
+          <li><strong>Dow's Process:</strong> Chlorobenzene + NaOH (623K, 300atm) <span class="arr">→</span> Sodium phenoxide <span class="arr">→</span> Phenol.</li>
+          <li><strong>From Cumene (Isopropylbenzene):</strong> Cumene is oxidized to cumene hydroperoxide, which is cleaved by acid into Phenol + Acetone (excellent yield of both).</li>
+        </ul>
+
+        <h4>Acidity of Phenols</h4>
+        <p>Phenols are stronger acids than alcohols and water because the phenoxide ion is stabilized by <span class="concept-ref" data-concept="resonance">resonance</span>. Subsituent effects:</p>
+        <ul>
+          <li><strong>Electron Withdrawing Groups (-NO₂):</strong> Increase acidity (stabilize phenoxide). Greater effect at ortho/para.</li>
+          <li><strong>Electron Donating Groups (-CH₃):</strong> Decrease acidity (destabilize phenoxide).</li>
+        </ul>
+
+        <h4>Chemical Reactions</h4>
+        <p>Phenol undergoes <span class="concept-ref" data-concept="eas">Electrophilic Aromatic Substitution</span> very easily due to activation by -OH ring.</p>
+        
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Kolbe's Reaction</div>
+          <div class="rv-overall">Overall: Phenol + CO₂ / NaOH (H⁺) → Salicylic acid</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">Ph-OH + NaOH → Ph-O⁻Na⁺</div>
+            <div class="rv-step-title">Step 1: Formation of Phenoxide</div>
+            <div class="rv-step-explain">Phenol reacts with NaOH to form sodium phenoxide.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Phenoxide ion is even more reactive towards electrophilic substitution than phenol.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Ph-O⁻ + CO₂ → Ortho-attack intermediate</div>
+            <div class="rv-step-title">Step 2: Electrophilic Attack</div>
+            <div class="rv-step-explain">Weak electrophile CO₂ attacks the ortho position.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Ortho position is preferred due to proximity and chelation in the transition state.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">Intermediate + H⁺ → Salicylic acid (2-Hydroxybenzoic acid)</div>
+            <div class="rv-step-title">Step 3: Acidification</div>
+            <div class="rv-step-explain">Acid workup yields salicylic acid.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Restores aromaticity and protonates the carboxylate.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 3</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Reimer-Tiemann Reaction</div>
+          <div class="rv-overall">Overall: Phenol + CHCl₃ + aq. NaOH → Salicylaldehyde</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">CHCl₃ + OH⁻ → :CCl₂ + H₂O + Cl⁻</div>
+            <div class="rv-step-title">Step 1: Carbene Generation</div>
+            <div class="rv-step-explain">Chloroform reacts with base to generate Dichlorocarbene.</div>
+            <div class="rv-step-why"><strong>Why?</strong> :CCl₂ is an electron-deficient electrophile.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Ph-O⁻ + :CCl₂ → ortho-CHCl₂ intermediate</div>
+            <div class="rv-step-title">Step 2: Electrophilic Attack</div>
+            <div class="rv-step-explain">Dichlorocarbene attacks phenoxide at the ortho position.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Highly activated ring facilitates attack by the carbene.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">ortho-CHCl₂ + 2NaOH → ortho-CHO</div>
+            <div class="rv-step-title">Step 3: Hydrolysis</div>
+            <div class="rv-step-explain">Alkaline hydrolysis of the -CHCl₂ group gives the aldehyde (Salicylaldehyde).</div>
+            <div class="rv-step-why"><strong>Why?</strong> Disubstitution of Cl with OH creates an unstable gem-diol which loses water to form -CHO.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 3</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+        
+        <ul>
+          <li><strong>Reaction with Zn Dust:</strong> Phenol + Zn (heat) <span class="arr">→</span> Benzene + ZnO.</li>
+          <li><strong>Oxidation:</strong> Phenol + Na₂Cr₂O₇/H₂SO₄ <span class="arr">→</span> Benzoquinone (diketone).</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Phenol is significantly more acidic than alcohols due to resonance stabilization of phenoxide.</li>
+            <li>Kolbe yields Salicylic acid (uses CO₂).</li>
+            <li>Reimer-Tiemann yields Salicylaldehyde (uses CHCl₃ + NaOH, via carbene).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch4-ethers">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Ethers</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>Preparation</h4>
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Williamson Ether Synthesis</div>
+          <div class="rv-overall">Overall: R-X + R'-O⁻Na⁺ → R-O-R' + NaX</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R'-O⁻ + R-X → [R'-O---R---X]⁻ → R'-O-R + X⁻</div>
+            <div class="rv-step-title">Step 1: S<sub>N</sub>2 Attack</div>
+            <div class="rv-step-explain">The alkoxide ion attacks the alkyl halide via <span class="concept-ref" data-concept="sn2">S<sub>N</sub>2 mechanism</span>.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The alkyl halide MUST be 1° or methyl. If a 2° or 3° halide is used, the strong alkoxide base causes E2 elimination instead, yielding alkenes! To make t-butyl methyl ether, use sodium t-butoxide + methyl bromide.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 1</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="neet-tip">
+          <div class="ib-title">🧬 NEET Tip</div>
+          <p>Always use 1° Alkyl Halide in Williamson synthesis. If you use a 3° halide (like t-butyl bromide), elimination dominates and you get an alkene instead of an ether!</p>
+        </div>
+
+        <h4>Chemical Reactions</h4>
+        <ul>
+          <li><strong>Cleavage by HI:</strong> R-O-R' + HI <span class="arr">→</span> R-OH + R'-I.
+            <ul>
+              <li>If mixed ether (1° & 2° groups), I⁻ attacks the smaller alkyl group via S<sub>N</sub>2 (steric reasons).</li>
+              <li>If one group is 3°, it follows S<sub>N</sub>1 mechanism, so I⁻ attacks the 3° group (carbocation stability).</li>
+              <li>With excess HI: R-O-R' + 2HI <span class="arr">→</span> 2RI + H₂O.</li>
+              <li>Alkyl aryl ethers: Cleaves to Phenol + Alkyl Iodide (Aryl-O bond is stronger due to resonance).</li>
+            </ul>
+          </li>
+          <li><strong>Electrophilic Substitution of Anisole:</strong> Alkoxy group is activating and ortho/para directing. Undergoes halogenation, nitration, Friedel-Crafts easily.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Williamson synthesis requires 1° alkyl halides.</li>
+            <li>Ether cleavage with HI: follows S<sub>N</sub>2 (attacks smaller group) unless a 3° group is present (follows S<sub>N</sub>1, attacks 3° group).</li>
+            <li>Alkyl aryl ethers always yield phenol + alkyl halide upon HI cleavage.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="ch5" class="chapter-section">
+  <div class="ch-head">
+    <div class="ch-num">Chapter 5</div>
+    <h2 class="ch-title">Aldehydes, Ketones and Carboxylic Acids</h2>
+    <p class="ch-sub">Carbonyl compounds: The most important class of organic compounds for Board + NEET.</p>
+  </div>
+  
+  <div class="topic-group" id="ch5-nomenclature">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Nomenclature & Structure</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Carbonyl compounds contain the carbon-oxygen double bond (&gt;C=O). In aldehydes, it is attached to at least one H atom; in ketones, to two carbon atoms; in carboxylic acids, to an -OH group.</p>
+        
+        <h4>IUPAC Naming Rules</h4>
+        <ol class="point-list">
+          <li><strong>Aldehydes:</strong> Replace -e of alkane with <strong>-al</strong>. Numbering starts from the CHO carbon.</li>
+          <li><strong>Ketones:</strong> Replace -e with <strong>-one</strong>. Numbering gives the lowest locant to the C=O group.</li>
+          <li><strong>Carboxylic Acids:</strong> Replace -e with <strong>-oic acid</strong>.</li>
+        </ol>
+
+        <h4>Structure of Carbonyl Group</h4>
+        <ul class="point-list">
+          <li>The carbonyl carbon is <span class="concept-ref" data-concept="sp2">sp²</span> hybridized.</li>
+          <li>The C=O bond is highly polar due to oxygen's electronegativity (C is δ+, O is δ-).</li>
+          <li>This polarity makes the carbon an electrophilic center, susceptible to <span class="concept-ref" data-concept="nucleophilic-addition">nucleophilic-addition</span>.</li>
+        </ul>
+
+        <div class="note-box">
+          <div class="ib-title">📝 Reactivity Comparison</div>
+          <p><strong>Aldehydes are more reactive than ketones</strong> toward nucleophilic addition because:</p>
+          <ul>
+            <li><strong>Steric effect:</strong> Two bulky alkyl groups in ketones hinder nucleophilic attack.</li>
+            <li><strong>Electronic effect:</strong> Two electron-donating alkyl groups reduce the +ve charge (δ+) on the carbonyl carbon via +I effect.</li>
+          </ul>
+        </div>
+
+        <table class="comparison-table">
+          <tr><th>Structure</th><th>Common Name</th><th>IUPAC Name</th></tr>
+          <tr><td>HCHO</td><td>Formaldehyde</td><td>Methanal</td></tr>
+          <tr><td>CH₃CHO</td><td>Acetaldehyde</td><td>Ethanal</td></tr>
+          <tr><td>(CH₃)₂CO</td><td>Acetone</td><td>Propanone</td></tr>
+          <tr><td>Ph-CHO</td><td>Benzaldehyde</td><td>Benzaldehyde</td></tr>
+        </table>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Aldehydes end in -al, Ketones in -one, Acids in -oic acid.</li>
+          <li>Carbonyl C is sp² hybridized, planar, and electrophilic.</li>
+          <li>Aldehydes &gt; Ketones in reactivity due to steric and electronic factors.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch5-preparation">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Preparation</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>Preparation of Aldehydes</h4>
+        <ul class="point-list">
+          <li><strong>From Alcohols:</strong> Mild oxidation of 1° alcohols using PCC or Collins reagent.</li>
+          <li><strong>From Nitriles (Stephen Reaction):</strong> R-CN reduced with SnCl₂/HCl, then hydrolyzed.<br>
+            <div class="equation-box">R-CN <span class="arr">→</span> <span class="reagent">SnCl₂/HCl</span> R-CH=NH <span class="arr">→</span> <span class="reagent">H₃O⁺</span> R-CHO</div>
+          </li>
+          <li><strong>Etard Reaction:</strong> Toluene to benzaldehyde using chromyl chloride (CrO₂Cl₂).</li>
+          <li><strong>Gattermann-Koch:</strong> Benzene + CO + HCl in presence of anhyd. AlCl₃/CuCl → Benzaldehyde.</li>
+        </ul>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Rosenmund Reduction</div>
+          <div class="rv-overall">Overall: R-COCl + H₂ → R-CHO + HCl</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R-COCl + H₂ / Pd-BaSO₄</div>
+            <div class="rv-step-title">Step 1: Catalytic Hydrogenation</div>
+            <div class="rv-step-explain">Acyl chloride is reduced to aldehyde over palladium catalyst supported on barium sulfate.</div>
+            <div class="rv-step-why"><strong>Why BaSO₄?</strong> It acts as a catalytic poison to prevent further reduction of the aldehyde to a primary alcohol.</div>
+          </div>
+        </div>
+
+        <h4>Preparation of Ketones</h4>
+        <ul class="point-list">
+          <li><strong>From Alcohols:</strong> Oxidation of 2° alcohols (CrO₃, KMnO₄, or heated Cu).</li>
+          <li><strong>From Acyl Chlorides:</strong> Reaction with dialkylcadmium (R₂Cd).<br>
+             <div class="equation-box">2 R'-COCl + R₂Cd <span class="arr">→</span> 2 R'-CO-R + CdCl₂</div>
+          </li>
+          <li><strong>From Nitriles:</strong> Reaction with <span class="concept-ref" data-concept="grignard">grignard</span> reagent followed by hydrolysis.</li>
+        </ul>
+
+        <h4>Preparation of Carboxylic Acids</h4>
+        <ul class="point-list">
+          <li><strong>From 1° Alcohols & Aldehydes:</strong> Strong oxidation (KMnO₄, K₂Cr₂O₇).</li>
+          <li><strong>From Nitriles & Amides:</strong> Complete hydrolysis with H⁺ or OH⁻.</li>
+          <li><strong>From Grignard Reagents:</strong> Reaction with solid CO₂ (dry ice) followed by hydrolysis.</li>
+        </ul>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Rosenmund reduction produces aldehydes from acyl chlorides (Pd/BaSO₄ prevents over-reduction).</li>
+          <li>Stephen and Etard are specific aldehyde preparations.</li>
+          <li>Ketones are specifically prepared using R₂Cd to avoid forming 3° alcohols.</li>
+          <li>Grignard + CO₂ is a standard way to increase carbon chain by 1 to make an acid.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch5-nuc-add">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Nucleophilic Addition Reactions</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>The characteristic reaction of aldehydes and ketones is <span class="concept-ref" data-concept="nucleophilic-addition">nucleophilic addition</span> to the carbonyl group.</p>
+        
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Nucleophilic Addition Mechanism</div>
+          <div class="rv-overall">Overall: &gt;C=O + Nu⁻ + H⁺ → &gt;C(OH)Nu</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">Nu⁻ approaches planar sp² Carbon (δ+)</div>
+            <div class="rv-step-title">Step 1: Nucleophilic Attack</div>
+            <div class="rv-step-explain">The nucleophile attacks the electrophilic carbonyl carbon perpendicularly to the plane. The π bond breaks, pushing electrons onto oxygen.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The carbon is electron-deficient due to the electronegative oxygen.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Intermediate: Tetrahedral Alkoxide Ion</div>
+            <div class="rv-step-title">Step 2: Tetrahedral Intermediate</div>
+            <div class="rv-step-explain">The hybridization of carbon changes from sp² to sp³, forming a tetrahedral alkoxide ion intermediate.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Four sigma bonds are formed, requiring tetrahedral geometry.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">Alkoxide + H⁺ → Addition Product</div>
+            <div class="rv-step-title">Step 3: Protonation</div>
+            <div class="rv-step-explain">The negatively charged oxygen captures a proton from the reaction medium to form the neutral addition product.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Acid-base rapid proton transfer stabilizes the negative charge.</div>
+          </div>
+        </div>
+
+        <h4>Key Addition Reactions</h4>
+        <ul class="point-list">
+          <li><strong>Addition of HCN:</strong> Yields cyanohydrins. Base catalyzed (creates CN⁻). (See viewer below).</li>
+          <li><strong>Addition of NaHSO₃:</strong> Forms bisulfite addition compound (crystalline, used for purification).</li>
+          <li><strong>Addition of Grignard:</strong> Formaldehyde → 1° alcohol; Other Aldehydes → 2° alcohol; Ketones → 3° alcohol.</li>
+          <li><strong>Addition of Alcohols:</strong> Aldehydes + 1 eq alcohol → hemiacetal. + 2 eq → acetal. Ketones → ketals (using ethylene glycol).</li>
+        </ul>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Addition of HCN</div>
+          <div class="rv-overall">Overall: &gt;C=O + HCN → &gt;C(OH)(CN)</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">HCN + OH⁻ ⇌ CN⁻ + H₂O</div>
+            <div class="rv-step-title">Step 1: Generation of Nucleophile</div>
+            <div class="rv-step-explain">Base reacts with HCN to generate the strong nucleophile, CN⁻.</div>
+            <div class="rv-step-why"><strong>Why?</strong> HCN is a weak acid; without base, CN⁻ concentration is too low for a fast reaction.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">&gt;C=O + CN⁻ → &gt;C(O⁻)(CN)</div>
+            <div class="rv-step-title">Step 2: Attack</div>
+            <div class="rv-step-explain">CN⁻ attacks carbonyl carbon.</div>
+            <div class="rv-step-why"><strong>Why?</strong> CN⁻ is a strong <span class="concept-ref" data-concept="nucleophile">nucleophile</span>.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">&gt;C(O⁻)(CN) + H₂O → &gt;C(OH)(CN) + OH⁻</div>
+            <div class="rv-step-title">Step 3: Protonation</div>
+            <div class="rv-step-explain">Alkoxide takes a proton from water.</div>
+            <div class="rv-step-why"><strong>Why?</strong> To form the stable cyanohydrin and regenerate the base catalyst.</div>
+          </div>
+        </div>
+
+        <h4>Addition of Ammonia Derivatives</h4>
+        <p>Follows mechanism: Addition followed by elimination of H₂O (condensation).</p>
+        <table class="comparison-table">
+          <tr><th>Derivative (H₂N-Z)</th><th>Product Name</th><th>Structure</th></tr>
+          <tr><td>Hydroxylamine (NH₂OH)</td><td>Oxime</td><td>&gt;C=N-OH</td></tr>
+          <tr><td>Hydrazine (NH₂NH₂)</td><td>Hydrazone</td><td>&gt;C=N-NH₂</td></tr>
+          <tr><td>Phenylhydrazine</td><td>Phenylhydrazone</td><td>&gt;C=N-NH-Ph</td></tr>
+          <tr><td>2,4-DNP</td><td>2,4-DNP derivative</td><td>Yellow/Orange ppt (Test for C=O)</td></tr>
+        </table>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Nucleophilic addition involves sp² to sp³ transition.</li>
+          <li>HCN addition is base-catalyzed to generate CN⁻.</li>
+          <li>Ammonia derivatives react via nucleophilic addition followed by dehydration. 2,4-DNP test identifies carbonyls.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch5-other">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Other Important Reactions</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>Oxidation</h4>
+        <ul class="point-list">
+          <li><strong>Tollens' Test (Silver Mirror):</strong> Ammoniacal AgNO₃. Aldehydes reduce Ag⁺ to Ag(s). <br><span class="concept-ref" data-concept="tollens-test">tollens-test</span></li>
+          <li><strong>Fehling's Test:</strong> Cu²⁺ reduced to Cu₂O (red ppt) by aliphatic aldehydes.</li>
+        </ul>
+        <div class="warning-box">
+          <div class="ib-title">⚠️ Benzaldehyde Exception</div>
+          <p>Benzaldehyde responds to Tollens' test but <strong>does NOT</strong> respond to Fehling's test.</p>
+        </div>
+
+        <h4>Reduction to Hydrocarbons</h4>
+        <table class="comparison-table">
+          <tr><th>Reaction</th><th>Reagents</th><th>Conditions</th></tr>
+          <tr><td>Clemmensen Reduction</td><td>Zn-Hg / conc. HCl</td><td>Acidic (Avoid if acid-sensitive groups present)</td></tr>
+          <tr><td>Wolff-Kishner Reduction</td><td>NH₂NH₂, then KOH/Ethylene glycol</td><td>Basic (Avoid if base-sensitive groups present)</td></tr>
+        </table>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Aldol Condensation</div>
+          <div class="rv-overall">Overall: 2 CH₃CHO + dil. NaOH → CH₃CH(OH)CH₂CHO → CH₃CH=CHCHO</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">CH₃CHO + OH⁻ ⇌ ⁻CH₂CHO + H₂O</div>
+            <div class="rv-step-title">Step 1: Enolate Formation</div>
+            <div class="rv-step-explain">Base removes an acidic α-hydrogen to form a resonance-stabilized enolate ion.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The α-hydrogen is acidic due to electron-withdrawing nature of C=O and resonance stabilization of the anion.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">⁻CH₂CHO + CH₃CHO → CH₃CH(O⁻)CH₂CHO</div>
+            <div class="rv-step-title">Step 2: Nucleophilic Attack</div>
+            <div class="rv-step-explain">Enolate attacks the carbonyl carbon of a second un-ionized aldehyde molecule.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Enolate is a strong nucleophile, and the second molecule's C=O carbon is an electrophile.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">CH₃CH(O⁻)CH₂CHO + H₂O → CH₃CH(OH)CH₂CHO (Aldol)</div>
+            <div class="rv-step-title">Step 3: Protonation</div>
+            <div class="rv-step-explain">Alkoxide abstracts proton from water forming β-hydroxy aldehyde (Aldol).</div>
+            <div class="rv-step-why"><strong>Why?</strong> To form the neutral product.</div>
+          </div>
+          <div class="rv-step" data-step="4">
+            <div class="rv-step-visual">Aldol + Heat → CH₃CH=CHCHO + H₂O</div>
+            <div class="rv-step-title">Step 4: Dehydration</div>
+            <div class="rv-step-explain">Heating causes loss of water to form α,β-unsaturated aldehyde.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The resulting double bond is conjugated with the carbonyl, highly stabilizing the product.</div>
+          </div>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Cannizzaro Reaction</div>
+          <div class="rv-overall">Overall: 2 HCHO + conc. KOH → HCOOK + CH₃OH</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">HCHO + OH⁻ ⇌ HCH(OH)O⁻</div>
+            <div class="rv-step-title">Step 1: Attack of OH⁻</div>
+            <div class="rv-step-explain">Hydroxide ion attacks the carbonyl carbon of one molecule lacking α-hydrogens.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Without α-H, aldol condensation cannot occur, so OH⁻ acts as a nucleophile rather than a base.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">HCH(OH)O⁻ + HCHO → HCOOH + CH₃O⁻</div>
+            <div class="rv-step-title">Step 2: Hydride Shift</div>
+            <div class="rv-step-explain">A hydride ion (H⁻) transfers to the carbonyl carbon of the second molecule. One molecule is oxidized (to acid), one is reduced (to alkoxide).</div>
+            <div class="rv-step-why"><strong>Why?</strong> Reformation of the C=O double bond expels the hydride, which is a strong reducing agent.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">HCOOH + CH₃O⁻ → HCOO⁻ + CH₃OH</div>
+            <div class="rv-step-title">Step 3: Acid-Base Exchange</div>
+            <div class="rv-step-explain">Proton transfers from the newly formed acid to the strongly basic alkoxide ion.</div>
+            <div class="rv-step-why"><strong>Why?</strong> This forms the highly stable carboxylate ion.</div>
+          </div>
+        </div>
+
+        <h4>Haloform Reaction</h4>
+        <p>Carbonyls with a methyl group attached to the C=O carbon (CH₃-CO-) react with NaOX (NaOH + X₂) to give haloform (CHX₃) and carboxylate salt.</p>
+        <div class="neet-tip">
+          <div class="ib-title">🧬 NEET Tip: Iodoform Test</div>
+          <p>Iodoform test (yellow ppt of CHI₃) is given by compounds with <strong>CH₃CO-</strong> group (like ethanol, acetone) or <strong>CH₃CH(OH)-</strong> group (like ethanol, 2-propanol) since the latter is oxidized to the former by the reagent.</p>
+        </div>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li><strong>Aldol:</strong> Requires α-H. Dilute base. Product: α,β-unsaturated compound.</li>
+          <li><strong>Cannizzaro:</strong> No α-H. Conc. base. Disproportionation (Oxidation + Reduction).</li>
+          <li><strong>Iodoform:</strong> Tests for methyl ketones (and methyl carbinols).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch5-carboxylic">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Carboxylic Acids</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>Physical Properties</h4>
+        <ul class="point-list">
+          <li><strong>Boiling Points:</strong> Higher than alcohols of comparable mass due to formation of cyclic dimers via extensive H-bonding.</li>
+          <li><strong>Solubility:</strong> Lower members miscible in water; solubility decreases as hydrophobic alkyl chain increases.</li>
+        </ul>
+
+        <h4>Acidity of Carboxylic Acids</h4>
+        <p>Carboxylic acids are acidic because the carboxylate anion (RCOO⁻) is resonance stabilized.</p>
+        <div class="note-box">
+          <div class="ib-title">📝 Substituent Effects</div>
+          <p><strong>Electron Withdrawing Groups (EWG):</strong> Stabilize carboxylate ion via -I effect, <span class="highlight">INCREASING acidity</span>.<br>
+          <strong>Electron Donating Groups (EDG):</strong> Destabilize carboxylate ion via +I effect, <span class="highlight">DECREASING acidity</span>.</p>
+        </div>
+        <p><strong>Acidity Order:</strong> Cl₃CCOOH &gt; Cl₂CHCOOH &gt; ClCH₂COOH &gt; CH₃COOH &gt; HCOOH</p>
+        <p><em>Wait, anomaly!</em> Actually, HCOOH is <strong>stronger</strong> than CH₃COOH. Correct order: Cl₃CCOOH &gt; Cl₂CHCOOH &gt; ClCH₂COOH &gt; HCOOH &gt; CH₃COOH. This is because CH₃ has a +I effect which destabilizes the anion relative to H.</p>
+
+        <h4>Important Reactions</h4>
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Fischer Esterification</div>
+          <div class="rv-overall">Overall: R-COOH + R'-OH ⇌ R-COOR' + H₂O (Acid catalyzed)</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R-COOH + H⁺ ⇌ Protonated Acid</div>
+            <div class="rv-step-title">Step 1: Protonation</div>
+            <div class="rv-step-explain">Carbonyl oxygen is protonated.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Increases electrophilicity of carbonyl carbon.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Protonated Acid + R'-OH ⇌ Tetrahedral Intermediate</div>
+            <div class="rv-step-title">Step 2: Nucleophilic Attack</div>
+            <div class="rv-step-explain">Alcohol attacks the carbonyl carbon.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The alcohol oxygen has lone pairs.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">Proton Transfer → Loss of H₂O → Ester</div>
+            <div class="rv-step-title">Step 3: Elimination of Water</div>
+            <div class="rv-step-explain">Proton transfers to OH group, making it a good leaving group (H₂O). Water leaves, forming ester.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Formation of the stable C=O double bond drives off the leaving group.</div>
+          </div>
+        </div>
+
+        <ul class="point-list">
+          <li><strong>Reduction:</strong> LiAlH₄ reduces acids directly to 1° alcohols. (NaBH₄ does not).</li>
+          <li><strong>Decarboxylation:</strong> Sodium salt heated with soda lime (NaOH + CaO, 3:1) gives alkane with one less carbon.</li>
+        </ul>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Hell-Volhard-Zelinsky (HVZ)</div>
+          <div class="rv-overall">Overall: R-CH₂-COOH + X₂ / Red P → R-CH(X)-COOH (X = Cl, Br)</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R-CH₂-COOH + PX₃ (from Red P + X₂) → R-CH₂-COX</div>
+            <div class="rv-step-title">Step 1: Formation of Acyl Halide</div>
+            <div class="rv-step-explain">Acid converts to acyl halide.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Acyl halides undergo enolization much faster than free acids.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">R-CH₂-COX ⇌ R-CH=C(OH)X + X₂ → R-CH(X)-COX</div>
+            <div class="rv-step-title">Step 2: α-Halogenation</div>
+            <div class="rv-step-explain">Enol reacts with halogen at the α-position.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The enol double bond is nucleophilic.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">R-CH(X)-COX + H₂O → R-CH(X)-COOH + HX</div>
+            <div class="rv-step-title">Step 3: Hydrolysis</div>
+            <div class="rv-step-explain">Water hydrolyzes the α-haloacyl halide back to the acid.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Acyl halides are readily hydrolyzed.</div>
+          </div>
+        </div>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Acids exist as dimers, giving them unusually high boiling points.</li>
+          <li>EWG increases acidity (-I effect); EDG decreases acidity (+I effect). HCOOH &gt; CH₃COOH.</li>
+          <li>HVZ reaction specifically halogenates the α-carbon of carboxylic acids.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ch6" class="chapter-section">
+  <div class="ch-head">
+    <div class="ch-num">Chapter 6</div>
+    <h2 class="ch-title">Amines</h2>
+    <p class="ch-sub">Derivatives of ammonia, crucial for organic synthesis and biological systems.</p>
+  </div>
+
+  <div class="topic-group" id="ch6-classification">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Classification & Nomenclature</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <ul class="point-list">
+          <li><strong>1° (Primary) Amine:</strong> R-NH₂ (One alkyl group attached to N)</li>
+          <li><strong>2° (Secondary) Amine:</strong> R-NH-R' (Two alkyl groups attached to N)</li>
+          <li><strong>3° (Tertiary) Amine:</strong> R₃N (Three alkyl groups attached to N)</li>
+        </ul>
+        <p><strong>Structure:</strong> The nitrogen atom in amines is sp³ hybridized with pyramidal geometry (bond angle ~108°) due to the presence of one lone pair.</p>
+        <p><strong>Nomenclature:</strong> Aliphatic amines are named as alkanamines. In 2° and 3° amines, smaller groups are named as N-alkyl substituents (e.g., N-methylethanamine).</p>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Classification is based on the number of alkyl/aryl groups attached DIRECTLY to Nitrogen (unlike alcohols where it's based on the Carbon).</li>
+          <li>Geometry is pyramidal due to sp³ hybridization and lone pair repulsion.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch6-preparation">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Preparation of Amines</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <ul class="point-list">
+          <li><strong>Ammonolysis of Alkyl Halides:</strong> NH₃ + R-X → R-NH₂.<br>
+            <em>Problem:</em> Yields a mixture of 1°, 2°, 3°, and quaternary ammonium salts. (Over-alkylation).</li>
+          <li><strong>Reduction of Nitro Compounds:</strong> Ar-NO₂ reduced to Ar-NH₂ using Sn/HCl or H₂/Pd.</li>
+          <li><strong>Reduction of Nitriles/Amides:</strong> Using LiAlH₄.</li>
+        </ul>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Gabriel Phthalimide Synthesis</div>
+          <div class="rv-overall">Overall: Phthalimide → 1° Aliphatic Amine</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">Phthalimide + KOH → Potassium Phthalimide</div>
+            <div class="rv-step-title">Step 1: Salt Formation</div>
+            <div class="rv-step-explain">KOH abstracts the acidic proton from phthalimide to form a nucleophilic salt.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The N-H proton is acidic because the conjugate base is stabilized by two carbonyl groups.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">K-Phthalimide + R-X → N-Alkylphthalimide</div>
+            <div class="rv-step-title">Step 2: SN2 Attack</div>
+            <div class="rv-step-explain">The phthalimide anion acts as a nucleophile, displacing the halide from R-X.</div>
+            <div class="rv-step-why"><strong>Why?</strong> This forms a C-N bond without risk of over-alkylation (steric bulk prevents multiple substitutions).</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">N-Alkylphthalimide + NaOH (aq) → 1° Amine + Phthalate salt</div>
+            <div class="rv-step-title">Step 3: Hydrolysis</div>
+            <div class="rv-step-explain">Alkaline hydrolysis releases the pure primary aliphatic amine.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Cleaves the amide bonds. Aromatic primary amines cannot be prepared this way as aryl halides do not undergo SN2 easily.</div>
+          </div>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Hofmann Bromamide Degradation</div>
+          <div class="rv-overall">Overall: R-CONH₂ + Br₂ + 4 NaOH → R-NH₂ + Na₂CO₃ + 2 NaBr + 2 H₂O</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R-CONH₂ + Br₂/NaOH → R-CONHBr</div>
+            <div class="rv-step-title">Step 1: N-Bromination</div>
+            <div class="rv-step-explain">Amide reacts with Br₂ in base to form N-bromoamide.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The amide nitrogen is nucleophilic enough to attack bromine.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">R-CONHBr + Base → Formation of Nitrene intermediate & Rearrangement</div>
+            <div class="rv-step-title">Step 2: Migration</div>
+            <div class="rv-step-explain">The alkyl group migrates from carbonyl carbon to nitrogen, forming an isocyanate (R-N=C=O).</div>
+            <div class="rv-step-why"><strong>Why?</strong> Loss of Br⁻ and migration occur concertedly to stabilize the electron-deficient nitrogen.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">R-N=C=O + 2 NaOH → R-NH₂ + Na₂CO₃</div>
+            <div class="rv-step-title">Step 3: Hydrolysis</div>
+            <div class="rv-step-explain">Isocyanate is rapidly hydrolyzed by the aqueous base to form the 1° amine.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The amine formed has one carbon LESS than the starting amide (degradation).</div>
+          </div>
+        </div>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Gabriel Synthesis gives PURE 1° aliphatic amines (no over-alkylation). Cannot make aniline.</li>
+          <li>Hofmann degradation reduces the carbon chain length by one (step-down reaction).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch6-properties">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Chemical Properties</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>Basicity of Amines</h4>
+        <p>Amines are basic due to the lone pair on nitrogen. (<span class="concept-ref" data-concept="basicity">basicity</span>). Aliphatic amines are stronger bases than NH₃ due to +I effect of alkyl groups. Aromatic amines (aniline) are much weaker because the lone pair is involved in <span class="concept-ref" data-concept="resonance">resonance</span> with the ring.</p>
+        
+        <div class="note-box">
+          <div class="ib-title">📝 Basicity Order in Aqueous Solution</div>
+          <p>Basicity depends on +I effect, steric hindrance, and solvation (H-bonding with water).</p>
+          <ul>
+            <li><strong>Methyl amines:</strong> 2° &gt; 1° &gt; 3° &gt; NH₃ (i.e., (CH₃)₂NH &gt; CH₃NH₂ &gt; (CH₃)₃N)</li>
+            <li><strong>Ethyl amines:</strong> 2° &gt; 3° &gt; 1° &gt; NH₃ (i.e., (C₂H₅)₂NH &gt; (C₂H₅)₃N &gt; C₂H₅NH₂)</li>
+          </ul>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Carbylamine Reaction (Isocyanide Test)</div>
+          <div class="rv-overall">Overall: R-NH₂ + CHCl₃ + 3 KOH → R-NC + 3 KCl + 3 H₂O</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">Reagents mixed and heated</div>
+            <div class="rv-step-title">Step 1: Reaction</div>
+            <div class="rv-step-explain">Aliphatic or aromatic 1° amines react with chloroform and alc. KOH.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Dichlorocarbene (:CCl₂) is formed as an intermediate which attacks the amine.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Foul smelling gas produced</div>
+            <div class="rv-step-title">Step 2: Observation</div>
+            <div class="rv-step-explain">An intensely foul-smelling substance, an isocyanide (carbylamine), is formed.</div>
+            <div class="rv-step-why"><strong>Why?</strong> This is a specific qualitative test ONLY for 1° amines. 2° and 3° do not react.</div>
+          </div>
+        </div>
+
+        <h4>Reaction with Nitrous Acid (HNO₂)</h4>
+        <ul class="point-list">
+          <li><strong>1° Aliphatic:</strong> Forms unstable diazonium salt, decomposes to Alcohol + N₂ gas (effervescence).</li>
+          <li><strong>1° Aromatic:</strong> Forms stable diazonium salt (ArN₂⁺X⁻) at 0-5°C.</li>
+          <li><strong>2° Amines:</strong> Form N-nitrosamines (yellow oily liquid).</li>
+        </ul>
+
+        <h4>Hinsberg Test</h4>
+        <p>Uses benzenesulfonyl chloride (Hinsberg reagent) to distinguish 1°, 2°, 3° amines.</p>
+        <table class="comparison-table">
+          <tr><th>Amine</th><th>Reaction with Reagent</th><th>Solubility in Alkali</th></tr>
+          <tr><td>1° Amine</td><td>Forms N-alkylbenzenesulfonamide</td><td>Soluble (due to acidic N-H)</td></tr>
+          <tr><td>2° Amine</td><td>Forms N,N-dialkylbenzenesulfonamide</td><td>Insoluble (no acidic H on N)</td></tr>
+          <tr><td>3° Amine</td><td>No reaction</td><td>Insoluble (amine itself forms layers)</td></tr>
+        </table>
+
+        <h4>Electrophilic Substitution of Aniline</h4>
+        <p>-NH₂ is highly activating (o,p-directing). Bromination with Br₂(aq) directly gives 2,4,6-tribromoaniline (white ppt). To get mono-substitution, the -NH₂ group must be <strong>protected</strong> by acetylation (forming acetanilide) before reaction, then hydrolyzed.</p>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Aniline is a weaker base than ammonia.</li>
+          <li>Carbylamine test: Specific for 1° amines (foul smell).</li>
+          <li>Hinsberg test differentiates 1°, 2°, 3° amines.</li>
+          <li>Protection of -NH₂ is required to prevent polysubstitution in aniline.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch6-diazonium">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Diazonium Salts</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Diazonium salts (ArN₂⁺X⁻) are prepared by <strong>Diazotization</strong> of aniline with NaNO₂ + HCl at 0-5 °C. They are incredibly useful for synthesizing substituted benzenes.</p>
+        
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Sandmeyer Reaction</div>
+          <div class="rv-overall">Overall: ArN₂⁺X⁻ + CuCl/HCl → Ar-Cl + N₂</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">ArN₂⁺ + Cu(I) salt</div>
+            <div class="rv-step-title">Step 1: Electron Transfer</div>
+            <div class="rv-step-explain">Cu(I) catalyzes the decomposition of the diazonium ion, likely via a radical mechanism.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The N₂ group is one of the best <span class="concept-ref" data-concept="leaving-group">leaving-group</span>s in chemistry, making substitution very favorable.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Ar-Radical + Ligand → Ar-X</div>
+            <div class="rv-step-title">Step 2: Substitution</div>
+            <div class="rv-step-explain">The halide or cyanide from the copper salt attaches to the aromatic ring. (Yields Ar-Cl, Ar-Br, Ar-CN).</div>
+            <div class="rv-step-why"><strong>Why?</strong> Offers a direct route to halobenzenes and benzonitriles which are hard to make directly.</div>
+          </div>
+        </div>
+
+        <ul class="point-list">
+          <li><strong>Gattermann:</strong> Similar to Sandmeyer but uses Cu powder + HX instead of Cu(I) salts.</li>
+          <li><strong>Balz-Schiemann:</strong> ArN₂⁺ + HBF₄ → ArN₂⁺BF₄⁻ (ppt). Heating yields Ar-F (Fluorobenzene) + BF₃ + N₂.</li>
+          <li><strong>Replacement by H:</strong> Use H₃PO₂ (hypophosphorous acid) or Ethanol (reduces ArN₂⁺ to Benzene).</li>
+        </ul>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Coupling Reaction</div>
+          <div class="rv-overall">Overall: ArN₂⁺ + Ar'-OH → Ar-N=N-Ar'-OH (Azo Dye)</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">Diazonium Ion + Phenol (in mildly basic medium)</div>
+            <div class="rv-step-title">Step 1: Electrophilic Aromatic Substitution</div>
+            <div class="rv-step-explain">The diazonium ion acts as a weak electrophile and attacks the electron-rich para-position of phenol.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Phenol is highly activated by the -OH group, allowing reaction with weak electrophiles. Basic medium creates the even more reactive phenoxide ion.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Formation of p-Hydroxyazobenzene</div>
+            <div class="rv-step-title">Step 2: Azo Dye Formation</div>
+            <div class="rv-step-explain">The product contains an extended conjugated system (-N=N- linkage), giving it intense color (orange dye).</div>
+            <div class="rv-step-why"><strong>Why?</strong> Conjugation lowers the energy gap for electron excitation, moving absorption into the visible light spectrum. (Aniline couples in mildly acidic medium to give yellow dye).</div>
+          </div>
+        </div>
+      </div>
+      <div class="summary-box">
+        <h4>⭐ Key Points</h4>
+        <ul>
+          <li>Diazonium salts must be kept cold (0-5 °C) to prevent decomposition into phenol.</li>
+          <li>Sandmeyer (Cu salts) is generally better yielding than Gattermann (Cu powder).</li>
+          <li>Coupling reactions create brightly colored azo dyes (Phenol = Orange, Aniline = Yellow).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="ch7" class="chapter-section">
+  <div class="ch-head">
+    <div class="ch-num">Chapter 7</div>
+    <h2 class="ch-title">Biomolecules</h2>
+    <p class="ch-sub">Structure, properties, and functions of carbohydrates, proteins, nucleic acids, and vitamins.</p>
+  </div>
+  
+  <div class="topic-group" id="ch7-carbohydrates">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Carbohydrates</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Carbohydrates are optically active polyhydroxy aldehydes or ketones, or compounds which produce such units on hydrolysis.</p>
+        
+        <h4>Classification based on Hydrolysis</h4>
+        <ol class="point-list">
+          <li><strong>Monosaccharides:</strong> Simplest carbohydrates, cannot be hydrolysed further (e.g., Glucose, Fructose, Ribose).</li>
+          <li><strong>Oligosaccharides:</strong> Yield 2-10 monosaccharide units on hydrolysis (e.g., Sucrose, Maltose, Lactose are disaccharides).</li>
+          <li><strong>Polysaccharides:</strong> Yield a large number of monosaccharide units (e.g., Starch, Cellulose, Glycogen).</li>
+        </ol>
+
+        <div class="neet-tip">
+          <div class="ib-title">⭐ NEET Tip</div>
+          <p><strong>Reducing sugars:</strong> Have free aldehyde or ketone groups (reduce Fehling's/Tollens' reagent). <em>All monosaccharides, maltose, lactose.</em><br>
+          <strong>Non-reducing sugars:</strong> Do not have free aldehyde/ketone groups. <em>Sucrose.</em></p>
+        </div>
+
+        <h4>Monosaccharides</h4>
+        <p><strong>Glucose (Aldohexose):</strong> Structure elucidated by specific reactions:</p>
+        <ul class="point-list">
+          <li><strong>HI/Δ:</strong> Forms n-hexane (straight chain of 6 carbons).</li>
+          <li><strong>NH₂OH:</strong> Forms oxime (presence of carbonyl group).</li>
+          <li><strong>Br₂ water:</strong> Oxidizes to gluconic acid (aldehyde group present).</li>
+          <li><strong>Acetic anhydride:</strong> Forms pentaacetate (presence of 5 -OH groups).</li>
+        </ul>
+        <p><strong>Cyclic Structure:</strong> Exists in two cyclic hemiacetal forms (α and β anomers) represented by Haworth structures.</p>
+        <p><strong>Fructose (Ketohexose):</strong> Has a ketone functional group at C-2. Forms a 5-membered furanose ring in cyclic form.</p>
+        
+        <h4>Disaccharides (Joined by glycosidic linkage)</h4>
+        <ul class="point-list">
+          <li><strong>Sucrose:</strong> α-D-glucose and β-D-fructose (C1-C2 linkage). Non-reducing sugar.</li>
+          <li><strong>Maltose:</strong> Two α-D-glucose units (C1-C4 linkage). Reducing sugar.</li>
+          <li><strong>Lactose:</strong> β-D-galactose and β-D-glucose (C1-C4 linkage). Reducing sugar.</li>
+        </ul>
+
+        <h4>Polysaccharides</h4>
+        <ul class="point-list">
+          <li><strong>Starch:</strong> Plant storage polymer of α-glucose. Two components: <em>Amylose</em> (water-soluble, linear, C1-C4) and <em>Amylopectin</em> (water-insoluble, branched, C1-C4 and C1-C6).</li>
+          <li><strong>Cellulose:</strong> Plant cell wall component. Linear polymer of β-D-glucose (C1-C4 linkage).</li>
+          <li><strong>Glycogen:</strong> Animal starch. Highly branched polymer of α-glucose.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Carbohydrates are polyhydroxy aldehydes/ketones.</li>
+            <li>Glucose open chain confirmed by HI, NH₂OH, Br₂ water.</li>
+            <li>Sucrose is a non-reducing sugar, while Maltose and Lactose are reducing.</li>
+            <li>Starch = Amylose + Amylopectin; Cellulose = β-glucose polymer.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch7-proteins">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Proteins and Enzymes</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Proteins are polymers of α-amino acids connected by peptide bonds.</p>
+        
+        <h4>Amino Acids</h4>
+        <ul class="point-list">
+          <li>Contain amino (-NH₂) and carboxyl (-COOH) functional groups.</li>
+          <li><strong>Zwitterion:</strong> At a specific pH (isoelectric point), the -COOH loses a proton and -NH₂ gains a proton, forming a neutral dipolar ion.</li>
+          <li><strong>Essential amino acids:</strong> Cannot be synthesized in the body (e.g., Valine, Leucine).</li>
+          <li><strong>Non-essential amino acids:</strong> Synthesized in the body (e.g., Glycine, Alanine).</li>
+        </ul>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Peptide Bond Formation</div>
+          <div class="rv-overall">Amino Acid 1 + Amino Acid 2 → Dipeptide + H₂O</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">H₂N-CH(R₁)-COOH  +  H₂N-CH(R₂)-COOH</div>
+            <div class="rv-step-title">Step 1: Alignment of molecules</div>
+            <div class="rv-step-explain">The carboxyl group of one amino acid aligns with the amino group of another.</div>
+            <div class="rv-step-why"><strong>Why?</strong> This orientation allows for a condensation reaction between the acid and amine functional groups.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">H₂N-CH(R₁)-CO-NH-CH(R₂)-COOH + H₂O</div>
+            <div class="rv-step-title">Step 2: Condensation and Elimination of Water</div>
+            <div class="rv-step-explain">The -OH from the carboxyl group and -H from the amino group are removed as water (H₂O), forming an amide (-CO-NH-) bond.</div>
+            <div class="rv-step-why"><strong>Why?</strong> This is an acid-catalyzed condensation forming the strong covalent peptide bond linking amino acids.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <h4>Structure of Proteins</h4>
+        <ol class="point-list">
+          <li><strong>Primary (1°):</strong> Specific sequence of amino acids.</li>
+          <li><strong>Secondary (2°):</strong> Folding of the polypeptide chain into α-helix or β-pleated sheet via hydrogen bonding.</li>
+          <li><strong>Tertiary (3°):</strong> Overall 3D folding due to H-bonds, disulfide linkages, van der Waals, and electrostatic forces.</li>
+          <li><strong>Quaternary (4°):</strong> Spatial arrangement of two or more polypeptide subunits.</li>
+        </ol>
+
+        <div class="neet-tip">
+          <div class="ib-title">⭐ NEET Tip</div>
+          <p>The <strong>primary structure</strong> dictates all higher-order structures. Even a single amino acid change (like in sickle cell anemia) can drastically alter protein function.</p>
+        </div>
+
+        <h4>Classification & Denaturation</h4>
+        <ul class="point-list">
+          <li><strong>Fibrous Proteins:</strong> Polypeptide chains run parallel, held by H-bonds/disulfide bonds. Insoluble in water (e.g., Keratin, Myosin).</li>
+          <li><strong>Globular Proteins:</strong> Chains fold into a spherical shape. Soluble in water (e.g., Insulin, Albumin).</li>
+          <li><strong>Denaturation:</strong> Changes in pH or temperature disrupt 2° and 3° structures (1° structure remains intact), causing loss of biological activity (e.g., boiling an egg).</li>
+        </ul>
+        
+        <h4>Enzymes</h4>
+        <p>Biocatalysts (mostly globular proteins) that are highly specific. They operate via the lock-and-key model where the substrate fits precisely into the active site.</p>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Amino acids exist as zwitterions at their isoelectric point.</li>
+            <li>Proteins are linked by peptide (-CO-NH-) bonds.</li>
+            <li>Protein structures range from primary (sequence) to quaternary (multiple subunits).</li>
+            <li>Denaturation destroys 2° and 3° structure, keeping 1° intact.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch7-nucleic">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Nucleic Acids</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Nucleic acids (DNA and RNA) are biopolymers of nucleotides responsible for the transmission of genetic information and protein synthesis.</p>
+        
+        <h4>Components of Nucleic Acids</h4>
+        <ul class="point-list">
+          <li><strong>Pentose Sugar:</strong> β-D-ribose in RNA, β-D-2-deoxyribose in DNA.</li>
+          <li><strong>Phosphoric Acid Group:</strong> Links sugars via phosphodiester linkage.</li>
+          <li><strong>Nitrogenous Bases:</strong> 
+            <ul>
+              <li><em>Purines:</em> Adenine (A), Guanine (G).</li>
+              <li><em>Pyrimidines:</em> Cytosine (C), Thymine (T, only DNA), Uracil (U, only RNA).</li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="note-box">
+          <div class="ib-title">ℹ️ Nucleoside vs Nucleotide</div>
+          <p><strong>Nucleoside</strong> = Sugar + Base (attached at 1' position).<br>
+          <strong>Nucleotide</strong> = Sugar + Base + Phosphate (attached at 5' position of sugar).</p>
+        </div>
+
+        <h4>DNA Structure</h4>
+        <p>James Watson and Francis Crick proposed the double helix model. Two polynucleotide chains run anti-parallel and are held together by hydrogen bonds between complementary base pairs:</p>
+        <ul class="point-list">
+          <li>Adenine pairs with Thymine (A=T, 2 H-bonds)</li>
+          <li>Guanine pairs with Cytosine (G≡C, 3 H-bonds)</li>
+        </ul>
+
+        <div class="neet-tip">
+          <div class="ib-title">⭐ NEET Tip</div>
+          <p><strong>Chargaff's Rule:</strong> In double-stranded DNA, the amount of Purines equals the amount of Pyrimidines. (A + G = C + T).</p>
+        </div>
+
+        <h4>Types of RNA and Central Dogma</h4>
+        <ul class="point-list">
+          <li><strong>mRNA (messenger):</strong> Carries genetic code from DNA to ribosomes.</li>
+          <li><strong>rRNA (ribosomal):</strong> Structural component of ribosomes.</li>
+          <li><strong>tRNA (transfer):</strong> Brings amino acids to the ribosome during protein synthesis.</li>
+        </ul>
+        <p><strong>Central Dogma:</strong> DNA <span class="arr">→</span> (Transcription) <span class="arr">→</span> RNA <span class="arr">→</span> (Translation) <span class="arr">→</span> Protein</p>
+        
+        <h4>Nucleic Acid Replication</h4>
+        <p>DNA replication is semi-conservative; the two strands separate and each acts as a template for synthesizing a new complementary strand.</p>
+
+        <table class="comparison-table">
+          <tr>
+            <th>Feature</th>
+            <th>DNA (Deoxyribonucleic Acid)</th>
+            <th>RNA (Ribonucleic Acid)</th>
+          </tr>
+          <tr>
+            <td>Sugar</td>
+            <td>β-D-2-deoxyribose</td>
+            <td>β-D-ribose</td>
+          </tr>
+          <tr>
+            <td>Pyrimidines</td>
+            <td>Cytosine (C) and Thymine (T)</td>
+            <td>Cytosine (C) and Uracil (U)</td>
+          </tr>
+          <tr>
+            <td>Structure</td>
+            <td>Double-stranded helix</td>
+            <td>Single-stranded (usually)</td>
+          </tr>
+          <tr>
+            <td>Function</td>
+            <td>Stores genetic information</td>
+            <td>Protein synthesis</td>
+          </tr>
+        </table>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Nucleotide = Sugar + Base + Phosphate.</li>
+            <li>DNA contains A, G, C, T; RNA contains A, G, C, U.</li>
+            <li>DNA is a double helix with A=T and G≡C base pairing.</li>
+            <li>Central Dogma describes information flow from DNA to Protein.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch7-vitamins">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Vitamins and Hormones</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Vitamins are essential organic compounds required in small amounts in our diet for normal growth, maintenance, and biological functions.</p>
+        
+        <h4>Classification of Vitamins</h4>
+        <ul class="point-list">
+          <li><strong>Fat-Soluble:</strong> Vitamins A, D, E, K. Stored in liver and adipose tissues.</li>
+          <li><strong>Water-Soluble:</strong> Vitamins B-complex and C. Must be supplied regularly as they are excreted in urine (except B₁₂).</li>
+        </ul>
+
+        <div class="neet-tip">
+          <div class="ib-title">⭐ NEET Tip</div>
+          <p>The deficiency diseases and chemical names of vitamins are heavily tested. Memorize the table below carefully.</p>
+        </div>
+
+        <table class="comparison-table">
+          <tr>
+            <th>Vitamin</th>
+            <th>Chemical Name</th>
+            <th>Deficiency Disease</th>
+          </tr>
+          <tr>
+            <td>A</td>
+            <td>Retinol</td>
+            <td>Night blindness, Xerophthalmia</td>
+          </tr>
+          <tr>
+            <td>B₁</td>
+            <td>Thiamine</td>
+            <td>Beriberi (loss of appetite, retarded growth)</td>
+          </tr>
+          <tr>
+            <td>B₂</td>
+            <td>Riboflavin</td>
+            <td>Cheilosis (fissures at corners of mouth)</td>
+          </tr>
+          <tr>
+            <td>B₃</td>
+            <td>Niacin</td>
+            <td>Pellagra</td>
+          </tr>
+          <tr>
+            <td>B₆</td>
+            <td>Pyridoxine</td>
+            <td>Convulsions</td>
+          </tr>
+          <tr>
+            <td>B₇</td>
+            <td>Biotin</td>
+            <td>Dermatitis, loss of hair</td>
+          </tr>
+          <tr>
+            <td>B₉</td>
+            <td>Folic acid</td>
+            <td>Megaloblastic anaemia</td>
+          </tr>
+          <tr>
+            <td>B₁₂</td>
+            <td>Cyanocobalamin</td>
+            <td>Pernicious anaemia (RBC deficiency in Hb)</td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>Ascorbic acid</td>
+            <td>Scurvy (bleeding gums)</td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>Calciferol</td>
+            <td>Rickets (children), Osteomalacia (adults)</td>
+          </tr>
+          <tr>
+            <td>E</td>
+            <td>Tocopherol</td>
+            <td>Reproductive issues, muscular weakness</td>
+          </tr>
+          <tr>
+            <td>K</td>
+            <td>Phylloquinone</td>
+            <td>Increased blood clotting time</td>
+          </tr>
+        </table>
+        
+        <h4>Hormones (Brief Overview)</h4>
+        <p>Hormones are intercellular messengers produced by endocrine glands and poured directly into the bloodstream to regulate biological processes. Examples include Insulin (regulates blood sugar), Thyroxine (metabolism), and Epinephrine.</p>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Vitamins A, D, E, K are fat-soluble; B, C are water-soluble.</li>
+            <li>Vitamin B₁₂ is the only water-soluble vitamin that is stored in the body.</li>
+            <li>Deficiency of Vitamin C causes Scurvy, Vitamin A causes Night blindness.</li>
+            <li>Hormones act as chemical messengers from endocrine glands.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ═══════════ END MAIN CONTENT ═══════════ -->
+</main>
+
+<!-- CONCEPT POPUP MODAL -->
+<div class="modal-overlay" id="concept-modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h3 id="modal-title"></h3>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   CONCEPT DEFINITIONS — used by the popup modal
+   ================================================================ */
+const concepts = {
+  nucleophile:{
+    title:"Nucleophile (Nu⁻ / Nu:)",
+    def:"A chemical species that <b>donates an electron pair</b> to an electrophile to form a new bond. Nucleophiles are Lewis bases — they are electron-rich.",
+    examples:"OH⁻, CN⁻, NH₃, I⁻, H₂O, R–O⁻, HS⁻, R–NH₂",
+    points:["Negatively charged species are generally stronger nucleophiles than neutral ones","Nucleophilicity ↑ down a group in protic solvents: I⁻ > Br⁻ > Cl⁻ > F⁻","Steric hindrance ↓ nucleophilicity (tert-butoxide is a poor nucleophile but strong base)"],
+    tip:"Don't confuse nucleophilicity with basicity. A good nucleophile attacks carbon; a strong base abstracts a proton."
+  },
+  electrophile:{
+    title:"Electrophile (E⁺)",
+    def:"A chemical species that <b>accepts an electron pair</b> from a nucleophile. Electrophiles are Lewis acids — they are electron-deficient.",
+    examples:"H⁺, R⁺ (carbocation), NO₂⁺, Br⁺, BF₃, AlCl₃, C of C=O",
+    points:["Have vacant orbitals or partial positive charge (δ+)","Attracted to electron-rich sites (π bonds, lone pairs)","Neutral molecules like BF₃ and AlCl₃ are electrophiles due to empty p-orbitals"],
+    tip:"The carbonyl carbon in C=O is electrophilic because oxygen pulls electron density away."
+  },
+  "inductive-effect":{
+    title:"Inductive Effect (I effect)",
+    def:"The <b>permanent displacement of σ-bond electrons</b> towards a more electronegative atom, transmitted through the carbon chain. Effect decreases rapidly with distance.",
+    examples:"–I groups: –F, –Cl, –Br, –NO₂, –COOH, –CN &nbsp;|&nbsp; +I groups: –CH₃, –C₂H₅, alkyl groups",
+    points:["Transmitted through σ bonds, weakens over 3-4 bonds","–I groups withdraw electrons → stabilise –ve charge, destabilise +ve charge","+I groups donate electrons → stabilise +ve charge (carbocations)","Order of –I: –NR₃⁺ > –NO₂ > –F > –Cl > –Br > –I > –OH > –OCH₃"],
+    tip:"Inductive effect is distance-dependent. It helps explain acidity: more –I groups near –COOH → stronger acid."
+  },
+  resonance:{
+    title:"Resonance (Mesomeric Effect)",
+    def:"The <b>delocalisation of π electrons or lone pairs</b> over adjacent atoms through p-orbital overlap. The actual structure is a hybrid of all contributing resonance structures.",
+    examples:"Benzene (6 π electrons delocalised), Carboxylate ion (COO⁻), Allyl carbocation",
+    points:["Resonance structures differ only in electron arrangement, NOT atom positions","More resonance structures → greater stability","Contributors with more covalent bonds & fewer formal charges are more stable","+M (electron-donating): –OH, –NH₂, –OR, –X &nbsp;|&nbsp; –M (electron-withdrawing): –NO₂, –CHO, –COOH, –CN"],
+    tip:"Resonance is the single most important concept for predicting reactivity in organic chemistry."
+  },
+  hyperconjugation:{
+    title:"Hyperconjugation (σ–π Conjugation)",
+    def:"The <b>delocalisation of σ-electrons of C–H bonds</b> adjacent to a positively charged carbon or a double bond into the empty p-orbital or π system. Also called 'no-bond resonance'.",
+    examples:"CH₃–CH=CH₂ (propylene is more stable than ethylene), (CH₃)₃C⁺ (most stable 3° carbocation)",
+    points:["More α-C–H bonds → more hyperconjugative structures → more stable","Explains stability order of carbocations: 3° > 2° > 1°","Explains stability order of alkenes: more substituted = more stable","It's a permanent effect (unlike induction, it doesn't weaken with distance)"],
+    tip:"Count the number of α-hydrogens to compare hyperconjugation. (CH₃)₃C⁺ has 9 α-H → very stable."
+  },
+  carbocation:{
+    title:"Carbocation (Carbonium Ion)",
+    def:"A carbon atom bearing a <b>positive charge</b> with only 6 electrons in its valence shell. It is sp² hybridised with a vacant p-orbital.",
+    examples:"CH₃⁺ (methyl), (CH₃)₂CH⁺ (isopropyl), (CH₃)₃C⁺ (tert-butyl)",
+    points:["Stability: 3° > 2° > 1° > CH₃⁺ (due to +I and hyperconjugation)","sp² hybridised → planar → trigonal geometry","Rearrangement: less stable carbocations can rearrange to more stable ones via 1,2 hydride or methyl shift","Key intermediate in SN1, E1, electrophilic addition reactions"],
+    tip:"Always check for carbocation rearrangement in SN1 and E1 mechanisms!"
+  },
+  carbanion:{
+    title:"Carbanion",
+    def:"A carbon atom bearing a <b>negative charge</b> with a lone pair of electrons. It is sp³ hybridised with a pyramidal geometry.",
+    examples:"CH₃⁻, C₆H₅CH₂⁻",
+    points:["Stability: the more s-character, the more stable (sp > sp² > sp³)","–I groups on adjacent carbon stabilise carbanions","Resonance stabilisation greatly increases stability","Key intermediate in E1cb elimination and some addition reactions"],
+    tip:"Carbanion stability is opposite to carbocation — electron-withdrawing groups stabilise carbanions."
+  },
+  "free-radical":{
+    title:"Free Radical",
+    def:"A species with an <b>unpaired electron</b>. Formed by homolytic fission of a covalent bond. Electrically neutral.",
+    examples:"Cl•, CH₃•, (CH₃)₃C•",
+    points:["Stability: 3° > 2° > 1° > CH₃• (same as carbocations — hyperconjugation)","sp² hybridised, planar","Highly reactive — initiate chain reactions","Key intermediates in anti-Markownikoff addition (peroxide effect)"],
+    tip:"Free radical reactions proceed via 3 steps: Initiation, Propagation, Termination."
+  },
+  homolysis:{
+    title:"Homolytic Fission (Homolysis)",
+    def:"Breaking of a covalent bond such that <b>each atom retains one electron</b> from the shared pair → produces free radicals.",
+    examples:"Cl–Cl → Cl• + Cl• (UV light), CH₄ → CH₃• + H•",
+    points:["Requires energy input (UV light or heat)","Produces free radicals (neutral species)","Common in non-polar solvents and gas phase","Shown with fish-hook (half-headed) arrows ⇀"],
+    tip:"Homolysis = 'equal breaking'. Homo means same, lysis means breaking."
+  },
+  heterolysis:{
+    title:"Heterolytic Fission (Heterolysis)",
+    def:"Breaking of a covalent bond such that <b>one atom gets both electrons</b> → produces a cation and an anion.",
+    examples:"(CH₃)₃C–Br → (CH₃)₃C⁺ + Br⁻",
+    points:["Favoured in polar solvents","Produces ions (cation + anion)","More common in solution-phase reactions","Shown with full-headed (curved) arrows →"],
+    tip:"Heterolysis = 'unequal breaking'. Hetero means different."
+  },
+  sp3:{
+    title:"sp³ Hybridisation",
+    def:"Mixing of one s and three p orbitals to form <b>four equivalent sp³ hybrid orbitals</b>. Geometry: tetrahedral, bond angle ~109.5°.",
+    examples:"CH₄ (methane), C₂H₆ (ethane), CH₃OH (methanol)",
+    points:["25% s-character, 75% p-character","Tetrahedral geometry","All bonds are σ bonds","Found in alkanes, alcohols, ethers, amines"],
+    tip:"sp³ carbon forms only single bonds (σ bonds). No π bonds."
+  },
+  sp2:{
+    title:"sp² Hybridisation",
+    def:"Mixing of one s and two p orbitals to form <b>three equivalent sp² hybrid orbitals</b>. The unhybridised p-orbital forms π bonds. Geometry: trigonal planar, bond angle ~120°.",
+    examples:"C₂H₄ (ethene), C₆H₆ (benzene), CH₂O (formaldehyde), carbocations",
+    points:["33% s-character, 67% p-character","Trigonal planar geometry","One unhybridised p-orbital → π bond","Found in alkenes, carbonyl compounds, aromatic rings"],
+    tip:"Carbocations (C⁺) are sp² — that's why they are planar."
+  },
+  sp:{
+    title:"sp Hybridisation",
+    def:"Mixing of one s and one p orbital to form <b>two equivalent sp hybrid orbitals</b>. Two unhybridised p-orbitals form two π bonds. Geometry: linear, bond angle 180°.",
+    examples:"C₂H₂ (ethyne/acetylene), HCN, CO₂",
+    points:["50% s-character, 50% p-character","Linear geometry","Two unhybridised p-orbitals → can form two π bonds","Most electronegative sp carbon (most s-character → electrons held closer)"],
+    tip:"sp carbons in alkynes are the most acidic (C–H) among hydrocarbons because of 50% s-character."
+  },
+  sn1:{
+    title:"SN1 Mechanism (Unimolecular Nucleophilic Substitution)",
+    def:"A <b>two-step</b> substitution: first the leaving group departs to form a carbocation intermediate, then the nucleophile attacks. Rate depends only on substrate concentration.",
+    examples:"(CH₃)₃C–Br + H₂O → (CH₃)₃C–OH + HBr",
+    points:["Rate = k[substrate] — first order, unimolecular","Step 1 (slow, RDS): R–X → R⁺ + X⁻","Step 2 (fast): R⁺ + Nu⁻ → R–Nu","Favoured by: 3° substrate, polar protic solvent, weak nucleophile, good leaving group","Gives racemisation (attack from both sides of planar carbocation)","Carbocation rearrangement possible"],
+    tip:"SN1 = Substitution, Nucleophilic, Unimolecular. Rate depends on ONLY the substrate."
+  },
+  sn2:{
+    title:"SN2 Mechanism (Bimolecular Nucleophilic Substitution)",
+    def:"A <b>one-step (concerted)</b> mechanism: the nucleophile attacks from the backside while the leaving group departs simultaneously. Rate depends on both substrate and nucleophile.",
+    examples:"CH₃–Br + OH⁻ → CH₃–OH + Br⁻",
+    points:["Rate = k[substrate][nucleophile] — second order, bimolecular","Single step — no intermediate","Backside attack → inversion of configuration (Walden inversion)","Favoured by: 1° substrate (low steric hindrance), strong nucleophile, polar aprotic solvent","Reactivity: CH₃–X > 1° > 2° >> 3° (3° doesn't undergo SN2)"],
+    tip:"SN2 causes complete INVERSION. Think of an umbrella flipping in the wind."
+  },
+  e1:{
+    title:"E1 Elimination (Unimolecular)",
+    def:"A <b>two-step</b> elimination: the leaving group departs first to form a carbocation, then a base abstracts a β-hydrogen. Rate depends only on substrate.",
+    examples:"(CH₃)₃C–Br → (CH₃)₂C=CH₂ + HBr",
+    points:["Rate = k[substrate]","Step 1: R–X → R⁺ + X⁻ (same as SN1)","Step 2: Base abstracts β-H","Competes with SN1 (same carbocation intermediate)","Follows Zaitsev's (Saytzeff's) rule → more substituted alkene"],
+    tip:"E1 and SN1 share the same first step. Higher temperature favours E1 over SN1."
+  },
+  e2:{
+    title:"E2 Elimination (Bimolecular)",
+    def:"A <b>one-step (concerted)</b> elimination: the base abstracts a β-hydrogen while the leaving group departs simultaneously, forming a double bond.",
+    examples:"CH₃CH₂–Br + NaOEt → CH₂=CH₂ + NaBr + EtOH",
+    points:["Rate = k[substrate][base]","Single step — anti-periplanar (180°) geometry required","Strong, bulky base favours E2 over SN2","Follows Zaitsev's rule (unless bulky base → Hofmann product)","Competes with SN2"],
+    tip:"E2 requires anti-periplanar arrangement of H and leaving group. This is crucial for stereochemistry questions."
+  },
+  markownikoff:{
+    title:"Markownikoff's Rule",
+    def:"In the addition of HX to an unsymmetrical alkene, the <b>hydrogen adds to the carbon with more hydrogens</b> (less substituted carbon), and X goes to the carbon with fewer hydrogens (more substituted carbon).",
+    examples:"CH₃–CH=CH₂ + HBr → CH₃–CHBr–CH₃ (2-bromopropane, major)",
+    points:["The rule ensures formation of the more stable carbocation intermediate","Positive part (H⁺) goes to the carbon already having more H atoms","Actually governed by carbocation stability, not just H-counting","Exception: anti-Markownikoff addition with peroxides (free radical mechanism)"],
+    tip:"Trick to remember: 'The rich get richer' — the carbon with more H gets even more H."
+  },
+  "anti-markownikoff":{
+    title:"Anti-Markownikoff Addition (Peroxide / Kharasch Effect)",
+    def:"In presence of peroxides (R₂O₂), HBr adds to alkenes in <b>reverse orientation</b>: Br goes to the less substituted carbon. Proceeds via a free radical mechanism.",
+    examples:"CH₃–CH=CH₂ + HBr (peroxide) → CH₃–CH₂–CH₂Br (1-bromopropane)",
+    points:["Only works with HBr (not HCl or HI)","Peroxide generates Br• radical which adds first","Br• adds to less substituted C → more stable radical on more substituted C","Then H adds to the radical carbon"],
+    tip:"Peroxide effect works ONLY with HBr. HCl bond is too strong for homolysis; HI is too weak."
+  },
+  saytzeff:{
+    title:"Saytzeff's (Zaitsev's) Rule",
+    def:"In elimination reactions, the <b>more substituted (more stable) alkene</b> is the major product.",
+    examples:"CH₃CH₂CH(Br)CH₃ + NaOEt → CH₃CH=CHCH₃ (major, 2-butene) + CH₃CH₂CH=CH₂ (minor)",
+    points:["More substituted alkene = more stable (hyperconjugation)","Applies to E1 and E2 with non-bulky bases","Bulky bases (tert-BuOK) give anti-Zaitsev (Hofmann) product","The base removes the β-H that leads to the more substituted alkene"],
+    tip:"Zaitsev = more substituted alkene. Hofmann = less substituted (with bulky base or quaternary ammonium salt)."
+  },
+  chirality:{
+    title:"Chirality & Chiral Centre",
+    def:"A molecule is <b>chiral</b> if it is non-superimposable on its mirror image. A carbon bonded to 4 different groups is a chiral centre (stereogenic centre).",
+    examples:"2-bromobutane (CH₃CHBrCH₂CH₃), Lactic acid, Amino acids (except glycine)",
+    points:["Chiral molecules rotate plane-polarised light (optically active)","R/S configuration assigned using CIP priority rules","Enantiomers: non-superimposable mirror images (same properties except optical rotation)","Racemic mixture: equal amounts of R and S → no net rotation"],
+    tip:"To quickly check chirality: look for a carbon with 4 different substituents. No plane of symmetry = chiral."
+  },
+  "optical-isomerism":{
+    title:"Optical Isomerism",
+    def:"Isomerism arising from the presence of <b>chiral centres</b>. Optical isomers (enantiomers) are mirror images that cannot be superimposed on each other.",
+    examples:"D-glucose & L-glucose, R-lactic acid & S-lactic acid",
+    points:["Enantiomers have identical physical properties except direction of optical rotation","Maximum stereoisomers = 2ⁿ (n = number of chiral centres)","Diastereomers: stereoisomers that are NOT mirror images","Meso compounds: have chiral centres but are achiral due to internal symmetry"],
+    tip:"SN1 → racemisation. SN2 → inversion. This is a common NEET question pattern."
+  },
+  "geometrical-isomerism":{
+    title:"Geometrical Isomerism (cis-trans / E-Z)",
+    def:"Isomerism due to <b>restricted rotation around a double bond</b> (or ring). Same groups on same side = cis (Z); on opposite sides = trans (E).",
+    examples:"cis-2-butene & trans-2-butene, cis-1,2-dichloroethene & trans-1,2-dichloroethene",
+    points:["Condition: each carbon of C=C must have two different groups","E/Z uses CIP priority rules; cis/trans uses identical groups","Trans isomers generally more stable (less steric strain)","Different melting points, boiling points, dipole moments"],
+    tip:"E = Entgegen (opposite); Z = Zusammen (together). Use CIP priorities for E/Z naming."
+  },
+  eas:{
+    title:"Electrophilic Aromatic Substitution (EAS)",
+    def:"A reaction where an <b>electrophile replaces a hydrogen</b> on a benzene ring, preserving the aromatic system. The key intermediate is an arenium ion (sigma complex).",
+    examples:"Nitration (NO₂⁺), Halogenation (Br⁺/Cl⁺), Friedel-Crafts (R⁺/RCO⁺), Sulphonation (SO₃)",
+    points:["Step 1: Electrophile (E⁺) attacks π electrons → σ complex (carbocation)","Step 2: Loss of H⁺ restores aromaticity","Activating groups (–OH, –NH₂, –OR, –R): ortho-para directing, increase rate","Deactivating groups (–NO₂, –CN, –COOH, –CHO): meta directing, decrease rate","Halogens: deactivating but ortho-para directing"],
+    tip:"Activating groups donate electrons to the ring. Deactivating groups withdraw. Halogens are the exception!"
+  },
+  "nucleophilic-addition":{
+    title:"Nucleophilic Addition to Carbonyl (C=O)",
+    def:"A nucleophile attacks the electrophilic <b>carbonyl carbon</b> (δ+), breaking the π bond. The oxygen becomes negatively charged.",
+    examples:"HCN addition, Grignard reaction, NaBH₄ reduction, aldol reaction",
+    points:["Aldehydes are more reactive than ketones (less steric hindrance, less +I effect)","Step 1: Nu⁻ attacks C (δ+) of C=O","Step 2: Protonation of O⁻","Electron-withdrawing groups on R increase reactivity","Electron-donating groups decrease reactivity"],
+    tip:"Reactivity order: HCHO > other aldehydes > ketones. Aldehydes are always asked in comparisons."
+  },
+  aldol:{
+    title:"Aldol Condensation",
+    def:"Aldehydes and ketones with <b>α-hydrogen</b> undergo self-condensation in dilute NaOH to form β-hydroxy aldehydes/ketones (aldol). On heating, aldol loses water to form α,β-unsaturated carbonyl compound.",
+    examples:"2 CH₃CHO → CH₃CH(OH)CH₂CHO (aldol) → CH₃CH=CHCHO + H₂O (crotonaldehyde)",
+    points:["Requires α-hydrogen (H on carbon adjacent to C=O)","Dilute NaOH acts as catalyst (base)","Step 1: Enolate formation","Step 2: Nucleophilic addition of enolate to another molecule","Heating causes dehydration → conjugated product"],
+    tip:"No α-hydrogen → no aldol. HCHO, C₆H₅CHO undergo Cannizzaro instead."
+  },
+  cannizzaro:{
+    title:"Cannizzaro Reaction",
+    def:"Aldehydes <b>without α-hydrogen</b> undergo self-oxidation-reduction (disproportionation) in concentrated NaOH. One molecule is oxidised to acid, another is reduced to alcohol.",
+    examples:"2 HCHO + conc. NaOH → HCOONa + CH₃OH",
+    points:["Requires no α-hydrogen","One molecule acts as reducing agent → oxidised to salt of acid","Other molecule acts as oxidising agent → reduced to alcohol","Conc. NaOH required","Examples: HCHO, C₆H₅CHO, (CH₃)₃CCHO"],
+    tip:"Cross-Cannizzaro: when HCHO reacts with another aldehyde, HCHO always gets oxidised (to HCOONa)."
+  },
+  grignard:{
+    title:"Grignard Reagent (RMgX)",
+    def:"An <b>organomagnesium halide</b> (R–Mg–X) prepared by reacting an alkyl/aryl halide with Mg in dry ether. Extremely versatile nucleophile — attacks C=O, CO₂, epoxides.",
+    examples:"CH₃MgBr (methylmagnesium bromide), C₆H₅MgBr (phenylmagnesium bromide)",
+    points:["Prepared in dry ether: R–X + Mg → R–Mg–X","R–MgX + HCHO → 1° alcohol","R–MgX + RCHO → 2° alcohol","R–MgX + R₂CO → 3° alcohol","R–MgX + CO₂ → carboxylic acid (after hydrolysis)","Must avoid water, alcohol, amines (active H destroys it)"],
+    tip:"Grignard + HCHO → 1°, + other aldehyde → 2°, + ketone → 3°. This is a very commonly asked pattern."
+  },
+  "lucas-test":{
+    title:"Lucas Test",
+    def:"A test to <b>distinguish 1°, 2°, and 3° alcohols</b> using Lucas reagent (anhydrous ZnCl₂ + conc. HCl). Based on SN1 reactivity.",
+    examples:"3° alcohol: immediate turbidity | 2° alcohol: turbidity in 5 min | 1° alcohol: no turbidity at RT",
+    points:["3° alcohols react fastest (most stable carbocation via SN1)","Turbidity is due to formation of insoluble alkyl chloride","1° alcohols don't react at room temperature","Only works for alcohols soluble in the reagent (up to ~6 carbons)"],
+    tip:"Lucas test order: 3° > 2° > 1°. The test works because SN1 depends on carbocation stability."
+  },
+  "tollens-test":{
+    title:"Tollens' Test (Silver Mirror Test)",
+    def:"<b>Aldehydes</b> reduce Tollens' reagent [Ag(NH₃)₂]⁺ to metallic silver, forming a shiny mirror on the test tube wall. Ketones do not react.",
+    examples:"RCHO + 2[Ag(NH₃)₂]⁺ + 2OH⁻ → RCOO⁻ + 2Ag↓ + 4NH₃ + H₂O",
+    points:["Positive test = silver mirror → confirms ALDEHYDE","Tollens' reagent: AgNO₃ + NH₃ (ammoniacal silver nitrate)","Ketones give negative test","Formic acid (HCOOH) also gives positive test (it has –CHO-like reducing ability)"],
+    tip:"Tollens' = silver mirror = aldehyde. Fehling's = red precipitate = aldehyde. Both distinguish aldehyde from ketone."
+  },
+  "fehling-test":{
+    title:"Fehling's Test",
+    def:"<b>Aldehydes</b> reduce Fehling's solution (alkaline Cu²⁺ tartrate) to give a <b>reddish-brown precipitate of Cu₂O</b>. Ketones do not react.",
+    examples:"RCHO + 2Cu²⁺ + 5OH⁻ → RCOO⁻ + Cu₂O↓ (red ppt) + 3H₂O",
+    points:["Fehling A: aqueous CuSO₄ | Fehling B: alkaline sodium potassium tartrate","Mixed = deep blue solution","Positive test: red-brown ppt of Cu₂O","Aromatic aldehydes (benzaldehyde) do NOT give Fehling's test"],
+    tip:"Benzaldehyde gives Tollens' but NOT Fehling's. This is a classic board/NEET trap!"
+  },
+  hofmann:{
+    title:"Hofmann Bromamide Degradation",
+    def:"Conversion of a primary <b>amide (RCONH₂) to a primary amine (RNH₂)</b> with one fewer carbon, using Br₂/NaOH.",
+    examples:"CH₃CONH₂ + Br₂ + 4NaOH → CH₃NH₂ + Na₂CO₃ + 2NaBr + 2H₂O",
+    points:["Product amine has one carbon LESS than the starting amide","Goes through an isocyanate intermediate (R–N=C=O)","Useful for descending a homologous series","Only primary amides undergo this reaction"],
+    tip:"Hofmann = amide → amine with ONE LESS carbon. Great way to 'step down' the carbon chain."
+  },
+  gabriel:{
+    title:"Gabriel Phthalimide Synthesis",
+    def:"A method to prepare <b>pure primary amines</b> from phthalimide. It avoids over-alkylation by using the phthalimide group as a protected NH₂.",
+    examples:"Phthalimide + KOH → Potassium phthalimide + R–X → N-alkylphthalimide → RNH₂ + phthalic acid",
+    points:["Only gives PRIMARY amines","Cannot be used for aromatic amines (aryl halides don't react with phthalimide)","Avoids mixture of 1°, 2°, 3° amines","Phthalimide acts as protected amine source"],
+    tip:"Gabriel only works for 1° amines and only with alkyl halides. Aryl amines need different methods."
+  },
+  sandmeyer:{
+    title:"Sandmeyer Reaction",
+    def:"Replacement of the <b>diazonium group (N₂⁺)</b> with –Cl, –Br, or –CN using Cu₂Cl₂/HCl, Cu₂Br₂/HBr, or CuCN respectively.",
+    examples:"C₆H₅N₂⁺Cl⁻ + CuCl → C₆H₅Cl + N₂↑",
+    points:["Diazonium salt prepared from primary aromatic amine + NaNO₂ + HCl at 0-5°C","Cu₂Cl₂/HCl → ArCl | Cu₂Br₂/HBr → ArBr | CuCN → ArCN","Without Cu catalyst but with HBF₄ → ArF (Balz-Schiemann)","With KI → ArI (no catalyst needed)","With H₃PO₂ → ArH (replacement by H)"],
+    tip:"Sandmeyer = Cu catalyst. Without Cu: HBF₄→F, KI→I, H₃PO₂→H. Remember these variants!"
+  },
+  kolbe:{
+    title:"Kolbe's Reaction",
+    def:"Sodium phenoxide reacts with <b>CO₂ under pressure</b> at 125°C, followed by acidification, to give salicylic acid (2-hydroxybenzoic acid). An electrophilic substitution.",
+    examples:"C₆H₅ONa + CO₂ (125°C, 4-7 atm) → sodium salicylate → salicylic acid (on acidification)",
+    points:["Phenoxide is activated ring (strong +M of O⁻)","CO₂ acts as electrophile","Product: ortho-hydroxy benzoic acid (salicylic acid)","Salicylic acid → aspirin (on acetylation)"],
+    tip:"Kolbe's reaction is for PHENOL. Don't confuse with Kolbe's electrolysis (decarboxylation of carboxylic acids)."
+  },
+  "reimer-tiemann":{
+    title:"Reimer-Tiemann Reaction",
+    def:"Phenol treated with <b>CHCl₃ + NaOH</b> gives salicylaldehyde (2-hydroxybenzaldehyde). The intermediate electrophile is dichlorocarbene (:CCl₂).",
+    examples:"C₆H₅OH + CHCl₃ + NaOH → 2-HOC₆H₄CHO (salicylaldehyde)",
+    points:["Electrophile: :CCl₂ (dichlorocarbene) formed from CHCl₃ + NaOH","ortho-formylation of phenol","If CCl₄ is used instead of CHCl₃ → salicylic acid (–COOH instead of –CHO)","An electrophilic aromatic substitution"],
+    tip:"CHCl₃ gives –CHO; CCl₄ gives –COOH. This distinction is important for boards."
+  },
+  williamson:{
+    title:"Williamson Synthesis",
+    def:"Preparation of <b>ethers</b> by treating an alkoxide (or phenoxide) with a primary alkyl halide via SN2 mechanism.",
+    examples:"C₂H₅ONa + CH₃Br → C₂H₅–O–CH₃ + NaBr (methyl ethyl ether)",
+    points:["Best for mixed (unsymmetrical) ethers","R–X must be PRIMARY (SN2 mechanism)","2° or 3° R–X → elimination dominates over substitution","For symmetrical ethers: either combination works"],
+    tip:"Use 1° R–X always in Williamson. If you need tert-butyl methyl ether, use tert-BuONa + CH₃I (not tert-BuBr + NaOMe)."
+  },
+  "friedel-crafts":{
+    title:"Friedel-Crafts Reaction",
+    def:"<b>Alkylation or acylation</b> of benzene ring using alkyl halide or acyl halide in presence of anhydrous AlCl₃ (Lewis acid catalyst).",
+    examples:"C₆H₆ + CH₃Cl → C₆H₅CH₃ + HCl (toluene, FC alkylation) | C₆H₆ + CH₃COCl → C₆H₅COCH₃ + HCl (FC acylation)",
+    points:["AlCl₃ generates electrophile (R⁺ or RCO⁺)","Alkylation: prone to polyalkylation and rearrangement","Acylation: no rearrangement, no polyacylation","Does NOT work on deactivated rings (–NO₂, –CHO, etc.)","Does NOT work on amines (they form complex with AlCl₃)"],
+    tip:"FC Acylation + Clemmensen/Wolff-Kishner reduction = best way to introduce a straight-chain alkyl group without rearrangement."
+  },
+  wurtz:{
+    title:"Wurtz Reaction",
+    def:"Two molecules of <b>alkyl halide react with sodium</b> metal in dry ether to form an alkane with double the carbon number.",
+    examples:"2 CH₃Br + 2 Na → CH₃–CH₃ + 2 NaBr",
+    points:["Best for symmetrical alkanes (same R–X)","Mixed Wurtz with different R–X gives mixture of 3 products","Coupling reaction — forms new C–C bond","Dry ether as solvent"],
+    tip:"For unsymmetrical alkanes, Wurtz gives a mixture — not a good synthetic method. Use Corey-House instead."
+  },
+  acidity:{
+    title:"Acidity in Organic Chemistry",
+    def:"Ability of a compound to <b>donate a proton (H⁺)</b>. Stronger acid = more stable conjugate base.",
+    examples:"Carboxylic acids > Phenol > Alcohols > Water > Alkynes > Ammonia > Alkanes",
+    points:["Stability of conjugate base determines acid strength","Resonance stabilisation of –COO⁻ makes carboxylic acids strong","Electron-withdrawing groups (–NO₂, –Cl) increase acidity","Electron-donating groups (–CH₃, –OCH₃) decrease acidity","Acidity order of phenols: p-nitrophenol > phenol > p-cresol"],
+    tip:"Compare acidity by comparing stability of conjugate base. More stable base → stronger acid."
+  },
+  basicity:{
+    title:"Basicity of Amines",
+    def:"Ability to <b>donate the lone pair on nitrogen</b> to a proton. Depends on availability of lone pair.",
+    examples:"Aliphatic amines > NH₃ > Aromatic amines (in aqueous solution)",
+    points:["More electron density on N → stronger base","+I groups (alkyl) increase basicity: R₂NH > RNH₂ > NH₃","In water: 2° > 1° > 3° (solvation effect on 3°)","In gas phase: 3° > 2° > 1° (pure inductive effect)","Resonance with ring decreases basicity of aromatic amines"],
+    tip:"Basicity in water: (C₂H₅)₂NH > C₂H₅NH₂ > (C₂H₅)₃N > NH₃ > C₆H₅NH₂. Learn this exact order!"
+  },
+  "steric-effect":{
+    title:"Steric Effect",
+    def:"The effect of the <b>size/bulk of groups</b> on the rate and course of a reaction. Bulky groups hinder approach of reagents.",
+    examples:"tert-Butyl groups block SN2 backside attack; neopentyl halides are extremely slow in SN2",
+    points:["SN2 reactivity decreases with increasing steric bulk around the carbon","Bulky bases favour E2 over SN2","Ortho effect in benzoic acid derivatives","Steric strain in molecules affects stability"],
+    tip:"3° substrates don't undergo SN2 due to steric hindrance — they go SN1 or E1/E2 instead."
+  },
+  "leaving-group":{
+    title:"Leaving Group",
+    def:"A group that <b>departs with the bonding electron pair</b> during a substitution or elimination. Good leaving groups are stable after departure (weak bases).",
+    examples:"Best leaving groups: I⁻ > Br⁻ > Cl⁻ > F⁻ > OH₂ (water from protonated alcohol) >> OH⁻, NH₂⁻ (very poor)",
+    points:["Weak bases make good leaving groups","Leaving group ability ↑ with size (better charge dispersal)","Tosylate (TsO⁻) is an excellent leaving group","OH⁻ is a terrible leaving group — that's why alcohols need acid catalyst","Protonation converts –OH to –OH₂⁺ (water = good leaving group)"],
+    tip:"F⁻ is the worst halide leaving group despite being most electronegative — its small size concentrates charge."
+  }
+};
+
+/* ================================================================
+   SEARCH INDEX (built dynamically from DOM)
+   ================================================================ */
+let searchIndex = [];
+
+/* ================================================================
+   NAVIGATION
+   ================================================================ */
+function navigateTo(sectionId){
+  document.querySelectorAll('.chapter-section').forEach(s=>s.classList.remove('active'));
+  const sec=document.getElementById(sectionId);
+  if(sec) sec.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
+  const navItem=document.querySelector('[data-section="'+sectionId+'"]');
+  if(navItem) navItem.classList.add('active');
+  // close mobile sidebar
+  document.getElementById('sidebar').classList.remove('mobile-open');
+  document.getElementById('sb-overlay').classList.remove('active');
+}
+
+function navigateToTopic(topicId){
+  const topic=document.getElementById(topicId);
+  if(!topic) return;
+  const sec=topic.closest('.chapter-section');
+  if(sec){
+    navigateTo(sec.id);
+    // expand topic if collapsed
+    const hdr=topic.querySelector('.topic-header');
+    if(hdr && !hdr.classList.contains('expanded')){
+      setTimeout(()=>toggleTopic(hdr),100);
+    }
+    setTimeout(()=>topic.scrollIntoView({behavior:'smooth',block:'start'}),350);
+  }
+}
+
+/* ================================================================
+   TOPIC TOGGLE (expand/collapse)
+   ================================================================ */
+function toggleTopic(header){
+  const content=header.nextElementSibling;
+  if(!content) return;
+  const isExpanded=header.classList.contains('expanded');
+  if(isExpanded){
+    content.style.maxHeight=content.scrollHeight+'px';
+    requestAnimationFrame(()=>{
+      content.style.maxHeight='0';
+      content.classList.remove('expanded');
+    });
+    header.classList.remove('expanded');
+  } else {
+    header.classList.add('expanded');
+    content.classList.add('expanded');
+    content.style.maxHeight=content.scrollHeight+'px';
+    setTimeout(()=>{content.style.maxHeight='none';},400);
+  }
+}
+
+/* ================================================================
+   REACTION VIEWER
+   ================================================================ */
+function nextStep(btn){
+  const v=btn.closest('.reaction-viewer');
+  const steps=v.querySelectorAll('.rv-step');
+  const ci=[...steps].findIndex(s=>s.classList.contains('active'));
+  if(ci<steps.length-1){steps[ci].classList.remove('active');steps[ci+1].classList.add('active');updateRV(v);}
+}
+function prevStep(btn){
+  const v=btn.closest('.reaction-viewer');
+  const steps=v.querySelectorAll('.rv-step');
+  const ci=[...steps].findIndex(s=>s.classList.contains('active'));
+  if(ci>0){steps[ci].classList.remove('active');steps[ci-1].classList.add('active');updateRV(v);}
+}
+function updateRV(v){
+  const steps=v.querySelectorAll('.rv-step');
+  const ci=[...steps].findIndex(s=>s.classList.contains('active'));
+  const p=v.querySelector('.rv-prev'),n=v.querySelector('.rv-next'),t=v.querySelector('.rv-st'),d=v.querySelector('.rv-dots');
+  if(p)p.disabled=ci===0; if(n)n.disabled=ci===steps.length-1;
+  if(t)t.textContent='Step '+(ci+1)+' of '+steps.length;
+  if(d){d.innerHTML='';steps.forEach((_,i)=>{const dot=document.createElement('div');dot.className='rv-dot'+(i===ci?' active':'');d.appendChild(dot);});}
+}
+
+/* ================================================================
+   CONCEPT MODAL
+   ================================================================ */
+function showConcept(id){
+  const c=concepts[id];
+  if(!c){console.warn('Concept not found:',id);return;}
+  document.getElementById('modal-title').textContent=c.title;
+  let h='<p>'+c.def+'</p>';
+  if(c.formula) h+='<div class="ms"><h4>Representation</h4><div class="me">'+c.formula+'</div></div>';
+  if(c.examples) h+='<div class="ms"><h4>Examples</h4><div class="me">'+c.examples+'</div></div>';
+  if(c.points){h+='<div class="ms"><h4>Key Points</h4><ul style="padding-left:16px;">';c.points.forEach(p=>h+='<li style="margin-bottom:4px;">'+p+'</li>');h+='</ul></div>';}
+  if(c.tip) h+='<div class="neet-tip" style="margin-top:12px;"><div class="ib-title">🎯 Exam Tip</div>'+c.tip+'</div>';
+  document.getElementById('modal-body').innerHTML=h;
+  document.getElementById('concept-modal').classList.add('active');
+}
+function closeModal(){document.getElementById('concept-modal').classList.remove('active');}
+
+/* ================================================================
+   SEARCH
+   ================================================================ */
+function handleSearch(q){
+  const r=document.getElementById('search-results');
+  if(!q.trim()){r.classList.remove('active');return;}
+  const ql=q.toLowerCase();
+  const m=searchIndex.filter(i=>i.text.toLowerCase().includes(ql));
+  if(m.length>0){
+    r.innerHTML=m.slice(0,10).map(i=>'<div class="sr-item" onclick="navigateToTopic(\''+i.tid+'\')"><div>'+i.text+'</div><div class="sr-ch">'+i.ch+'</div></div>').join('');
+    r.classList.add('active');
+  } else {
+    r.innerHTML='<div class="sr-item" style="cursor:default;">No results found</div>';r.classList.add('active');
+  }
+}
+
+/* ================================================================
+   SIDEBAR
+   ================================================================ */
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('mobile-open');
+  document.getElementById('sb-overlay').classList.toggle('active');
+}
+function toggleSubList(id){document.getElementById(id).classList.toggle('expanded');}
+
+/* ================================================================
+   DARK MODE
+   ================================================================ */
+function toggleDark(){
+  document.body.classList.toggle('dark-mode');
+  const btn=document.querySelector('.dm-toggle');
+  btn.textContent=document.body.classList.contains('dark-mode')?'☀️ Light':'🌙 Dark';
+}
+
+/* ================================================================
+   INIT
+   ================================================================ */
+document.addEventListener('DOMContentLoaded',()=>{
+  // Concept refs
+  document.querySelectorAll('.concept-ref').forEach(el=>{
+    el.addEventListener('click',()=>showConcept(el.dataset.concept));
+  });
+  // Nav items
+  document.querySelectorAll('.nav-item').forEach(item=>{
+    item.addEventListener('click',()=>{
+      if(item.dataset.section) navigateTo(item.dataset.section);
+      if(item.dataset.toggle) toggleSubList(item.dataset.toggle);
+    });
+  });
+  // Sub nav items
+  document.querySelectorAll('.nav-si').forEach(item=>{
+    item.addEventListener('click',()=>navigateToTopic(item.dataset.topic));
+  });
+  // Chapter cards
+  document.querySelectorAll('.ch-card').forEach(card=>{
+    card.addEventListener('click',()=>navigateTo(card.dataset.section));
+  });
+  // Modal close
+  document.getElementById('concept-modal').addEventListener('click',e=>{
+    if(e.target.classList.contains('modal-overlay'))closeModal();
+  });
+  document.querySelector('.modal-close').addEventListener('click',closeModal);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+  // Search close on outside click
+  document.addEventListener('click',e=>{
+    if(!e.target.closest('.search-box'))document.getElementById('search-results').classList.remove('active');
+  });
+  // Init reaction viewers
+  document.querySelectorAll('.reaction-viewer').forEach(v=>updateRV(v));
+  // Build search index
+  document.querySelectorAll('.topic-group').forEach(g=>{
+    const sec=g.closest('.chapter-section');
+    const chT=sec?.querySelector('.ch-title')?.textContent||'';
+    const t=g.querySelector('.topic-header h3')?.textContent||'';
+    if(g.id && t) searchIndex.push({text:t,tid:g.id,ch:chT});
+  });
+  // Also add concept names to search
+  Object.keys(concepts).forEach(k=>{
+    searchIndex.push({text:concepts[k].title,tid:'catalog',ch:'Concept: '+concepts[k].title});
+  });
+  // Show catalog
+  navigateTo('catalog');
+});
+</script>
+</body>
+</html>

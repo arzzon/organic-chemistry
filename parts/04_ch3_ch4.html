@@ -1,0 +1,691 @@
+<section id="ch3" class="chapter-section">
+  <div class="ch-head">
+    <div class="ch-num">Chapter 3</div>
+    <h2 class="ch-title">Haloalkanes and Haloarenes</h2>
+    <p class="ch-sub">Preparation, properties, and important nucleophilic substitution mechanisms.</p>
+  </div>
+  
+  <div class="topic-group" id="ch3-classification">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Classification & Nomenclature</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Haloalkanes and haloarenes are classified on the basis of the number of halogen atoms and the hybridization of the carbon atom to which they are bonded.</p>
+        
+        <h4>Based on Number of Halogen Atoms</h4>
+        <ul>
+          <li><strong>Monohalo:</strong> Contain one halogen atom (e.g., CH<sub>3</sub>CH<sub>2</sub>X)</li>
+          <li><strong>Dihalo:</strong> Contain two halogen atoms (e.g., CH<sub>2</sub>X<sub>2</sub>)</li>
+          <li><strong>Polyhalo:</strong> Contain multiple halogen atoms (tri, tetra, etc.)</li>
+        </ul>
+
+        <h4>Based on sp³ C-X Bond</h4>
+        <ul>
+          <li><strong>Alkyl Halides (R-X):</strong> X attached to alkyl group. Classified as 1°, 2°, or 3° based on the carbon holding the halogen.</li>
+          <li><strong>Allylic Halides:</strong> X attached to sp³ carbon adjacent to a C=C double bond.</li>
+          <li><strong>Benzylic Halides:</strong> X attached to sp³ carbon next to an aromatic ring.</li>
+        </ul>
+
+        <h4>Based on sp² C-X Bond</h4>
+        <ul>
+          <li><strong>Vinylic Halides:</strong> X attached directly to one of the carbon atoms of a C=C double bond.</li>
+          <li><strong>Aryl Halides:</strong> X attached directly to an aromatic ring.</li>
+        </ul>
+
+        <div class="note-box">
+          <div class="ib-title">📝 IUPAC Naming Rules</div>
+          <ol class="point-list">
+            <li>Select the longest carbon chain containing the halogen.</li>
+            <li>Number to give the lowest locant to the halogen.</li>
+            <li>Name halogens as substituents: fluoro, chloro, bromo, iodo.</li>
+          </ol>
+        </div>
+        
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Alkyl halides are 1°, 2°, or 3° depending on the carbon atom.</li>
+            <li>Vinylic and aryl halides involve sp² hybridized carbon holding the halogen.</li>
+            <li>Common names exist like chloroform, bromoform, etc.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch3-preparation">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Methods of Preparation</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>Haloalkanes can be prepared from alcohols, hydrocarbons, and by halogen exchange.</p>
+
+        <h4>1. From Alcohols</h4>
+        <ul>
+          <li><strong>Using HX:</strong> R-OH + HX <span class="arr">→</span> R-X + H<sub>2</sub>O. Reactivity: HI > HBr > HCl. For primary/secondary, ZnCl<sub>2</sub> (Lucas reagent) is used with HCl.</li>
+          <li><strong>Using Phosphorus Halides:</strong> 3R-OH + PCl<sub>3</sub> <span class="arr">→</span> 3R-Cl + H<sub>3</sub>PO<sub>3</sub>.</li>
+          <li><strong>Darzen's Process:</strong> Using SOCl<sub>2</sub>. This is the preferred method!</li>
+        </ul>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Darzen's Process</div>
+          <div class="rv-overall">Overall: R-OH + SOCl₂ → R-Cl + SO₂↑ + HCl↑</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R-OH + SOCl₂ → R-O-SOCl + HCl</div>
+            <div class="rv-step-title">Step 1: Formation of Alkyl Chlorosulfite</div>
+            <div class="rv-step-explain">The alcohol reacts with thionyl chloride to form an alkyl chlorosulfite intermediate.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Oxygen acts as a <span class="concept-ref" data-concept="nucleophile">nucleophile</span> and attacks the electrophilic sulfur.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">R-O-SOCl → R-Cl + SO₂↑</div>
+            <div class="rv-step-title">Step 2: Decomposition</div>
+            <div class="rv-step-explain">The intermediate decomposes to give the alkyl chloride.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The formation of highly stable SO₂ gas drives the reaction forward. Since both byproducts (SO₂ and HCl) are gases, they escape, leaving pure alkyl chloride!</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <h4>2. From Hydrocarbons</h4>
+        <ul>
+          <li><strong>Free Radical Halogenation:</strong> Alkanes + X<sub>2</sub> (UV light) <span class="arr">→</span> mixture of isomeric haloalkanes.</li>
+          <li><strong>Electrophilic Substitution:</strong> Arenes + X<sub>2</sub> (Fe or FeCl<sub>3</sub>) <span class="arr">→</span> Aryl halides.</li>
+        </ul>
+
+        <h4>3. Halide Exchange</h4>
+        <ul>
+          <li><strong>Finkelstein Reaction:</strong> R-Cl/Br + NaI <span class="arr">→</span> R-I + NaCl/NaBr (in dry acetone). Precipitates NaCl/NaBr.</li>
+          <li><strong>Swarts Reaction:</strong> Synthesis of alkyl fluorides. R-Cl/Br + AgF/Hg<sub>2</sub>F<sub>2</sub>/CoF<sub>3</sub>/SbF<sub>3</sub> <span class="arr">→</span> R-F.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>SOCl<sub>2</sub> is best for alkyl chlorides because byproducts are gases.</li>
+            <li>Finkelstein is for alkyl iodides (NaI in acetone).</li>
+            <li>Swarts is for alkyl fluorides.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch3-physical">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Physical Properties</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <ul>
+          <li><strong>Boiling Points:</strong> R-I > R-Br > R-Cl > R-F. BP increases with molecular mass. For isomeric haloalkanes, BP decreases with branching (due to reduced surface area and van der Waals forces).</li>
+          <li><strong>Density:</strong> Bromo, iodo, and polychloro derivatives are heavier than water. Density increases with number of carbon atoms, halogen atoms, and atomic mass of halogen.</li>
+          <li><strong>Solubility:</strong> Insoluble in water despite being polar, because they cannot form H-bonds with water and breaking existing H-bonds requires more energy. Soluble in organic solvents.</li>
+          <li><strong>Dipole Moment:</strong> Usually CH<sub>3</sub>Cl > CH<sub>3</sub>F > CH<sub>3</sub>Br > CH<sub>3</sub>I. Fluorine is more electronegative, but Cl has a larger size, making its dipole moment slightly higher.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Branching lowers boiling point.</li>
+            <li>Insoluble in water.</li>
+            <li>CH<sub>3</sub>Cl has a higher dipole moment than CH<sub>3</sub>F.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch3-sn">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Nucleophilic Substitution Reactions (S<sub>N</sub>1 and S<sub>N</sub>2)</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>A <span class="concept-ref" data-concept="nucleophile">nucleophile</span> replaces the halogen atom. These are classified into S<sub>N</sub>1 and S<sub>N</sub>2 mechanisms.</p>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: S<sub>N</sub>2 Mechanism</div>
+          <div class="rv-overall">Overall: CH₃Br + OH⁻ → CH₃OH + Br⁻</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">HO⁻ + CH₃-Br → [HO---CH₃---Br]⁻</div>
+            <div class="rv-step-title">Step 1: Backside Attack & Transition State</div>
+            <div class="rv-step-explain">The nucleophile (OH⁻) attacks from the opposite side of the leaving group (Br).</div>
+            <div class="rv-step-why"><strong>Why?</strong> The front side is blocked by the bulky, electron-rich Br atom (<span class="concept-ref" data-concept="steric-effect">steric hindrance</span>). A transition state is formed with partial bonds.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">[HO---CH₃---Br]⁻ → HO-CH₃ + Br⁻</div>
+            <div class="rv-step-title">Step 2: Walden Inversion</div>
+            <div class="rv-step-explain">The C-Br bond breaks as the C-OH bond fully forms, inverting the configuration like an umbrella blowing inside out.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The energy drops as stable products form. This one-step concerted process results in 100% inversion of configuration.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: S<sub>N</sub>1 Mechanism</div>
+          <div class="rv-overall">Overall: (CH₃)₃C-Br + H₂O → (CH₃)₃C-OH + HBr</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">(CH₃)₃C-Br ⇌ (CH₃)₃C⁺ + Br⁻</div>
+            <div class="rv-step-title">Step 1: Ionisation (Slow, Rate Determining)</div>
+            <div class="rv-step-explain">The C-Br bond undergoes slow heterolysis to form a stable carbocation and bromide ion.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The resulting 3° <span class="concept-ref" data-concept="carbocation">carbocation</span> is stabilized by hyperconjugation and inductive effects. A polar protic solvent assists by solvating the ions.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">(CH₃)₃C⁺ + H₂O → (CH₃)₃C-OH₂⁺ → (CH₃)₃C-OH + H⁺</div>
+            <div class="rv-step-title">Step 2: Nucleophilic Attack (Fast)</div>
+            <div class="rv-step-explain">The nucleophile (H₂O) attacks the planar carbocation from either side.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The carbocation is sp² hybridized (planar), so attack from top or bottom is equally likely, leading to racemisation (if chiral).</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <h4>S<sub>N</sub>1 vs S<sub>N</sub>2 Comparison</h4>
+        <table class="comparison-table">
+          <tr><th>Feature</th><th>S<sub>N</sub>1</th><th>S<sub>N</sub>2</th></tr>
+          <tr><td>Rate Law</td><td>Unimolecular: Rate = k[R-X]</td><td>Bimolecular: Rate = k[R-X][Nu⁻]</td></tr>
+          <tr><td>Substrate Reactivity</td><td>3° > 2° > 1° > Methyl</td><td>Methyl > 1° > 2° > 3°</td></tr>
+          <tr><td>Stereochemistry</td><td>Racemisation (mostly)</td><td>Inversion (Walden Inversion)</td></tr>
+          <tr><td>Nucleophile</td><td>Weak/neutral is fine</td><td>Strong nucleophile preferred</td></tr>
+          <tr><td>Solvent</td><td>Polar protic (H₂O, alcohols)</td><td>Polar aprotic (Acetone, DMSO)</td></tr>
+          <tr><td>Rearrangements</td><td>Possible (carbocation forms)</td><td>Not possible</td></tr>
+        </table>
+
+        <h4>Reactions of Haloalkanes</h4>
+        <ul>
+          <li><strong>Aqueous KOH:</strong> Yields Alcohols (S<sub>N</sub>)</li>
+          <li><strong>Alcoholic KOH:</strong> Yields Alkenes (Elimination)</li>
+          <li><strong>Ambident Nucleophiles:</strong>
+            <ul>
+              <li>KCN (ionic) <span class="arr">→</span> Alkyl Cyanides (R-CN). C attacks.</li>
+              <li>AgCN (covalent) <span class="arr">→</span> Alkyl Isocyanides (R-NC). N attacks.</li>
+              <li>KNO<sub>2</sub> <span class="arr">→</span> Alkyl Nitrite (R-O-N=O). O attacks.</li>
+              <li>AgNO<sub>2</sub> <span class="arr">→</span> Nitroalkane (R-NO<sub>2</sub>). N attacks.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <div class="neet-tip">
+          <div class="ib-title">🧬 NEET Tip</div>
+          <p>KCN is largely ionic and provides cyanide ions in solution. Carbon is a better nucleophile than nitrogen, so C-attack happens. AgCN is covalent, leaving only the N lone pair free, resulting in isocyanides!</p>
+        </div>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>S<sub>N</sub>2 involves backside attack, causing inversion. Favored by 1° halides.</li>
+            <li>S<sub>N</sub>1 involves carbocation formation, causing racemisation. Favored by 3° halides.</li>
+            <li>Good <span class="concept-ref" data-concept="leaving-group">leaving group</span> (like I⁻) increases the rate of both S<sub>N</sub>1 and S<sub>N</sub>2.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch3-elimination">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Elimination Reactions</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <p>When heated with alcoholic KOH, haloalkanes undergo β-elimination (dehydrohalogenation) to form alkenes.</p>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: E1 Mechanism</div>
+          <div class="rv-overall">Overall: (CH₃)₃C-Br + Base → CH₂=C(CH₃)₂ + HBr</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">(CH₃)₃C-Br ⇌ (CH₃)₃C⁺ + Br⁻</div>
+            <div class="rv-step-title">Step 1: Carbocation Formation</div>
+            <div class="rv-step-explain">Similar to SN1, the leaving group leaves to form a carbocation.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The tertiary carbocation is highly stable.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Base removes β-H from (CH₃)₃C⁺ → C=C</div>
+            <div class="rv-step-title">Step 2: Deprotonation</div>
+            <div class="rv-step-explain">A weak base abstracts a proton from a β-carbon, forming a double bond.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Instead of acting as a nucleophile, the base takes a proton, which is driven by heat and stability of the alkene.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: E2 Mechanism</div>
+          <div class="rv-overall">Overall: Base + R-CH₂-CH₂-Br → R-CH=CH₂ + Base-H + Br⁻</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">B:⁻ + H-C(β)-C(α)-Br → [Transition State] → C=C</div>
+            <div class="rv-step-title">Step 1: Concerted Elimination</div>
+            <div class="rv-step-explain">The base removes the β-proton as the double bond forms and the leaving group departs, all in one step.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Requires strong base. Must be anti-periplanar (H and Br on opposite sides) to minimize steric hindrance and allow orbital overlap.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 1</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <h4><span class="concept-ref" data-concept="saytzeff">Saytzeff's Rule</span></h4>
+        <p>In dehydrohalogenation reactions, the preferred product is that alkene which has the greater number of alkyl groups attached to the doubly bonded carbon atoms (more substituted alkene is more stable).</p>
+
+        <h4>Substitution vs Elimination</h4>
+        <ul>
+          <li><strong>S<sub>N</sub>1 vs E1:</strong> Heat favors E1. Both go through carbocations.</li>
+          <li><strong>S<sub>N</sub>2 vs E2:</strong> Bulky base (like t-BuO⁻) favors E2. Strong bases favor E2. 3° halides always give E2 with strong bases. Aqueous conditions favor S<sub>N</sub>2, alcoholic conditions favor E2.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Elimination requires heating and alcoholic KOH.</li>
+            <li>Saytzeff's rule: More highly substituted alkene is the major product.</li>
+            <li>E2 requires anti-periplanar geometry.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch3-polyhalogen">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Polyhalogen Compounds</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <ul>
+          <li><strong>Dichloromethane (CH<sub>2</sub>Cl<sub>2</sub>):</strong> Used as a solvent, paint remover. Harms CNS.</li>
+          <li><strong>Chloroform (CHCl<sub>3</sub>):</strong> Used as a solvent. Forms poisonous gas phosgene (COCl<sub>2</sub>) when exposed to air and light (stored in dark bottles).</li>
+          <li><strong>Carbon Tetrachloride (CCl<sub>4</sub>):</strong> Used in fire extinguishers (Pyrene). Causes ozone depletion.</li>
+          <li><strong>Iodoform (CHI<sub>3</sub>):</strong> Yellow solid, used as a mild antiseptic due to liberation of free I<sub>2</sub>.</li>
+          <li><strong>Freons (CFCs):</strong> e.g., CCl<sub>2</sub>F<sub>2</sub> (Freon-12). Used as refrigerants. Cause severe ozone depletion.</li>
+          <li><strong>DDT:</strong> p,p'-Dichlorodiphenyltrichloroethane. Powerful insecticide but banned due to non-biodegradability and biological magnification.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Chloroform is stored in dark bottles to prevent phosgene formation.</li>
+            <li>CFCs and CCl<sub>4</sub> deplete the ozone layer.</li>
+            <li>DDT is highly stable and fat-soluble, leading to accumulation in the food chain.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ch4" class="chapter-section">
+  <div class="ch-head">
+    <div class="ch-num">Chapter 4</div>
+    <h2 class="ch-title">Alcohols, Phenols and Ethers</h2>
+    <p class="ch-sub">Preparation, properties and reactions of oxygen-containing functional groups.</p>
+  </div>
+  
+  <div class="topic-group" id="ch4-classification">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Classification & Nomenclature</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>Alcohols & Phenols Classification</h4>
+        <ul>
+          <li><strong>Mono, Di, Trihydric:</strong> Contain one, two, or three -OH groups respectively.</li>
+          <li><strong>Alcohols (1°, 2°, 3°):</strong> Based on the sp³ carbon holding the -OH group.</li>
+          <li><strong>Allylic & Benzylic:</strong> -OH attached to sp³ C next to a C=C or benzene ring.</li>
+          <li><strong>Vinylic & Phenols:</strong> -OH directly on sp² C.</li>
+        </ul>
+
+        <div class="note-box">
+          <div class="ib-title">📝 Naming</div>
+          <ol class="point-list">
+            <li><strong>Alcohols:</strong> Alkane - 'e' + 'ol' = Alkanol.</li>
+            <li><strong>Phenols:</strong> Derivatives of phenol. Common names: cresol (methylphenol), catechol (1,2-benzenediol), resorcinol (1,3-benzenediol), hydroquinone (1,4-benzenediol).</li>
+            <li><strong>Ethers:</strong> Alkoxyalkanes. The smaller alkyl group gets the 'oxy'.</li>
+          </ol>
+        </div>
+        
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Alcohols are sp³ C-OH, Phenols are sp²(aromatic) C-OH.</li>
+            <li>Ethers are R-O-R'.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch4-preparation">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Preparation of Alcohols</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>1. From Alkenes</h4>
+        <ul>
+          <li><strong>Acid-Catalysed Hydration:</strong> Follows <span class="concept-ref" data-concept="markownikoff">Markownikoff's rule</span>. (H₂O/H⁺). Carbocation intermediate.</li>
+          <li><strong>Hydroboration-Oxidation:</strong> Follows anti-Markownikoff addition (B₂H₆ then H₂O₂/OH⁻). No rearrangement, pure alcohols formed.</li>
+        </ul>
+
+        <h4>2. From Carbonyl Compounds</h4>
+        <ul>
+          <li><strong>Reduction:</strong> Aldehydes <span class="arr">→</span> 1° Alcohols. Ketones <span class="arr">→</span> 2° Alcohols. Using H₂/Pd, NaBH₄, or LiAlH₄.</li>
+          <li><strong>From Carboxylic Acids/Esters:</strong> Reduced by strong LiAlH₄ to 1° alcohols.</li>
+        </ul>
+
+        <h4>3. From Grignard Reagents</h4>
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Grignard Synthesis of Alcohols</div>
+          <div class="rv-overall">Overall: R-MgX + >C=O → >C(R)-OH</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R⁻ δ- -- Mg⁺X δ+   +   C=O δ+ δ-  → R-C-O⁻MgX⁺</div>
+            <div class="rv-step-title">Step 1: Nucleophilic Addition</div>
+            <div class="rv-step-explain">The nucleophilic R group of Grignard attacks the electrophilic carbonyl carbon.</div>
+            <div class="rv-step-why"><strong>Why?</strong> <span class="concept-ref" data-concept="grignard">Grignard reagent</span> acts as a carbanion source. The carbonyl C is partially positive.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">R-C-O⁻MgX⁺ + H₂O → R-C-OH + Mg(OH)X</div>
+            <div class="rv-step-title">Step 2: Hydrolysis</div>
+            <div class="rv-step-explain">The magnesium alkoxide intermediate is hydrolyzed to form the alcohol.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The O-Mg bond is ionic and easily broken by water/acid to yield the neutral alcohol.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 2</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+        <p><strong>Yields:</strong> HCHO + RMgX <span class="arr">→</span> 1° Alcohol. RCHO + RMgX <span class="arr">→</span> 2° Alcohol. R₂CO + RMgX <span class="arr">→</span> 3° Alcohol.</p>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Hydroboration-Oxidation is ideal for anti-Markownikoff hydration.</li>
+            <li>Formaldehyde + Grignard = 1° alcohol; other aldehydes = 2°; ketones = 3°.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch4-reactions">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Reactions of Alcohols</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>1. Cleavage of O-H Bond (Acidity)</h4>
+        <ul>
+          <li><strong>Reaction with Na:</strong> 2R-OH + 2Na <span class="arr">→</span> 2R-O⁻Na⁺ + H₂↑. Shows weakly acidic nature.</li>
+          <li><strong>Acidity Order:</strong> Water > 1° > 2° > 3° Alcohols. Electron-donating alkyl groups decrease acidity.</li>
+          <li><strong>Esterification:</strong> R-OH + R'COOH ⇌ R'COOR + H₂O (Acid catalysed).</li>
+        </ul>
+
+        <h4>2. Cleavage of C-O Bond</h4>
+        <ul>
+          <li><strong><span class="concept-ref" data-concept="lucas-test">Lucas Test</span> (HCl/ZnCl₂):</strong> Distinguishes 1°, 2°, 3° alcohols.
+            <ul>
+              <li>3°: Turbidity appears immediately.</li>
+              <li>2°: Turbidity in 5 minutes.</li>
+              <li>1°: No turbidity at room temperature.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h4>3. Dehydration of Alcohols (E1 Mechanism)</h4>
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Dehydration of Alcohols</div>
+          <div class="rv-overall">Overall: R-CH₂-CH₂-OH (H⁺/Δ) → R-CH=CH₂ + H₂O</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R-OH + H⁺ ⇌ R-OH₂⁺</div>
+            <div class="rv-step-title">Step 1: Protonation</div>
+            <div class="rv-step-explain">The alcohol oxygen gets protonated by the acid.</div>
+            <div class="rv-step-why"><strong>Why?</strong> OH⁻ is a poor leaving group. Protonation converts it into H₂O, an excellent leaving group.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">R-OH₂⁺ ⇌ R⁺ + H₂O</div>
+            <div class="rv-step-title">Step 2: Carbocation Formation</div>
+            <div class="rv-step-explain">Water leaves, forming a <span class="concept-ref" data-concept="carbocation">carbocation</span>. This is the slow step.</div>
+            <div class="rv-step-why"><strong>Why?</strong> C-O bond breaks. Stability order: 3° > 2° > 1°, hence 3° alcohols dehydrate easiest.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">H-C-C⁺ → C=C + H⁺</div>
+            <div class="rv-step-title">Step 3: Deprotonation</div>
+            <div class="rv-step-explain">A proton is lost to form the alkene. Follows <span class="concept-ref" data-concept="saytzeff">Saytzeff Rule</span>.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Loss of H⁺ from adjacent carbon restores the electron pair and completes the double bond.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 3</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <h4>4. Oxidation & Dehydrogenation</h4>
+        <ul>
+          <li><strong>Oxidation:</strong>
+            <ul>
+              <li>1° Alcohol <span class="arr">→</span> Aldehyde (PCC/CrO₃) <span class="arr">→</span> Acid (KMnO₄/K₂Cr₂O₇).</li>
+              <li>2° Alcohol <span class="arr">→</span> Ketone (CrO₃).</li>
+              <li>3° Alcohol <span class="arr">→</span> No reaction (Requires severe conditions, cleaves C-C bonds).</li>
+            </ul>
+          </li>
+          <li><strong>Dehydrogenation (Cu/573K):</strong> 1° gives aldehyde, 2° gives ketone, 3° gives alkene (dehydration!).</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Alcohols are weaker acids than water.</li>
+            <li>Lucas test differentiates based on carbocation stability.</li>
+            <li>Dehydration reactivity: 3° > 2° > 1°.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch4-phenols">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Phenols</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>Preparation</h4>
+        <ul>
+          <li><strong>Dow's Process:</strong> Chlorobenzene + NaOH (623K, 300atm) <span class="arr">→</span> Sodium phenoxide <span class="arr">→</span> Phenol.</li>
+          <li><strong>From Cumene (Isopropylbenzene):</strong> Cumene is oxidized to cumene hydroperoxide, which is cleaved by acid into Phenol + Acetone (excellent yield of both).</li>
+        </ul>
+
+        <h4>Acidity of Phenols</h4>
+        <p>Phenols are stronger acids than alcohols and water because the phenoxide ion is stabilized by <span class="concept-ref" data-concept="resonance">resonance</span>. Subsituent effects:</p>
+        <ul>
+          <li><strong>Electron Withdrawing Groups (-NO₂):</strong> Increase acidity (stabilize phenoxide). Greater effect at ortho/para.</li>
+          <li><strong>Electron Donating Groups (-CH₃):</strong> Decrease acidity (destabilize phenoxide).</li>
+        </ul>
+
+        <h4>Chemical Reactions</h4>
+        <p>Phenol undergoes <span class="concept-ref" data-concept="eas">Electrophilic Aromatic Substitution</span> very easily due to activation by -OH ring.</p>
+        
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Kolbe's Reaction</div>
+          <div class="rv-overall">Overall: Phenol + CO₂ / NaOH (H⁺) → Salicylic acid</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">Ph-OH + NaOH → Ph-O⁻Na⁺</div>
+            <div class="rv-step-title">Step 1: Formation of Phenoxide</div>
+            <div class="rv-step-explain">Phenol reacts with NaOH to form sodium phenoxide.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Phenoxide ion is even more reactive towards electrophilic substitution than phenol.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Ph-O⁻ + CO₂ → Ortho-attack intermediate</div>
+            <div class="rv-step-title">Step 2: Electrophilic Attack</div>
+            <div class="rv-step-explain">Weak electrophile CO₂ attacks the ortho position.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Ortho position is preferred due to proximity and chelation in the transition state.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">Intermediate + H⁺ → Salicylic acid (2-Hydroxybenzoic acid)</div>
+            <div class="rv-step-title">Step 3: Acidification</div>
+            <div class="rv-step-explain">Acid workup yields salicylic acid.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Restores aromaticity and protonates the carboxylate.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 3</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Reimer-Tiemann Reaction</div>
+          <div class="rv-overall">Overall: Phenol + CHCl₃ + aq. NaOH → Salicylaldehyde</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">CHCl₃ + OH⁻ → :CCl₂ + H₂O + Cl⁻</div>
+            <div class="rv-step-title">Step 1: Carbene Generation</div>
+            <div class="rv-step-explain">Chloroform reacts with base to generate Dichlorocarbene.</div>
+            <div class="rv-step-why"><strong>Why?</strong> :CCl₂ is an electron-deficient electrophile.</div>
+          </div>
+          <div class="rv-step" data-step="2">
+            <div class="rv-step-visual">Ph-O⁻ + :CCl₂ → ortho-CHCl₂ intermediate</div>
+            <div class="rv-step-title">Step 2: Electrophilic Attack</div>
+            <div class="rv-step-explain">Dichlorocarbene attacks phenoxide at the ortho position.</div>
+            <div class="rv-step-why"><strong>Why?</strong> Highly activated ring facilitates attack by the carbene.</div>
+          </div>
+          <div class="rv-step" data-step="3">
+            <div class="rv-step-visual">ortho-CHCl₂ + 2NaOH → ortho-CHO</div>
+            <div class="rv-step-title">Step 3: Hydrolysis</div>
+            <div class="rv-step-explain">Alkaline hydrolysis of the -CHCl₂ group gives the aldehyde (Salicylaldehyde).</div>
+            <div class="rv-step-why"><strong>Why?</strong> Disubstitution of Cl with OH creates an unstable gem-diol which loses water to form -CHO.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 3</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+        
+        <ul>
+          <li><strong>Reaction with Zn Dust:</strong> Phenol + Zn (heat) <span class="arr">→</span> Benzene + ZnO.</li>
+          <li><strong>Oxidation:</strong> Phenol + Na₂Cr₂O₇/H₂SO₄ <span class="arr">→</span> Benzoquinone (diketone).</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Phenol is significantly more acidic than alcohols due to resonance stabilization of phenoxide.</li>
+            <li>Kolbe yields Salicylic acid (uses CO₂).</li>
+            <li>Reimer-Tiemann yields Salicylaldehyde (uses CHCl₃ + NaOH, via carbene).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-group" id="ch4-ethers">
+    <div class="topic-header" onclick="toggleTopic(this)">
+      <span class="ti">▶</span>
+      <h3>Ethers</h3>
+    </div>
+    <div class="topic-content">
+      <div class="topic-body">
+        <h4>Preparation</h4>
+        <div class="reaction-viewer">
+          <div class="rv-header">🔬 Reaction: Williamson Ether Synthesis</div>
+          <div class="rv-overall">Overall: R-X + R'-O⁻Na⁺ → R-O-R' + NaX</div>
+          <div class="rv-step active" data-step="1">
+            <div class="rv-step-visual">R'-O⁻ + R-X → [R'-O---R---X]⁻ → R'-O-R + X⁻</div>
+            <div class="rv-step-title">Step 1: S<sub>N</sub>2 Attack</div>
+            <div class="rv-step-explain">The alkoxide ion attacks the alkyl halide via <span class="concept-ref" data-concept="sn2">S<sub>N</sub>2 mechanism</span>.</div>
+            <div class="rv-step-why"><strong>Why?</strong> The alkyl halide MUST be 1° or methyl. If a 2° or 3° halide is used, the strong alkoxide base causes E2 elimination instead, yielding alkenes! To make t-butyl methyl ether, use sodium t-butoxide + methyl bromide.</div>
+          </div>
+          <div class="rv-controls">
+            <button class="rv-btn rv-prev" onclick="prevStep(this)" disabled>← Previous</button>
+            <div class="rv-ind">
+              <span class="rv-st">Step 1 of 1</span>
+              <div class="rv-dots"></div>
+            </div>
+            <button class="rv-btn rv-next" onclick="nextStep(this)">Next →</button>
+          </div>
+        </div>
+
+        <div class="neet-tip">
+          <div class="ib-title">🧬 NEET Tip</div>
+          <p>Always use 1° Alkyl Halide in Williamson synthesis. If you use a 3° halide (like t-butyl bromide), elimination dominates and you get an alkene instead of an ether!</p>
+        </div>
+
+        <h4>Chemical Reactions</h4>
+        <ul>
+          <li><strong>Cleavage by HI:</strong> R-O-R' + HI <span class="arr">→</span> R-OH + R'-I.
+            <ul>
+              <li>If mixed ether (1° & 2° groups), I⁻ attacks the smaller alkyl group via S<sub>N</sub>2 (steric reasons).</li>
+              <li>If one group is 3°, it follows S<sub>N</sub>1 mechanism, so I⁻ attacks the 3° group (carbocation stability).</li>
+              <li>With excess HI: R-O-R' + 2HI <span class="arr">→</span> 2RI + H₂O.</li>
+              <li>Alkyl aryl ethers: Cleaves to Phenol + Alkyl Iodide (Aryl-O bond is stronger due to resonance).</li>
+            </ul>
+          </li>
+          <li><strong>Electrophilic Substitution of Anisole:</strong> Alkoxy group is activating and ortho/para directing. Undergoes halogenation, nitration, Friedel-Crafts easily.</li>
+        </ul>
+
+        <div class="summary-box">
+          <h4>⭐ Key Points</h4>
+          <ul>
+            <li>Williamson synthesis requires 1° alkyl halides.</li>
+            <li>Ether cleavage with HI: follows S<sub>N</sub>2 (attacks smaller group) unless a 3° group is present (follows S<sub>N</sub>1, attacks 3° group).</li>
+            <li>Alkyl aryl ethers always yield phenol + alkyl halide upon HI cleavage.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

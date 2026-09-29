@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Organic Chemistry — CBSE XII | Board & NEET Prep</title>
+<meta name="description" content="Interactive guide to Organic Chemistry for CBSE Class XII Board and NEET preparation">
+<style>
+/* ========== ROOT VARIABLES ========== */
+:root{
+  --primary:#1a73e8;--primary-dark:#1557b0;--primary-light:#e8f0fe;
+  --accent:#0d9488;--accent-light:#ccfbf1;--accent-dark:#0f766e;
+  --purple:#7c3aed;--purple-light:#ede9fe;
+  --orange:#ea580c;--orange-light:#fff7ed;
+  --yellow:#d97706;--yellow-light:#fffbeb;
+  --bg:#f0f4f8;--card:#ffffff;--text:#1e293b;--text-muted:#64748b;--border:#e2e8f0;
+  --sidebar-bg:#1e293b;--sidebar-text:#cbd5e1;
+  --radius:12px;--radius-sm:8px;
+  --shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.06);
+  --shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);
+  --transition:all .3s ease;
+  --sidebar-w:280px;--topbar-h:56px;
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --font-serif:Georgia,'Times New Roman',serif;
+}
+/* Dark mode */
+body.dark-mode{
+  --bg:#0f172a;--card:#1e293b;--text:#e2e8f0;--text-muted:#94a3b8;--border:#334155;
+  --primary-light:rgba(26,115,232,.15);--accent-light:rgba(13,148,136,.15);
+  --purple-light:rgba(124,58,237,.15);--orange-light:rgba(234,88,12,.15);
+  --yellow-light:rgba(217,119,6,.12);--shadow:0 1px 3px rgba(0,0,0,.3);
+}
+body.dark-mode #topbar{background:var(--card);border-color:var(--border);}
+body.dark-mode .topic-header:hover{background:rgba(26,115,232,.1);}
+body.dark-mode .equation-box{background:linear-gradient(135deg,#1e293b,#334155);}
+body.dark-mode .rv-step-visual{background:linear-gradient(135deg,#1e293b,#1a2e3b);border-color:var(--border);}
+body.dark-mode .comparison-table th{background:var(--primary-dark);}
+body.dark-mode .comparison-table tr:nth-child(even){background:rgba(255,255,255,.03);}
+
+/* ========== RESET & BASE ========== */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--topbar-h)+20px);}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.7;font-size:16px;}
+sub{font-size:.75em;vertical-align:sub;}
+sup{font-size:.75em;vertical-align:super;}
+a{color:var(--primary);text-decoration:none;}
+img{max-width:100%;border-radius:var(--radius-sm);}
+
+/* ========== TOPBAR ========== */
+#topbar{
+  position:fixed;top:0;left:0;right:0;height:var(--topbar-h);
+  background:var(--card);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;
+  padding:0 20px 0 calc(var(--sidebar-w)+20px);z-index:100;box-shadow:var(--shadow);
+}
+.menu-toggle{display:none;background:none;border:none;font-size:22px;cursor:pointer;color:var(--text);padding:4px 8px;}
+.search-box{flex:1;max-width:420px;position:relative;}
+.search-box input{
+  width:100%;padding:8px 14px 8px 38px;border:2px solid var(--border);border-radius:24px;
+  font-size:14px;background:var(--bg);transition:var(--transition);outline:none;color:var(--text);
+  font-family:var(--font-sans);
+}
+.search-box input:focus{border-color:var(--primary);background:var(--card);}
+.search-box .si{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:14px;pointer-events:none;}
+.search-results{
+  position:absolute;top:calc(100%+4px);left:0;right:0;background:var(--card);
+  border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);max-height:300px;
+  overflow-y:auto;display:none;z-index:101;border:1px solid var(--border);
+}
+.search-results.active{display:block;}
+.sr-item{padding:10px 14px;cursor:pointer;transition:var(--transition);border-bottom:1px solid var(--border);font-size:14px;}
+.sr-item:hover{background:var(--primary-light);}
+.sr-item .sr-ch{font-size:11px;color:var(--text-muted);margin-top:2px;}
+.dm-toggle{
+  background:none;border:2px solid var(--border);border-radius:20px;padding:6px 12px;
+  cursor:pointer;font-size:14px;transition:var(--transition);color:var(--text);white-space:nowrap;
+}
+.dm-toggle:hover{border-color:var(--primary);background:var(--primary-light);}
+
+/* ========== SIDEBAR ========== */
+#sidebar{
+  position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;
+  background:var(--sidebar-bg);color:var(--sidebar-text);overflow-y:auto;z-index:200;
+  transition:transform .3s ease;
+}
+.sb-head{padding:18px 20px;text-align:center;border-bottom:1px solid rgba(255,255,255,.08);}
+.sb-head h1{font-size:17px;color:#fff;font-weight:700;margin-bottom:2px;}
+.sb-head p{font-size:11px;color:var(--sidebar-text);opacity:.65;}
+#sidebar nav{padding:10px 0 20px;}
+.nav-sec{padding:14px 20px 6px;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.35);font-weight:700;}
+.nav-item{
+  display:flex;align-items:center;gap:10px;padding:9px 20px;color:var(--sidebar-text);
+  text-decoration:none;font-size:14px;transition:var(--transition);cursor:pointer;
+  border-left:3px solid transparent;
+}
+.nav-item:hover{background:rgba(255,255,255,.07);color:#fff;}
+.nav-item.active{background:rgba(26,115,232,.15);color:var(--primary);border-left-color:var(--primary);font-weight:600;}
+.nav-ch{font-weight:600;color:#fff!important;}
+.nav-item .ni{width:20px;text-align:center;flex-shrink:0;font-size:15px;}
+.nav-item .arrow{margin-left:auto;font-size:10px;transition:transform .3s;color:rgba(255,255,255,.3);}
+.nav-item.expanded .arrow{transform:rotate(90deg);}
+.nav-sub{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.nav-sub.expanded{max-height:600px;}
+.nav-si{
+  display:block;padding:5px 20px 5px 52px;font-size:13px;color:var(--sidebar-text);
+  text-decoration:none;transition:var(--transition);cursor:pointer;
+}
+.nav-si:hover{color:#fff;background:rgba(255,255,255,.04);}
+.nav-si.active{color:var(--primary);}
+
+/* ========== MAIN CONTENT ========== */
+#main-content{margin-left:var(--sidebar-w);margin-top:var(--topbar-h);padding:28px 32px 60px;max-width:920px;min-height:calc(100vh - var(--topbar-h));}
+
+/* ========== CHAPTER SECTIONS ========== */
+.chapter-section{display:none;animation:fadeIn .35s ease;}
+.chapter-section.active{display:block;}
+.ch-head{margin-bottom:28px;padding-bottom:14px;border-bottom:3px solid var(--primary);}
+.ch-num{font-size:13px;color:var(--primary);text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:6px;}
+.ch-title{font-size:30px;font-weight:800;line-height:1.2;}
+.ch-sub{font-size:15px;color:var(--text-muted);margin-top:6px;}
+
+/* ========== TOPIC GROUPS (COLLAPSIBLE) ========== */
+.topic-group{background:var(--card);border-radius:var(--radius);margin-bottom:14px;box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--border);}
+.topic-header{display:flex;align-items:center;padding:14px 18px;cursor:pointer;user-select:none;transition:var(--transition);gap:10px;}
+.topic-header:hover{background:var(--primary-light);}
+.topic-header .ti{font-size:11px;transition:transform .3s;color:var(--text-muted);flex-shrink:0;}
+.topic-header.expanded .ti{transform:rotate(90deg);}
+.topic-header h3{font-size:16px;font-weight:600;flex:1;}
+.topic-content{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.topic-content.expanded{max-height:none;overflow:visible;}
+.topic-body{padding:4px 18px 20px;}
+.topic-body h4{font-size:15px;font-weight:700;margin:18px 0 8px;color:var(--text);}
+.topic-body p{margin-bottom:10px;font-size:15px;}
+.topic-body ul,.topic-body ol{padding-left:22px;margin-bottom:12px;}
+.topic-body li{margin-bottom:4px;font-size:15px;}
+
+/* ========== CONCEPT CROSS-REFS ========== */
+.concept-ref{
+  color:var(--primary);border-bottom:2px dotted var(--primary);cursor:pointer;
+  transition:var(--transition);font-weight:500;padding:0 2px;display:inline;
+}
+.concept-ref:hover{background:var(--primary-light);border-bottom-style:solid;}
+
+/* ========== EQUATION BOX ========== */
+.equation-box{
+  background:linear-gradient(135deg,#f8fafc,#e2e8f0);border-radius:var(--radius-sm);
+  padding:18px 20px;text-align:center;margin:14px 0;font-size:17px;font-family:var(--font-serif);
+  border:1px solid var(--border);overflow-x:auto;line-height:2;
+}
+.equation-box .arr{margin:0 10px;color:var(--accent);font-weight:700;font-size:20px;}
+.equation-box .reagent{display:block;font-size:12px;color:var(--text-muted);margin-top:2px;font-family:var(--font-sans);}
+
+/* ========== REACTION VIEWER ========== */
+.reaction-viewer{background:var(--card);border:2px solid var(--accent);border-radius:var(--radius);overflow:hidden;margin:18px 0;}
+.rv-header{background:linear-gradient(135deg,var(--accent),var(--accent-dark));color:#fff;padding:12px 18px;font-weight:600;font-size:14px;}
+.rv-overall{background:#f0fdfa;padding:10px 18px;text-align:center;font-size:15px;border-bottom:1px solid var(--border);font-family:var(--font-serif);}
+body.dark-mode .rv-overall{background:rgba(13,148,136,.08);}
+.rv-step{display:none;padding:20px 18px;min-height:160px;}
+.rv-step.active{display:block;animation:fadeIn .3s ease;}
+.rv-step-visual{
+  background:linear-gradient(135deg,#f8fafc,#f0fdfa);border-radius:var(--radius-sm);
+  padding:20px;text-align:center;font-size:19px;font-family:var(--font-serif);
+  margin-bottom:14px;border:1px dashed var(--border);min-height:60px;
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;line-height:1.8;
+}
+.rv-step-title{font-size:15px;font-weight:700;color:var(--accent);margin-bottom:6px;}
+.rv-step-explain{font-size:14px;line-height:1.7;}
+.rv-step-why{
+  background:var(--purple-light);border-left:4px solid var(--purple);
+  padding:10px 14px;margin-top:10px;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:14px;
+}
+.rv-step-why strong{color:var(--purple);}
+.rv-controls{display:flex;align-items:center;justify-content:space-between;padding:10px 18px;background:var(--bg);border-top:1px solid var(--border);}
+.rv-btn{
+  padding:7px 18px;border:2px solid var(--accent);background:var(--card);color:var(--accent);
+  border-radius:24px;cursor:pointer;font-size:13px;font-weight:600;transition:var(--transition);font-family:var(--font-sans);
+}
+.rv-btn:hover:not(:disabled){background:var(--accent);color:#fff;}
+.rv-btn:disabled{opacity:.35;cursor:not-allowed;}
+.rv-ind{text-align:center;}
+.rv-ind .rv-st{font-size:12px;color:var(--text-muted);font-weight:500;}
+.rv-dots{display:flex;gap:5px;margin-top:4px;justify-content:center;}
+.rv-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:var(--transition);}
+.rv-dot.active{background:var(--accent);width:22px;border-radius:4px;}
+
+/* ========== INFO BOXES ========== */
+.note-box,.tip-box,.warning-box,.neet-tip{border-radius:var(--radius-sm);padding:14px 18px;margin:14px 0;font-size:14px;line-height:1.6;}
+.note-box{background:var(--primary-light);border-left:4px solid var(--primary);}
+.tip-box{background:var(--accent-light);border-left:4px solid var(--accent);}
+.warning-box{background:var(--orange-light);border-left:4px solid var(--orange);}
+.neet-tip{background:var(--purple-light);border-left:4px solid var(--purple);}
+.ib-title{font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.note-box .ib-title{color:var(--primary);}
+.tip-box .ib-title{color:var(--accent);}
+.warning-box .ib-title{color:var(--orange);}
+.neet-tip .ib-title{color:var(--purple);}
+
+/* ========== SUMMARY BOX ========== */
+.summary-box{
+  background:linear-gradient(135deg,var(--yellow-light),#fef3c7);border:2px solid var(--yellow);
+  border-radius:var(--radius);padding:18px 22px;margin:22px 0;
+}
+.summary-box h4{font-size:15px;color:var(--yellow);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.summary-box ul{list-style:none;padding:0;}
+.summary-box li{padding:5px 0 5px 24px;position:relative;font-size:14px;}
+.summary-box li::before{content:'✓';position:absolute;left:0;color:#059669;font-weight:700;}
+
+/* ========== COMPARISON TABLE ========== */
+.comparison-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);}
+.comparison-table th{background:var(--primary);color:#fff;padding:10px 14px;text-align:left;font-weight:600;font-size:13px;}
+.comparison-table td{padding:9px 14px;border-bottom:1px solid var(--border);}
+.comparison-table tr:nth-child(even){background:rgba(0,0,0,.02);}
+.comparison-table tr:hover{background:var(--primary-light);}
+
+/* ========== CATALOG / HOME ========== */
+#catalog .hero{
+  background:linear-gradient(135deg,#1e293b,#334155);border-radius:var(--radius);
+  padding:44px 36px;color:#fff;margin-bottom:28px;position:relative;overflow:hidden;
+}
+#catalog .hero::after{content:'⚗️';position:absolute;right:36px;top:50%;transform:translateY(-50%);font-size:72px;opacity:.15;}
+#catalog .hero h1{font-size:34px;font-weight:800;margin-bottom:10px;}
+#catalog .hero p{font-size:15px;color:#94a3b8;max-width:520px;line-height:1.6;}
+.ch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-bottom:28px;}
+.ch-card{
+  background:var(--card);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);
+  cursor:pointer;transition:var(--transition);border:2px solid transparent;display:block;
+}
+.ch-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--primary);}
+.ch-card .ci{font-size:30px;margin-bottom:10px;}
+.ch-card h3{font-size:15px;font-weight:700;margin-bottom:6px;}
+.ch-card p{font-size:13px;color:var(--text-muted);line-height:1.5;}
+.ch-card .ct{display:inline-block;padding:2px 10px;background:var(--primary-light);color:var(--primary);font-size:11px;font-weight:600;border-radius:12px;margin-top:10px;}
+
+/* ========== MODAL ========== */
+.modal-overlay{
+  position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);
+  display:none;align-items:center;justify-content:center;z-index:1000;backdrop-filter:blur(4px);
+}
+.modal-overlay.active{display:flex;animation:fadeIn .2s ease;}
+.modal-content{
+  background:var(--card);border-radius:var(--radius);padding:28px;max-width:540px;width:92%;
+  max-height:80vh;overflow-y:auto;box-shadow:var(--shadow-lg);position:relative;
+}
+.modal-close{
+  position:absolute;top:10px;right:14px;background:none;border:none;font-size:26px;
+  cursor:pointer;color:var(--text-muted);transition:var(--transition);width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;
+}
+.modal-close:hover{background:var(--bg);color:var(--text);}
+#modal-title{font-size:20px;font-weight:700;margin-bottom:14px;padding-right:30px;}
+#modal-body{font-size:14px;line-height:1.7;}
+#modal-body .ms{margin-bottom:14px;}
+#modal-body .ms h4{font-size:12px;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-weight:700;}
+#modal-body .me{background:var(--bg);padding:8px 14px;border-radius:var(--radius-sm);font-family:var(--font-serif);}
+
+/* ========== POINT LIST ========== */
+.point-list{padding-left:0;list-style:none;counter-reset:pt;}
+.point-list li{counter-increment:pt;padding:7px 0 7px 36px;position:relative;border-bottom:1px solid var(--border);}
+.point-list li:last-child{border-bottom:none;}
+.point-list li::before{
+  content:counter(pt);position:absolute;left:0;top:7px;width:24px;height:24px;
+  background:var(--primary);color:#fff;border-radius:50%;font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* ========== HELPERS ========== */
+.highlight{background:#fef08a;padding:2px 6px;border-radius:3px;}
+.formula{font-family:var(--font-serif);font-style:italic;}
+.mt-sm{margin-top:8px;}.mt-md{margin-top:16px;}.mt-lg{margin-top:24px;}
+.mb-sm{margin-bottom:8px;}.mb-md{margin-bottom:16px;}.mb-lg{margin-bottom:24px;}
+.text-center{text-align:center;}
+.text-sm{font-size:13px;}.text-muted{color:var(--text-muted);}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar{width:7px;}::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px;}::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
+#sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);}
+
+/* ========== PRINT ========== */
+@media print{#sidebar,#topbar{display:none!important;}#main-content{margin:0!important;padding:16px!important;}.topic-content{max-height:none!important;overflow:visible!important;}}
+
+/* ========== RESPONSIVE ========== */
+@media(max-width:768px){
+  #sidebar{transform:translateX(-100%);}
+  #sidebar.mobile-open{transform:translateX(0);}
+  .sb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:199;}
+  .sb-overlay.active{display:block;}
+  #main-content{margin-left:0;padding:20px 16px 40px;}
+  #topbar{padding-left:12px;}
+  .menu-toggle{display:block;}
+  .ch-grid{grid-template-columns:1fr;}
+  #catalog .hero{padding:28px 20px;}
+  #catalog .hero h1{font-size:26px;}
+  .ch-title{font-size:24px;}
+  .rv-step-visual{font-size:16px;padding:14px;}
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="sb-overlay" id="sb-overlay" onclick="toggleSidebar()"></div>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+  <div class="sb-head">
+    <h1>🧪 Organic Chemistry</h1>
+    <p>CBSE Class XII • Board &amp; NEET</p>
+  </div>
+  <nav>
+    <a class="nav-item active" data-section="catalog">
+      <span class="ni">📋</span> Index
+    </a>
+
+    <div class="nav-sec">Foundation (Class XI)</div>
+
+    <a class="nav-item nav-ch" data-section="ch1" data-toggle="ch1-sub">
+      <span class="ni">📐</span> Basic Principles
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch1-sub">
+      <a class="nav-si" data-topic="ch1-classification">Classification</a>
+      <a class="nav-si" data-topic="ch1-nomenclature">IUPAC Nomenclature</a>
+      <a class="nav-si" data-topic="ch1-isomerism">Isomerism</a>
+      <a class="nav-si" data-topic="ch1-effects">Electronic Effects</a>
+      <a class="nav-si" data-topic="ch1-mechanisms">Reaction Mechanisms</a>
+    </div>
+
+    <a class="nav-item nav-ch" data-section="ch2" data-toggle="ch2-sub">
+      <span class="ni">⛽</span> Hydrocarbons
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch2-sub">
+      <a class="nav-si" data-topic="ch2-alkanes">Alkanes</a>
+      <a class="nav-si" data-topic="ch2-alkenes">Alkenes</a>
+      <a class="nav-si" data-topic="ch2-alkynes">Alkynes</a>
+      <a class="nav-si" data-topic="ch2-aromatic">Aromatic Hydrocarbons</a>
+    </div>
+
+    <div class="nav-sec">Class XII Chapters</div>
+
+    <a class="nav-item nav-ch" data-section="ch3" data-toggle="ch3-sub">
+      <span class="ni">🧲</span> Haloalkanes &amp; Haloarenes
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch3-sub">
+      <a class="nav-si" data-topic="ch3-classification">Classification &amp; Nomenclature</a>
+      <a class="nav-si" data-topic="ch3-preparation">Methods of Preparation</a>
+      <a class="nav-si" data-topic="ch3-physical">Physical Properties</a>
+      <a class="nav-si" data-topic="ch3-sn">S<sub>N</sub>1 &amp; S<sub>N</sub>2 Reactions</a>
+      <a class="nav-si" data-topic="ch3-elimination">Elimination Reactions</a>
+      <a class="nav-si" data-topic="ch3-polyhalogen">Polyhalogen Compounds</a>
+    </div>
+
+    <a class="nav-item nav-ch" data-section="ch4" data-toggle="ch4-sub">
+      <span class="ni">🍷</span> Alcohols, Phenols &amp; Ethers
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch4-sub">
+      <a class="nav-si" data-topic="ch4-classification">Classification &amp; Nomenclature</a>
+      <a class="nav-si" data-topic="ch4-preparation">Preparation of Alcohols</a>
+      <a class="nav-si" data-topic="ch4-reactions">Reactions of Alcohols</a>
+      <a class="nav-si" data-topic="ch4-phenols">Phenols</a>
+      <a class="nav-si" data-topic="ch4-ethers">Ethers</a>
+    </div>
+
+    <a class="nav-item nav-ch" data-section="ch5" data-toggle="ch5-sub">
+      <span class="ni">⚗️</span> Aldehydes, Ketones &amp; Carboxylic Acids
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch5-sub">
+      <a class="nav-si" data-topic="ch5-nomenclature">Nomenclature &amp; Structure</a>
+      <a class="nav-si" data-topic="ch5-preparation">Preparation</a>
+      <a class="nav-si" data-topic="ch5-nuc-add">Nucleophilic Addition</a>
+      <a class="nav-si" data-topic="ch5-other">Other Important Reactions</a>
+      <a class="nav-si" data-topic="ch5-carboxylic">Carboxylic Acids</a>
+    </div>
+
+    <a class="nav-item nav-ch" data-section="ch6" data-toggle="ch6-sub">
+      <span class="ni">🔬</span> Amines
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch6-sub">
+      <a class="nav-si" data-topic="ch6-classification">Classification &amp; Nomenclature</a>
+      <a class="nav-si" data-topic="ch6-preparation">Preparation</a>
+      <a class="nav-si" data-topic="ch6-properties">Chemical Properties</a>
+      <a class="nav-si" data-topic="ch6-diazonium">Diazonium Salts</a>
+    </div>
+
+    <a class="nav-item nav-ch" data-section="ch7" data-toggle="ch7-sub">
+      <span class="ni">🧬</span> Biomolecules
+      <span class="arrow">▶</span>
+    </a>
+    <div class="nav-sub" id="ch7-sub">
+      <a class="nav-si" data-topic="ch7-carbohydrates">Carbohydrates</a>
+      <a class="nav-si" data-topic="ch7-proteins">Proteins</a>
+      <a class="nav-si" data-topic="ch7-nucleic">Nucleic Acids</a>
+      <a class="nav-si" data-topic="ch7-vitamins">Vitamins</a>
+    </div>
+  </nav>
+</aside>
+
+<!-- TOPBAR -->
+<header id="topbar">
+  <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+  <div class="search-box">
+    <span class="si">🔍</span>
+    <input type="text" id="search-input" placeholder="Search topics, reactions, concepts…" oninput="handleSearch(this.value)">
+    <div class="search-results" id="search-results"></div>
+  </div>
+  <button class="dm-toggle" onclick="toggleDark()" title="Toggle dark mode">🌙 Dark</button>
+</header>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
